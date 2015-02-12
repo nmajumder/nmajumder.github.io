@@ -16,7 +16,7 @@ p{
 }
 
 header{
-	margin-bottom: 300px;
+	
 }
 
 h1{
@@ -26,6 +26,7 @@ h1{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
+	margin-bottom: 50px;
 }
 
 #main{
