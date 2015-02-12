@@ -17,29 +17,26 @@ img{
 
 #image_one{
 	float: center;
-	margin-top: 128px;
+	margin-top: 64px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0;
-	float: top;
 }
 
 #image_two{
-	background-color: red;
 	float: left;
-	margin-right: 300px;
-	margin-top: 300px;
+	margin-top: 64px;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0;
-	float: top;
 }
 
 #image_three{
-	background-color: navy;
 	float: right;
-	margin-left: 300px;
-	margin-top: 300px;
+	margin-top: 64px;
+	margin-left: auto;
+	margin-top: auto;
 	padding: 0;
-	float: top;
 }
 
 #bio{
