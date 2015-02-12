@@ -30,8 +30,8 @@ img.logo{
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
-	padding-right: 4px;
-	padding-left: 4px;
+	padding-right: none;
+	padding-left: none;
 	height: 160px;
 }
 
