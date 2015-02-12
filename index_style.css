@@ -27,6 +27,7 @@ h1{
 }
 
 img.logo{
+	float: left;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
