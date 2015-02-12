@@ -39,7 +39,7 @@ body{
 
 .column_one{
 	float: left;
-	margin-left: 64px;
+	margin-left: 128px;
 	background-color: pink;
 	text-align: center;
 	display: inline-block;
@@ -47,7 +47,7 @@ body{
 
 .column_two{
 	float: right;
-	margin-right: 64px;
+	margin-right: 128px;
 	background-color: green;
 	text-align: center;
 	display: inline-block;
