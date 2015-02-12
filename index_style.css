@@ -20,7 +20,7 @@ header{
 h1{
 	margin-right: auto;
 	margin-left: auto;
-	padding-top: 12px;
+	padding-top: 14px;
 	margin-top: 50px;
 	width: 300px;
 	color: aqua;
@@ -33,12 +33,13 @@ img.left{
 }
 
 img.right{
-	float: right;
+	float: left;
 	margin-right: auto;
 	margin-left: auto;
 }
 
 img.center{
+	float: left;
 	margin-right: auto;
 	margin-left: auto;
 	border: none;
