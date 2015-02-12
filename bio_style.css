@@ -15,14 +15,28 @@ p{
 	margin-left: auto;
 }
 
+header{
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	border-color: black;
+	padding: 6px;
+}
+
 h1{
 	float: left;
 	float: top;
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	border-color: black;
+	padding: 6px;
 }
 
 #main{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: left;
-	border: 8px;
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	border-color: black;
+	padding: 6px;
 }
