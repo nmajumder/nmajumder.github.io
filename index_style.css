@@ -27,7 +27,7 @@ h1{
 }
 
 img.center{
-	clear: both;
+	clear: none;
 	margin-right: auto;
 	margin-left: auto;
 	border: none;
