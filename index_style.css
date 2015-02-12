@@ -32,6 +32,12 @@ h1{
 	color: beige;
 }
 
+img.logo{
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	height: 160px;
+}
 
 img.center{
 	margin-right: auto;
