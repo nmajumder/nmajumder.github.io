@@ -16,9 +16,10 @@ img{
 }
 
 #image_one{
-	background-color: green;
 	float: center;
 	margin-top: 128px;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0;
 	float: top;
 }
