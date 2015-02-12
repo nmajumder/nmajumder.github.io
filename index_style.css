@@ -3,6 +3,14 @@ body{
 	text-align: center;
 }
 
+header{
+	background-color: saddlebrown;
+	height: 128px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 h1{
 	margin-right: auto;
 	margin-left: auto;
