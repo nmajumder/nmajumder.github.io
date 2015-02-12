@@ -5,6 +5,8 @@ body{
 	color: navy;
 	background-color: beige;
 	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 p{
