@@ -9,6 +9,12 @@ header{
 	text-align: center;
 }
 
+h1{
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	padding: 6px;
+}
+
 img{
 	border: none;
 	display: block;
