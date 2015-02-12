@@ -34,7 +34,7 @@ body{
 
 #skillsRight{
 	float: right;
-	background-color: green;
+	margin-right: 128px;
 	text-align: center;
 	display: inline-block;
 }
