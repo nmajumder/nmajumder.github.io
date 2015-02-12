@@ -17,6 +17,14 @@ header{
 	margin-left: auto;
 }
 
+#footer{
+	background-color: navy;
+	height: 128px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 h1{
 	margin-right: auto;
 	margin-left: auto;
