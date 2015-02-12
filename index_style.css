@@ -7,10 +7,13 @@ figure{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	padding: 6px;
 }
 
 header{
-	background-color: saddlebrown;
+	background-color: black;
 	height: 128px;
 	text-align: center;
 	margin-right: auto;
