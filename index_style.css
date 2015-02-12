@@ -4,7 +4,7 @@ body{
 }
 
 header{
-	background-color: yellow;
+	background-color: saddlebrown;
 	height: 128px;
 	text-align: center;
 }
@@ -16,6 +16,7 @@ img{
 }
 
 #image_one{
+	background-color: green;
 	float: center;
 	margin-top: 128px;
 	padding: 0;
@@ -23,6 +24,7 @@ img{
 }
 
 #image_two{
+	background-color: red;
 	float: left;
 	margin-right: 300px;
 	margin-top: 300px;
@@ -31,6 +33,7 @@ img{
 }
 
 #image_three{
+	background-color: navy;
 	float: right;
 	margin-left: 300px;
 	margin-top: 300px;
