@@ -31,7 +31,7 @@ img.left{
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
-	padding-right: 120px;
+	margin-right: 120px;
 	height: 300px;
 }
 
@@ -48,7 +48,7 @@ img.center{
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
-	padding-right: 120px;
+	margin-right: 120px;
 	height: 300px;
 }
 
