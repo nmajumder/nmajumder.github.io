@@ -18,9 +18,9 @@ body{
 	-webkit-column-count: 2;
 	-moz-column-count: 2;
 	column-count: 2;
-	-webkit-column-gap: 216px;
-	-moz-column-gap: 216px;
-	column-gap: 216px;
+	-webkit-column-gap: 280px;
+	-moz-column-gap: 280px;
+	column-gap: 280px;
 	-moz-column-fill: auto;
     column-fill: auto;
 }
@@ -29,9 +29,9 @@ body{
 	-webkit-column-count: 2;
 	-moz-column-count: 2;
 	column-count: 2;
-	-webkit-column-gap: 56px;
-	-moz-column-gap: 56px;
-	column-gap: 56px;
+	-webkit-column-gap: 40px;
+	-moz-column-gap: 40px;
+	column-gap: 40px;
 	-moz-column-fill: auto;
     column-fill: auto;
 }
