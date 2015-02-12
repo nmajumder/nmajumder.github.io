@@ -14,5 +14,5 @@ body{
 }
 
 .bullets{
-	list-style;
+	list-style-type: none;
 }
