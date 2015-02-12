@@ -20,8 +20,8 @@ body{
     column-fill: auto;
 }
 
-#columns .a_column{
-	break-inside: avoid-column;
+.a_column{
+	display: inline-block;
 }
 
 .indent{
