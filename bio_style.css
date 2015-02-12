@@ -10,7 +10,7 @@ body{
 }
 
 p{
-	text-align: center;
+	text-align: left;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -21,7 +21,6 @@ h1{
 	border-color: black;
 	padding: 6px;
 	margin-bottom: 50px;
-	width: 200;
 }
 
 #main{
