@@ -17,9 +17,9 @@ body{
 	-webkit-column-count: 2;
 	-moz-column-count: 2;
 	column-count: 2;
-	-webkit-column-gap: 120px;
-	-moz-column-gap: 120px;
-	column-gap: 120px;
+	-webkit-column-gap: 92px;
+	-moz-column-gap: 92px;
+	column-gap: 92px;
 	-moz-column-fill: auto;
     column-fill: auto;
 }
