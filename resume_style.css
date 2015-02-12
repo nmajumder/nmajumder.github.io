@@ -10,9 +10,9 @@ body{
 }
 
 .indent{
-	text-indent: 92px;
+	text-indent: 32px;
 }
 
 .bullets{
-	list-style-type: disc;
+	list-style;
 }
