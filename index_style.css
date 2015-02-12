@@ -10,15 +10,6 @@ figure{
 }
 
 header{
-	background-color: navy;
-	height: 128px;
-	text-align: center;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-#footer{
-	margin-top: 224px;
 	background-image: url("tuftslogo.jpg");
 	background-size: contain;
 	height: 128px;
@@ -30,9 +21,9 @@ header{
 h1{
 	margin-right: auto;
 	margin-left: auto;
-	padding-top: 14px;
+	padding-top: 2px;
 	width: 300px;
-	color: beige;
+	color: navy;
 }
 
 img.center{
