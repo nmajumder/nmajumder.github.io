@@ -42,6 +42,7 @@ img.center{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
+	color: black;
 }
 
 #resume{
@@ -52,4 +53,27 @@ img.center{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
+	color: black;
+}
+
+#linkedin{
+	text-align: center;
+	float: right;
+	float: top;
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	border-color: black;
+	padding: 6px;
+	color: black;
+}
+
+#github{
+	text-align: center;
+	float: right;
+	float: top;
+	border: 3px solid #ABC;
+	border-radius: 8px;
+	border-color: black;
+	padding: 6px;
+	color: black;
 }
