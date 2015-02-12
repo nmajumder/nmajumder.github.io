@@ -30,20 +30,25 @@ img.left{
 	float: left;
 	margin-right: auto;
 	margin-left: auto;
+	text-align: center;
+	padding-right: 120px;
+	height: 300px;
 }
 
 img.right{
 	float: left;
 	margin-right: auto;
 	margin-left: auto;
+	text-align: center;
+	height: 300px;
 }
 
 img.center{
 	float: left;
 	margin-right: auto;
 	margin-left: auto;
-	border: none;
-	display: block;
+	text-align: center;
+	padding-right: 120px;
 	height: 300px;
 }
 
