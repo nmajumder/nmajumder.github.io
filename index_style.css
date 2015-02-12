@@ -6,9 +6,8 @@ body{
 h1{
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 60px;
+	margin-top: 50px;
 	width: 300px;
-	background-image: url(linkedin_headshot.jpg);
 }
 
 img{
@@ -24,7 +23,8 @@ figure{
 }
 
 #image_one{
-	float: center;
+	text-align: center;
+	float: left;
 	margin-top: 64px;
 	margin-left: auto;
 	margin-right: auto;
@@ -32,6 +32,7 @@ figure{
 }
 
 #image_two{
+	text-align: center;
 	float: left;
 	margin-top: 64px;
 	margin-left: auto;
@@ -40,7 +41,8 @@ figure{
 }
 
 #image_three{
-	float: right;
+	text-align: center;
+	float: left;
 	margin-top: 64px;
 	margin-left: auto;
 	margin-top: auto;
