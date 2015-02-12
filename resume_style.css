@@ -37,14 +37,14 @@ body{
     column-fill: auto;
 }
 
-.column_one{
+#skillsLeft{
 	float: left;
 	margin-left: 136px;
 	text-align: center;
 	display: inline-block;
 }
 
-.column_two{
+#skillsRight{
 	float: right;
 	margin-right: 128px;
 	text-align: center;
