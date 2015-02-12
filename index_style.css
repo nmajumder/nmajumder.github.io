@@ -3,19 +3,12 @@ body{
 	text-align: center;
 }
 
-header{
-	background-color: saddlebrown;
-	height: 128px;
-	text-align: center;
-}
-
 h1{
 	margin-right: auto;
 	margin-left: auto;
-	border: 3px solid #ABC;
-	border-radius: 8px;
-	padding: 6px;
+	margin-top: 60px;
 	width: 300px;
+	background-image: url(linkedin_headshot.jpg);
 }
 
 img{
