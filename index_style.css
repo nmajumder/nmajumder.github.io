@@ -26,23 +26,6 @@ h1{
 	color: aqua;
 }
 
-img.left{
-	float: left;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-	margin-right: 120px;
-	height: 300px;
-}
-
-img.right{
-	float: left;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-	height: 300px;
-}
-
 img.center{
 	float: left;
 	margin-right: auto;
@@ -58,6 +41,7 @@ img.center{
 	float: top;
 	border: 3px solid #ABC;
 	border-radius: 8px;
+	border-color: black;
 	padding: 6px;
 }
 
@@ -67,5 +51,6 @@ img.center{
 	float: top;
 	border: 3px solid #ABC;
 	border-radius: 8px;
+	border-color: black;
 	padding: 6px;
 }
