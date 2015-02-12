@@ -1,5 +1,12 @@
 body{
+	font-size: 18;
+	font-family: Arial;
 	text-align: center;
 	color: navy;
 	background-color: beige;
+	width: 600px;
+}
+
+p{
+	text-align: center;
 }
