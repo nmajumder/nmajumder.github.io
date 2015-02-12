@@ -16,10 +16,7 @@ p{
 }
 
 header{
-	border: 3px solid #ABC;
-	border-radius: 8px;
-	border-color: black;
-	padding: 6px;
+	margin-bottom: 300px;
 }
 
 h1{
