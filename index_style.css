@@ -23,7 +23,7 @@ header{
 
 #image_two{
 	float: left;
-	margin-left: 300px;
+	margin-right: 300px;
 	margin-top: 300px;
 	padding: 0;
 	margin: 0;
@@ -36,7 +36,7 @@ header{
 
 #image_three{
 	float: right;
-	margin-right: 300px;
+	margin-left: 300px;
 	margin-top: 300px;
 	padding: 0;
 	margin: 0;
