@@ -18,7 +18,8 @@ header{
 }
 
 #footer{
-	background-image: url("tuftslogo.jpg");
+	/*background-image: url("tuftslogo.jpg");*/
+	background-color: lightblue;
 	background-repeat: repeat-y;
 	height: 256px;
 	margin-right: auto;
