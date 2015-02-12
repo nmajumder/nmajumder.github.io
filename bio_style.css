@@ -12,3 +12,8 @@ p{
 	margin-right: auto;
 	margin-left: auto;
 }
+
+h1{
+	float: left;
+	float: top;
+}
