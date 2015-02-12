@@ -28,7 +28,7 @@ body{
 #skillsLeft{
 	float: left;
 	background-color: pink;
-	margin-left: 136px;
+	margin-left: 150px;
 	text-align: center;
 	display: inline-block;
 }
