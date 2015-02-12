@@ -8,4 +8,6 @@ img{
 	display: block;
 	height: 300px;
 	border: none;
+	float: left;
+	float: top;
 }
