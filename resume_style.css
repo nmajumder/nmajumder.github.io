@@ -1,8 +1,8 @@
 
 body{
 	font-size: 14;
-	color: yellow;
-	background-color: black;
+	color: navy;
+	background-color: beige;
 }
 
 #header{
@@ -10,7 +10,7 @@ body{
 }
 
 .indent{
-	text-indent;
+	text-indent: 92px;
 }
 
 .bullets{
