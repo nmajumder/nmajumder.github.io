@@ -17,6 +17,14 @@ header{
 	margin-left: auto;
 }
 
+#footer{
+	background-image: url("tuftslogo.jpg");
+	background-repeat: repeat-y;
+	height: 128px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 h1{
 	margin-right: auto;
 	margin-left: auto;
@@ -26,21 +34,6 @@ h1{
 	color: beige;
 }
 
-img.left_pic{
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-	height: 300px;
-	padding-right: 200px; 
-}
-
-img.right_pic{
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-	height: 300px;
-	padding-left: 200px; 
-}
 
 img.center{
 	margin-right: auto;
