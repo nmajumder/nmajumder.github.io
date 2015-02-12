@@ -3,6 +3,12 @@ body{
 	text-align: center;
 }
 
+figure{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 header{
 	background-color: saddlebrown;
 	height: 128px;
