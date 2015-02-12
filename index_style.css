@@ -1,5 +1,5 @@
 body{
-	background-color: aqua;
+	background-color: beige;
 	text-align: center;
 }
 
@@ -10,7 +10,7 @@ figure{
 }
 
 header{
-	background-color: black;
+	background-color: navy;
 	height: 128px;
 	text-align: center;
 	margin-right: auto;
@@ -23,7 +23,7 @@ h1{
 	padding-top: 14px;
 	margin-top: 50px;
 	width: 300px;
-	color: aqua;
+	color: beige;
 }
 
 img.center{
@@ -36,6 +36,7 @@ img.center{
 
 a{
 	text-decoration: none;
+	color: navy;
 }
 
 #bio{
@@ -48,8 +49,6 @@ a{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
-	color: black;
-	text-decoration: none;
 }
 
 #resume{
@@ -60,8 +59,6 @@ a{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
-	color: black;
-	text-decoration: none;
 }
 
 #linkedin{
@@ -74,8 +71,6 @@ a{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
-	color: black;
-	text-decoration: none;
 }
 
 #github{
@@ -86,6 +81,4 @@ a{
 	border-radius: 8px;
 	border-color: black;
 	padding: 6px;
-	color: black;
-	text-decoration: none;
 }
