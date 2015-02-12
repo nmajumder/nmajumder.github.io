@@ -1,0 +1,14 @@
+
+body{
+	font-size: 14;
+	color: yellow;
+	background-color: black;
+}
+
+#header{
+	text-align: center;
+}
+
+.indent{
+	text-indent; 20px;
+}
