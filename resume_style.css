@@ -39,8 +39,13 @@ body{
 	display: inline-block;
 }
 
-.a_column{
+#education{
 	display: inline-block;
+}
+
+#experience{
+	display: inline-block;
+	margin-right: 32px;
 }
 
 .indent{
