@@ -2,13 +2,13 @@ body{
 	background-color: aqua;
 	text-align: center;
 }
-
+/*
 figure{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 }
-
+*/
 header{
 	background-color: saddlebrown;
 	height: 128px;
@@ -24,7 +24,7 @@ h1{
 	width: 300px;
 }
 
-img{
+img.center{
 	border: none;
 	display: block;
 	height: 300px;
