@@ -9,11 +9,6 @@ body{
 	text-align: center;
 }
 
-p{
-	margin: 0px;
-	padding: 0px;
-}
-
 .underline{
 	text-decoration: underline;
 }
@@ -34,5 +29,5 @@ p{
 }
 
 .indent{
-	text-indent: 32px;
+	margin-left: 32px;
 }
