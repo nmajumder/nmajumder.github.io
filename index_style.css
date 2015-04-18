@@ -3,6 +3,10 @@ body{
 	text-align: center;
 }
 
+body h1 {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
 figure{
 	margin-left: auto;
 	margin-right: auto;
@@ -31,11 +35,20 @@ img.center{
 	margin-left: auto;
 	text-align: center;
 	height: 300px;
+	border-top-left-radius: 4em;
+	border-top-right-radius: 4em;
+	border-bottom-right-radius: 4em;
+	border-bottom-left-radius: 4em;
 }
 
 a{
 	text-decoration: none;
-	color: navy;
+	color: white;
+	font-family: "Courier New", Courier, monospace;
+}
+
+a:hover {
+	text-decoration: underline;
 }
 
 #bio{
@@ -43,37 +56,45 @@ a{
 	float: left;
 	margin-left: 100px;
 	margin-right: 100px;
-	border: 3px solid #ABC;
-	border-radius: 8px;
-	border-color: black;
-	padding: 6px;
+	background-color: darkblue;
+	padding: 12px;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
 }
 
 #resume{
 	text-align: center;
 	float: left;
-	border: 3px solid #ABC;
-	border-radius: 8px;
-	border-color: black;
-	padding: 6px;
+	background-color: darkblue;
+	padding: 12px;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
 }
 
 #linkedin{
 	text-align: center;
 	float: right;
-	margin-left: 100px;
-	margin-right: 100px;
-	border: 3px solid #ABC;
-	border-radius: 8px;
-	border-color: black;
-	padding: 6px;
+	margin-left: 80px;
+	margin-right: 80px;
+	background-color: darkblue;
+	padding: 12px;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
 }
 
 #github{
 	text-align: center;
 	float: right;
-	border: 3px solid #ABC;
-	border-radius: 8px;
-	border-color: black;
-	padding: 6px;
+	background-color: darkblue;
+	padding: 12px;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
 }
