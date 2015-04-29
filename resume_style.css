@@ -1,4 +1,4 @@
-@media only screen and (min-device-width: 737px) {
+/*@media only screen and (min-device-width: 737px) {*/
 
 body{
 	font-size: 14pt;
@@ -16,9 +16,9 @@ body{
 }
 
 #skills {
-	height: 150px;
+	height: auto;
 }
-
+/*
 #skillsLeft{
 	float: center;
 	margin-left: 32%;
@@ -33,7 +33,7 @@ body{
 	text-align: center;
 	display: inline-block;
 }
-
+*/
 #education{
 	float: center;
 	width: 100%;
@@ -50,7 +50,7 @@ body{
 .indent{
 	margin-left: 64px;
 }
-
+/*
 }
 
 
@@ -58,21 +58,22 @@ body{
 
 #skills {
 	height: 300px;
+	width: 400px;
 }
 
 #skillsLeft{
 	width: 100%;
-	float: center;
+	float: left;
 	text-align: center;
 	display: inline-block;
 }
 
 #skillsRight{
 	width: 100%;
-	float: center;
+	float: right;
 	text-align: center;
 	display: inline-block;
 }
 
 }
-
+*/
