@@ -132,4 +132,11 @@ a:hover {
 	width: 500px;
 	height: auto; /* is this right? */
 	margin-left: 50px;
+	border-radius: 4px;
+	border-color: darkblue;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-bottom-left-radius: 1em;
+}
 }
