@@ -6,6 +6,9 @@ body{
 	background-color: lightblue;
 	font-family: Arial;
 }
+body h1 {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
 
 .centered{
 	text-align: center;
