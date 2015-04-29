@@ -14,17 +14,6 @@ body{
 	text-decoration: underline;
 }
 
-#columns{/*
-	-webkit-column-count: 2;
-	-moz-column-count: 2;
-	column-count: 2;
-	-webkit-column-gap: 40px;
-	-moz-column-gap: 40px;
-	column-gap: 40px;
-	-moz-column-fill: auto;
-    column-fill: auto;*/
-}
-
 #skillsLeft{
 	float: left;
 	margin-left: 150px;
@@ -41,13 +30,13 @@ body{
 
 #education{
 	float: left;
-	width: 47%;
+	width: 100%;
 	/*display: inline-block;*/
 }
 
 #experience{
-	float: right;
-	width: 47%;
+	float: left;
+	width: 100%;
 	/*display: inline-block;*/
 	margin-right: 6%;
 }
