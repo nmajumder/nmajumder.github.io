@@ -1,3 +1,4 @@
+@media only screen and (min-device-width: 737px) {
 
 body{
 	font-size: 14pt;
@@ -14,28 +15,33 @@ body{
 	text-decoration: underline;
 }
 
+#skills {
+	height: 150px;
+}
+
 #skillsLeft{
-	float: left;
-	margin-left: 150px;
+	float: center;
+	margin-left: 32%;
+	margin-right: 20%;
 	text-align: center;
 	display: inline-block;
 }
 
 #skillsRight{
-	float: right;
+	float: center;
 	margin-right: 128px;
 	text-align: center;
 	display: inline-block;
 }
 
 #education{
-	float: left;
+	float: center;
 	width: 100%;
 	/*display: inline-block;*/
 }
 
 #experience{
-	float: left;
+	float: center;
 	width: 100%;
 	/*display: inline-block;*/
 	margin-right: 6%;
@@ -44,3 +50,29 @@ body{
 .indent{
 	margin-left: 64px;
 }
+
+}
+
+
+@media only screen and (max-device-width: 736px) {
+
+#skills {
+	height: 300px;
+}
+
+#skillsLeft{
+	width: 100%;
+	float: center;
+	text-align: center;
+	display: inline-block;
+}
+
+#skillsRight{
+	width: 100%;
+	float: center;
+	text-align: center;
+	display: inline-block;
+}
+
+}
+
