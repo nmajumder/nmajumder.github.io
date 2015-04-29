@@ -1,12 +1,13 @@
-/*@media only screen and (min-device-width: 737px) {
+/*@media only screen and (min-device-width: 737px) {*/
 
 body{
-	font-size: 14pt;
+	color: darkblue;
+	/*font-size: 14pt;
 	color: navy;
 	background-color: lightblue;
-	font-family: Arial;
+	font-family: Arial;*/
 }
-*/
+
 
 .centered{
 	text-align: center;
@@ -17,7 +18,7 @@ body{
 }
 
 #skills {
-	height: 230px;
+	height: 205px;
 }
 /*
 #skillsLeft{
