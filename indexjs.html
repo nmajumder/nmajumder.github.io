@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>Nathan Majumder</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+		function home() {
+
+		}
+
+		function resume() {
+			$("#rightSide").load("resume.html");
+		}
+
+		function bio() {
+			$("#rightSide").load("bio.html");
+		}
+	</script>
+	<header>
+	</header>
+</head>
+
+<body onload="home()">
+		<div id="name_and_pic">
+			<h1 id="name" onclick="home()">Nathan Majumder</h1><br>
+		  	<img id="headshot" src="linkedin_headshot.jpg" alt="Headshot photo of Nathan Majumder">
+		</div>
+	    <div id="clicks">
+	    	<div id="links">
+	    		<p id="linkedin"><a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34">LinkedIn</a></p>
+    			<p id="github"><a href="https://github.com/nmajumder">Github</a></p>
+    		</div>
+    		<div id="buttons">
+    			<div class="button" onclick="resume()">Resume</div>
+    			<div class="button" onclick="bio()">Bio</div>
+    		</div>
+	    </div>
+	    <div id="rightSide">
+	    </div>
+</body>
+
+</html>

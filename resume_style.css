@@ -14,7 +14,7 @@ body{
 	text-decoration: underline;
 }
 
-#columns{
+#columns{/*
 	-webkit-column-count: 2;
 	-moz-column-count: 2;
 	column-count: 2;
@@ -22,7 +22,7 @@ body{
 	-moz-column-gap: 40px;
 	column-gap: 40px;
 	-moz-column-fill: auto;
-    column-fill: auto;
+    column-fill: auto;*/
 }
 
 #skillsLeft{
@@ -40,12 +40,16 @@ body{
 }
 
 #education{
-	display: inline-block;
+	float: left;
+	width: 47%;
+	/*display: inline-block;*/
 }
 
 #experience{
-	display: inline-block;
-	margin-right: 64px;
+	float: right;
+	width: 47%;
+	/*display: inline-block;*/
+	margin-right: 6%;
 }
 
 .indent{
