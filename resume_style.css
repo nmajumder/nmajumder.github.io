@@ -1,4 +1,4 @@
-/*@media only screen and (min-device-width: 737px) {*/
+/*@media only screen and (min-device-width: 737px) {
 
 body{
 	font-size: 14pt;
@@ -6,9 +6,7 @@ body{
 	background-color: lightblue;
 	font-family: Arial;
 }
-body h1 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
+*/
 
 .centered{
 	text-align: center;
