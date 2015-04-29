@@ -16,7 +16,8 @@ body{
 }
 
 #skills {
-	height: auto;
+	height: 230px;
+	margin-bottom: 100px;
 }
 /*
 #skillsLeft{
