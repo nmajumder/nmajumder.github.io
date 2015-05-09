@@ -41,6 +41,10 @@ a:hover {
 .link:hover {
 	background-color: #A0A0A0;
 	font-weight: normal;
+	border-bottom-style: solid;
+	border-bottom-color: #707070;
+	border-bottom-width: 2px;
+	height: 33px;
 }
 
 .button {
