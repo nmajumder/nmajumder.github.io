@@ -197,14 +197,6 @@
 		margin-right: auto;
 	}
 
-	#email {
-		text-align: center;
-	}
-	
-	#nextline {
-
-	}
-
 	.centered{
 		text-align: center;
 	}
@@ -221,6 +213,7 @@
 		float: center;
 		width: 100%;
 		height: auto;
+		margin-bottom: 10%;
 		/*display: inline-block;*/
 	}
 
