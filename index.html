@@ -1,101 +1,76 @@
 <!DOCTYPE html>
-
 <html>
-
-<head>
-    <title>Nathan Majumder</title>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="index_style.css"/>
-    <script>
-
-
-    </script>
-</head>
-
-<body>
-    <header class="navbar">
-        <div class="link"><div id="linkedin"><a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34">linkedin</a></div></div>
-        <div class="link"><div id="github"><a href="https://github.com/nmajumder">github</a></div></div>
-        <form action="#biography"><button class="button" type="submit">about me</button></form>
-        <form action="#resume"><button class="button" type="submit">resume</button></form>
-        <form action="#"><button id="toTop" type="submit">back to top</button></form>
+    <title>Nathan Majumder</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Exo:400,600,600italic|Muli' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header>
+      <a href="index.html" id="logo">
+        <h1>nathan majumder</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="selected">Homepage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </header>
-    <div id="home">
-        <div id="name">
-            <h1 id="nathan">nathan majumder</h1>
-            <h3>nathan.majumder@tufts.edu</h3>
-        </div>
-        <figure>
-            <img class="pic" src="soccerteam.jpg" alt="soccer team"/>
-            <img id="tallpic" src="linkedin_headshot.jpg" alt="headshot"/>
-            <img class="pic" src="hackathon.jpg" alt="hackathon presentation"/>
-        </figure>
+    
+    <div id="wrapper">
+      <section>
+        <ul id="gallery">
+          <li>
+            <a href="img/msoccer404.jpg">
+              <img src="img/msoccer404.jpg" alt="">
+              <p>Playing in a soccer game - Oct 2014</p>
+            </a>
+          </li>
+          <li>
+            <a href="img/india.jpg">
+              <img src="img/india.jpg" alt="">
+              <p>Visiting the Taj Mahal in India - Jan 2015</p>
+            </a>
+          </li>
+          <li>
+            <a href="img/hackathon.jpg">
+              <img src="img/hackathon.jpg" alt="">
+              <p>Presenting a project at a hackathon - Feb 2015</p>
+            </a>
+          </li>
+          <li>
+            <a href="img/fam_photo.jpg">
+              <img src="img/fam_photo.jpg" alt="">
+              <p>Family photo after a Mothers' Day brunch - May 2014</p>
+            </a>
+          </li>
+          <li>
+            <a href="img/soccerteam.jpg">
+              <img src="img/soccerteam.jpg" alt="">
+              <p>Team photo of the Tufts Men's Soccer Team after winning the national championship - Dec 2015</p>
+            </a>
+          </li>
+          <li>
+            <a href="img/sunrise.jpg">
+              <img src="img/sunrise.jpg" alt="">
+              <p>Sun coming up over the Tufts quad on a cold winter morning - Feb 2015</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      
+      <footer>
+        <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>
+        <a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34?domainCountryName=&csrfToken=ajax%3A6249601243831115177"><img src="img/LI_logo.png" alt="LinkedIn logo"></a>
+        <p>&copy; 2015 Nathan Majumder.</p>
+      </footer>
     </div>
-    <div id="biography">
-        <div id="biotext">
-            <h1 id="bio_header">about me</h1>
-            <p>I am currently a 2nd year student at Tufts University, double majoring in computer science and mathematics.</p>
-            <p><br />I am from Williamstown, MA, and I attended Mount Greylock Regional High School, where I captained the varsity soccer and basketball teams and was a member of the varsity tennis team. I was the first chair trumpet in the school band, and was the treasurer of the Student Council as well as our National Honor Society chapter.</p>
-            <p><br />Here at Tufts, I play on the varsity soccer team, so I spend the bulk of my non-academic time on soccer related activities. I also play the trumpet in the university wind ensemble.</p>
-            <p><br />My interests include anything involving sports of any sort (primarily soccer, basketball, baseball, tennis, football), music of every variety (everything from classical to country), any good tv shows or movies that are currently out, videogames, hiking, travelling, skiing, and many more. I'm a huge fan of the New England Patriots, Boston Red Sox, and really every Boston sports team. I have a ridiculous sweet tooth, and I don't think I've ever come across a dessert I didn't like.</p>
-        </div>
-    </div>
-    <div id="resume">
-        <div id="resumetext">
-            <div id="education">
-                <div class="centered">
-                    <h1>Education</h1>
-                    <p>Tufts University: 2013-2017 (expected)<br />
-                    Seeking BS in Computer Science and Mathematics</p>
-                </div>
-                <div class="indent">
-                    <h3>Relevant Courses</h3>
-                        <p>Comp 11: Introduction to Computer Science<br />
-                        Comp 15: Data Structures<br />
-                        Comp 20: Web Programming<br />
-                        Comp 40: Machine Structure and Assembly-Language Programming<br />
-                        Math 51: Differential Equations<br />
-                        Math 61: Discrete Mathematics<br />
-                        Math 70: Linear Algebra<br />
-                        Math 128: Numerical Linear Algebra<br />
-                        Phys 12: Electricity and Magnetism</p>
-                </div>
-                <div class="indent">
-                    <div id="skills">
-                        <h3>Skills</h3>
-                        <p> C/C++ <br />
-                        Matlab <br />
-                        Javascript <br />
-                        HTML <br />
-                        CSS <br />
-                        Microsoft Office <br />
-                        Solidworks <br />
-                        Data Analysis <br />
-                        Teamwork <br />
-                        Leadership </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="experience">
-                <h1 class="centered">Professional Experience</h1>
-                    <h3>Williams College</h3>
-                        <div class="indent">
-                            <p>Summer 2013 - Part time research in an experimental atomic physics lab at Williams College in Williamstown, MA.</p>
-                            <p>Worked with a vaccuum evaporator, coating optical components. Helped to construct Fabry-Perot optical cavities to test coated optics.</p>
-                        </div>
-                    <h3>Draper Laboratory</h3>
-                        <div class="indent">
-                            <p>Summer 2014 - Full time 11 week internship in the Electro-Optics and Instruments group at Draper Laboratory in Cambridge, MA.</p>
-                            <p>Work included constructing a Michelson interferometer and designing and building an optical bench setup in order to test the interferometer for its use in an intertial measurement unit containing an accelerometer and a gyroscope. Helped to build and maintain an optical setup to stabilize a laser's optical power for an atom interferometer. Gained experience in Matlab and Solidworks, analyzing results of experiments and designing parts for a 3D printer/machine shop respectively.</p>
-                        </div>
-                    <h3>Tufts University</h3>
-                            <p class="indent">Spring 2015 - Currently doing part time research with a math professor and an electrical and computer engineering professor in the field of Numerical Linear Algebra.</p>
-            </div>
-        </div>
-    </div>
-</body>
-
+  </body>
 </html>

@@ -1,72 +1,100 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
-
-<head>
-	<title>Resume - Nathan Majumder</title>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" href="resume_style.css" />
-</head>
-
-<body>
-	<div class="centered">
-		<h3>nathan.majumder@tufts.edu</h3>
-	</div>
-	<!-- <div id="columns"> -->
-		<div id="education">
-			<div class="centered">
-				<h1>Education</h1>
-					<p>Tufts University: 2013-2017 (expected)<br />
-					Seeking BS in Computer Science and Mathematics</p>
-			</div>
-			<div class="indent">
-				<h3>Relevant Courses</h3>
-					<p>Comp 11: Introduction to Computer Science<br />
-					Comp 15: Data Structures<br />
-					Comp 20: Web Programming<br />
-					Comp 40: Machine Structure and Assembly-Language Programming<br />
-					Math 51: Differential Equations<br />
-					Math 61: Discrete Mathematics<br />
-					Math 70: Linear Algebra<br />
-					Math 128: Numerical Linear Algebra<br />
-					Phys 12: Electricity and Magnetism</p>
-			</div>
-			<div class="indent">
-				<div id="skills">
-					<h3>Skills</h3>
-					<p> C/C++ <br />
-					Matlab <br />
-					Javascript <br />
-					HTML <br />
-					CSS <br />
-					Microsoft Office <br />
-					Solidworks <br />
-					Data Analysis <br />
-					Teamwork <br />
-					Leadership </p>
-				</div>
-			</div>
-		</div>
-
-		<div id="experience">
-			<h1 class="centered">Professional Experience</h1>
-				<h3>Williams College</h3>
-					<div class="indent">
-						<p>Summer 2013 - Part time research in an experimental atomic physics lab at Williams College in Williamstown, MA.</p>
-						<p>Worked with a vaccuum evaporator, coating optical components. Helped to construct Fabry-Perot optical cavities to test coated optics.</p>
-					</div>
-				<h3>Draper Laboratory</h3>
-					<div class="indent">
-						<p>Summer 2014 - Full time 11 week internship in the Electro-Optics and Instruments group at Draper Laboratory in Cambridge, MA.</p>
-						<p>Work included constructing a Michelson interferometer and designing and building an optical bench setup in order to test the interferometer for its use in an intertial measurement unit containing an accelerometer and a gyroscope. Helped to build and maintain an optical setup to stabilize a laser's optical power for an atom interferometer. Gained experience in Matlab and Solidworks, analyzing results of experiments and designing parts for a 3D printer/machine shop respectively.</p>
-					</div>
-				<h3>Tufts University</h3>
-						<p class="indent">Spring 2015 - Currently doing part time research with a math professor and an electrical and computer engineering professor in the field of Numerical Linear Algebra.</p>
-		</div>
-	<!-- </div> -->
-	
-
-</body>
-
-
+  <head>
+    <meta charset="utf-8">
+    <title>Nathan Majumder</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Exo:400,600,600italic|Muli' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  
+  <body>
+    <header>
+      <a href="index.html" id="logo">
+        <h1>nathan majumder</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Homepage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html" class="selected">Resume</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div id="wrapper">
+      <section>
+        <div class="resume-section">
+          <h1>Education</h1>
+          <p><span class="underlined">Tufts University</span> - Medford, MA</p>
+          <div class="indented">
+            <p>Fall 2013 to Present (expected graduation, Spring 2017)</p>
+            <p>Seeking BS in Computer Science and Mathematics</p>
+            <p>Current GPA (through 4 semesters): 3.92</p>
+            <p>Relevant Completed Courses:</p>
+            <ul>
+              <li>Introductory Computer Science</li>
+              <li>Data Structures</li>
+              <li>Web Programming</li>
+              <li>Machine Structure &amp; Assembly Language Programming</li>
+              <li>Differential Equations</li>
+              <li>Discrete Mathematics</li>
+              <li>Linear Algebra</li>
+              <li>Numerical Linear Algebra</li>
+            </ul>
+          </div>
+          <p><span class="underlined">Mount Greylock Regional High School</span> - Williamstown, MA</p>
+          <div class="indented">
+            <p>GPA: 4.37</p>
+            <p>SAT: 2320</p>
+            <p>National AP Scholar with Distinction Award</p>
+            <p>National Merit Scholarship Commended Student</p>
+          </div>
+          <h1>Skills</h1>
+          <ul id="skill-list">
+            <li>C++</li>
+            <li>C</li>
+            <li>Matlab</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Unix/Linux</li>
+            <li>SolidWorks</li>
+            <li>Linear Algebra</li>
+            <li>Data Analysis</li>
+            <li>Microsoft Office</li>
+            <li>Teamwork</li>
+            <li>Leadership</li>
+            <li>Teaching</li>
+          </ul>
+        </div>
+        <div class="resume-section">
+          <div id="experience">
+          <h1>Experience</h1>
+          <p><span class="underlined">Tufts University, Medford, MA</span> - Summer 2015</p>
+          <p class="indented">Full-time research with a mathematics professor and an electrical/computer engineering professor. The project involved modifying, implementing, and testing a cheap and effective algorithm for subspace clus- tering of high-dimensional data.</p>
+          <p><span class="underlined">Draper Laboratory, Cambridge, MA</span> - Summer 2014</p>
+          <p class="indented">Full-time 11 week internship in the Electro-Optics and Instruments group. Work included constructing a Michelson interferometer and designing and building an optical bench setup in order to test the interferometer for its use in an inertial measurement unit containing an accelerometer and a gyroscope. Also gained experience in Matlab and Solidworks, analyzing results of experiments and designing parts for 3D printer/machine shop respectively.</p>
+          <p><span class="underlined">Williams College, Williamstown, MA</span> - Summer 2013</p>
+          <p class="indented">Part-time research in an experimental atomic physics lab. Worked with a vacuum evaporator to coat optical components. Constructed Fabry-Perot optical cavities to test the coated optics.</p>
+          </div>
+          <div id="activities">
+          <h1>Non-Academic Activities</h1>
+          <p><span id="underlined">Tufts Varsity Soccer</span> - member fall 2013 to present; 2014 NCAA Division III National Champion</p>
+          <p><span id="underlined">Tufts Wind Ensemble</span> - member spring 2014 to present; 1st trumpet</p>
+          </div>
+        </div>
+      </section>
+      
+      <footer>
+        <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>
+        <a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34?domainCountryName=&csrfToken=ajax%3A6249601243831115177"><img src="img/LI_logo.png" alt="LinkedIn logo"></a>
+        <p>&copy; 2015 Nathan Majumder.</p>
+      </footer>
+    </div>
+  </body>
+  
 </html>

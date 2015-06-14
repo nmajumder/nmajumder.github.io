@@ -1,0 +1,96 @@
+@media screen and (min-width: 480px) {
+  /***********************
+  ** 3 COLUMN PORTFOLIO **
+  ************************/
+  
+  #gallery li {
+    width: 28.33333%;
+  }
+  
+  #gallery li:nth-child(4n) {
+    clear: left;
+  }
+  
+  /***********************
+  ****** ABOUT PAGE ******
+  ************************/
+  
+  img.propic {
+    float: left;
+    margin: 48px 5% 25px 0;
+  }
+  
+  /***********************
+  ****** RESUME PAGE *****
+  ************************/
+  
+  #experience {
+    clear: both;
+    display: block;
+  }
+  
+}
+
+@media screen and (min-width: 940px) {
+  /************************
+  * 2 COL CONTACT SECTION *
+  *************************/
+  
+  #primary {
+    width: 50%;
+    float: left;
+  }
+  
+  #secondary {
+    width: 40%;
+    float: right;
+  }
+  
+  /************************
+  ** 2 COL RESUME SECTION *
+  *************************/
+  
+  .resume-section {
+    width: 45%;
+    margin: 0 0 0 0;
+    display: block;
+    float: left;
+  }
+
+  
+  #experience {
+    display: block;
+    margin-bottom: 65px;
+  }
+
+  
+  /***********************
+  ******** HEADER ********
+  ************************/
+  
+  nav {
+    background: none;
+    float: right;
+    font-size: 1.125em;
+    margin-right: 5%;
+    text-align: right;
+    width: 45%;
+  }
+  
+  #logo {
+    float: left;
+    margin-left: 5%;
+    text-align: left;
+    width: 45%;
+  }
+  
+  h1 {
+    font-size: 2.5em; 
+    margin-bottom: 20px;
+  }
+  
+  header {
+    border-bottom: 5px solid #0066FF;
+    margin-bottom: 60px;
+  }
+}

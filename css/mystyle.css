@@ -1,0 +1,242 @@
+/************************
+****  GENERAL STYLE  ****
+************************/
+
+body {
+  font-family: 'Muli', sans-serif;
+}
+
+#wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+a {
+  text-decoration: none;
+  color: #00CCFF;
+}
+
+img {
+  max-width: 100%;
+  
+}
+
+h3 {
+  margin: 0 0 1em 0;
+}
+
+/************************
+*******  HEADING  *******
+*************************/
+
+header {
+  float: left;
+  margin: 0 0 30px 0;
+  padding: 5px 0 15px 0;
+  width: 100%;
+}
+
+#logo {
+  text-align: center;
+  margin: 0;
+}
+
+header h1 {
+  font-family: 'Exo', sans-serif;
+  margin: 15px 0;
+  font-size: 1.75em;
+  font-weight: normal;
+  line-height: 0.6em;
+  padding-top: 15px;
+}
+
+h4 {
+  font-family: 'Exo', sans-serif;
+  font-weight: normal;
+  font-size: 1.25em;
+}
+
+/* blue header */
+header {
+  background: #00CCFF;
+  border-color: #0066FF;
+}
+
+/* logo text */
+header h1,h4 {
+  color: white;
+}
+
+/************************
+******  NAVIGATION  *****
+*************************/
+
+/* nav background on mobile */
+nav {
+  background: #0066FF;
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0 10px;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+/* nav link */
+nav a, nav a:visited {
+  color: white;
+  font-weight: bold;
+  padding: 15px 10px;
+}
+
+/* selected nav link */
+nav a.selected, nav a:hover {
+  opacity: .8;
+}
+
+/************************
+********  FOOTER  *******
+*************************/
+
+footer {
+  font-size: 0.75em;
+  text-align: center;
+  clear: both;
+  padding-top: 50px;
+  color: #ccc;
+  
+}
+
+footer img {
+  width: 30px;
+}
+
+footer a {
+  padding: 0 2px 0 2px;
+}
+
+/************************
+****  PORTFOLIO PAGE  ***
+*************************/
+
+#gallery {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#gallery li {
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+  background-color: #f5f5f5;
+  color: #bdc3c7;
+}
+
+#gallery li a p {
+  margin: 0;
+  padding: 5%;
+  font-size: 0.75em;
+  color: #bdc3c7;
+}
+
+/************************
+******  ABOUT PAGE  *****
+*************************/
+
+.propic {
+  display: block;
+  max-width: 150px;
+  margin: 0 auto 30px;
+  border-radius: 5%;
+}
+
+/************************
+*****  CONTACT PAGE  ****
+*************************/
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.contact-info a {
+  display: block;
+  min-height: 20px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  padding: 0 0 0 30px;
+  margin: 0 0 6px;
+}
+
+.contact-info li.email a {
+  background-image: url('../img/mail.png');
+}
+
+.contact-info li.fblink a {
+  background-image: url('../img/facebook.png');
+  background-size: 19px 19px;
+}
+
+.contact-info li.linkedinlink a {
+  background-image: url('../img/linkedin.png');
+  background-size: 15px 15px;
+}
+
+/************************
+*****  RESUME PAGE  *****
+*************************/
+
+.underlined {
+  text-decoration: underline;
+}
+
+.indented {
+  margin-left: 8px;
+}
+
+section h1 {
+  margin: 0;
+  padding: 0;
+}
+
+section p {
+  margin: 8px 0;
+  padding: 0;
+}
+
+.resume-section {
+  display: block;
+  margin: 0 2%;
+}
+
+#skill-list {
+  list-style: none;
+}
+
+#skill-list li {
+  width: 180px;
+  display: block;
+  float: left;
+}
+
+/**** site body ****/
+
+body {
+  background-color: white;
+  color: gray;
+}
+
+
+
+
