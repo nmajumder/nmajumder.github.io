@@ -88,6 +88,8 @@ nav ul {
 
 nav li {
   display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /* nav link */
