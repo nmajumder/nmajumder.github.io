@@ -139,15 +139,15 @@ footer a {
   float: left;
   width: 45%;
   margin: 2.5%;
-  background-color: #f5f5f5;
-  color: #bdc3c7;
+  background-color: #E8E8E8;/*#f5f5f5;*/
+  color: #7F7F7F;/*#bdc3c7;*/
 }
 
 #gallery li a p {
   margin: 0;
   padding: 5%;
   font-size: 0.75em;
-  color: #bdc3c7;
+  color: #7F7F7F; /*#bdc3c7;*/
 }
 
 /************************
@@ -235,7 +235,7 @@ section p {
 /**** site body ****/
 
 body {
-  background-color: white;
+  background-color: #FFFFFF;
   color: gray;
 }
 
