@@ -232,6 +232,14 @@ section p {
   float: left;
 }
 
+#activities {
+  margin-top: -50px;
+}
+
+.addPaddingTop {
+  margin-top: 27px;
+}
+
 /**** site body ****/
 
 body {
