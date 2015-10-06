@@ -233,7 +233,8 @@ section p {
 }
 
 #activities {
-  margin-top: -50px;
+
+  margin-top: 0px;
 }
 
 .addPaddingTop {
