@@ -26,6 +26,14 @@ h3 {
   margin: 0 0 1em 0;
 }
 
+.center {
+  text-align: center;
+}
+
+.italics {
+  font-style: italic;
+}
+
 /************************
 *******  HEADING  *******
 *************************/
@@ -203,12 +211,48 @@ footer a {
 *****  ABROAD PAGE  *****
 *************************/
 
-.center {
-  text-align: center;
-}
-
 #abroad {
   margin-top: -19.5px;
+}
+
+/************************
+****  PROJECTS PAGE  ****
+*************************/
+
+h4.italics {
+  color: gray;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+
+#vids {
+  min-height: auto;
+  overflow: hidden;
+}
+
+#ffDescrip {
+  padding-top: 8px;
+}
+
+#run4it_pics img {
+  max-width: 48%;
+  float: left;
+  height: auto;
+  padding: 1%;
+}
+
+#run4it_pics {
+  min-height: auto;
+  overflow: hidden;
+  background-color: lightgray;
+}
+
+#run4itDescrip {
+  padding-top: 8px;
 }
 
 /************************
