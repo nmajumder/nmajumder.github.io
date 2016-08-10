@@ -150,6 +150,10 @@ footer a {
   color: #7F7F7F; /*#bdc3c7;*/
 }
 
+#gallery li:nth-child(2n+1) {
+    clear: left;
+}
+
 /************************
 ******  ABOUT PAGE  *****
 *************************/
@@ -193,6 +197,18 @@ footer a {
 .contact-info li.linkedinlink a {
   background-image: url('../img/linkedin.png');
   background-size: 15px 15px;
+}
+
+/************************
+*****  ABROAD PAGE  *****
+*************************/
+
+.center {
+  text-align: center;
+}
+
+#abroad {
+  margin-top: -19.5px;
 }
 
 /************************
