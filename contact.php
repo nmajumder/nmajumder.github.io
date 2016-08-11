@@ -37,6 +37,7 @@
           <li class="email"><a href="mailto:nathan.majumder@tufts.edu">nathan.majumder@tufts.edu</a></li>
           <li class="fblink"><a href="http://facebook.com/nathanmajumder">Facebook profile</a></li>
           <li class="linkedinlink"><a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34?domainCountryName=&csrfToken=ajax%3A6249601243831115177">LinkedIn profile</a></li>
+          <li class="githublink"><a href="https://github.com/nmajumder">Github page</a></li>
         </ul>
       </section>
       

@@ -127,6 +127,7 @@ footer {
 
 footer img {
   width: 30px;
+  border-radius: 5px;
 }
 
 footer a {
@@ -204,6 +205,11 @@ footer a {
 
 .contact-info li.linkedinlink a {
   background-image: url('../img/linkedin.png');
+  background-size: 15px 15px;
+}
+
+.contact-info li.githublink a {
+  background-image: url('../img/github.png');
   background-size: 15px 15px;
 }
 
