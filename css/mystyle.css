@@ -225,6 +225,10 @@ footer a {
 ****  PROJECTS PAGE  ****
 *************************/
 
+#projects {
+  margin-top: -19.5px;
+}
+
 h4.italics {
   color: gray;
 }
@@ -258,6 +262,24 @@ video {
 }
 
 #run4itDescrip {
+  padding-top: 8px;
+}
+
+.android_pics img {
+  max-width: 48%;
+  float: left;
+  height: auto;
+  padding: 1%;
+}
+
+.android_pics {
+  background-color: lightgray;
+  width: 100%;
+  min-height: auto;
+  overflow: hidden;
+}
+
+.androidDescrip {
   padding-top: 8px;
 }
 

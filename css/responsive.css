@@ -24,6 +24,20 @@
     margin: 48px 5% 25px 0;
   }
   
+  
+  /***********************
+  ****** RESUME PAGE *****
+  ************************/
+  
+  #experience {
+    clear: both;
+    display: block;
+  }
+  
+}
+
+@media screen and (min-width: 680px) {
+
   /***********************
   ***** PROJECTS PAGE ****
   ************************/
@@ -42,15 +56,22 @@
     height: auto;
   }
 
-  /***********************
-  ****** RESUME PAGE *****
-  ************************/
-  
-  #experience {
-    clear: both;
-    display: block;
+  .android_pics {
+    width: 50%;
+    float: left;
   }
-  
+
+  .androidDescrip {
+    float: right;
+    max-width: 45%;
+    padding-top: 0px;
+  }
+
+  .android_row {
+    min-height: auto;
+    overflow: hidden;
+  }
+
 }
 
 @media screen and (min-width: 940px) {
