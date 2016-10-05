@@ -51,6 +51,14 @@
             </ol>
             <p>Coded in C++, project found on my github at <a href="https://github.com/nmajumder/MagicFreezeFrame">https://github.com/nmajumder/MagicFreezeFrame</a>.</p>
           </section>
+          <h4 class="italics">Multilinear Subspace Clustering</h4>
+          <section id="mscDescrip">
+          	<p>Manuscript accepted for publication: <a href="https://www.researchgate.net/publication/287853557_Multilinear_Subspace_Clustering">Multilinear Subspace Clustering</a>. Presented at the 2016 IEEE Statistical Signal Processing Workshop in Palma de Mallorca, Spain.</p>
+          	<p>This was my project as a summer NSF REU Fellow, working under Tufts professors Shuchin Aeron, Dept. of Electrical and Computer Engineering, and Misha Kilmer, Dept. of Mathematics. I inherited the work of a past thesis student, Eric Kernfeld, which included a theoretical model for processing multi-dimensional data that could be used to enhance existing subspace clustering algorithms such as Subspace Clustering via Thresholding (TSC) and Sparse Subspace Clustering (SSC).</p>
+          	<p>The manuscript linked above provides a detailed description of the theory behind the data model, but the basic idea is that we can preserve the structure of 2 (or higher) dimensional data rather than "vectorizing" it (stacking rows or columns into a single vector) as previous models did. In the case of 2 dimensions, this would, in theory, preserve similarity both horizontally and vertically rather than having to choose one dimension, thereby increasing accuracy. The algorithm would also allow us to deal with much larger data more efficiently; for a N x M matrix we select and process single fibers of size N and M separately, whereas vectorizing the same data results in a vector of size N*M.</p>
+          	<p>My work included implementing and testing the algorithm on real data sets such as the Yale Faces dataset and the Olivetti Faces dataset. The results can be seen in tables within the manuscript.</p>
+          	<p>All implementation and testing was done in Matlab, but unfortunately I cannot display my code as the manuscript is not yet published.</p>
+          </section>
           <h4 class="italics">Run4it</h4>
           <section id="run4it_pics">
             <img src="img/run4it_shots/nav_bar.jpg">
