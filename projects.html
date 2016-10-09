@@ -63,7 +63,7 @@
               <br>
               <li>Finally, we use an inverse warp to take pixels from frame image A and paste them into frame image B to keep the illusion that the frozen image has followed the picture frame. Note, we use an inverse warp instead of a forward warp (which would go through pixels in image A and paste them to their location in image B), because if we instead iterate through all applicable pixels in image B and grab the corresponding ones from image A, we won't have spots in B that don't get mapped to. A surprisingly difficult first step in the warp is to even figure out from the corners which pixels on image B were inside the frame and needed to be mapped to, when we didn't know the orientation or shape of the picture frame at that instant. When we had equations of lines that outlined the frame, we iterated through the pixels within it and used the homography matrix to grab the frozen pixels and paste them in.</li>
             </ol>
-            <p>Coded in C++, project found on my github at <a href="https://github.com/nmajumder/MagicFreezeFrame">https://github.com/nmajumder/MagicFreezeFrame</a>.</p>
+            <p>Coded in C++, project found on my github <a href="https://github.com/nmajumder/MagicFreezeFrame">here</a>.</p>
           </section>
           <h4 id="multilinear_subspace_clustering" class="italics">Multilinear Subspace Clustering</h4>
           <section id="mscDescrip">
@@ -84,7 +84,7 @@
             <p>My final project for my Mobile Software Development class at AIT-Budapest, I developed this Android app with a friend, Jake Watton. The overview is laid out in the README on the Github page for the project, but the idea is to develop a competition-based calorie burning app that would provide users with incentive to workout, by rewarding hard work with prizes such as equipment and gym memberships (this would be a later stage of the app once users were buying the app). We were planning to make use of the Fitbit API to ensure users' honesty, but unfortunately, it turned out that Fitbit only has a web api, and it would have required more time than we had. So as of now it cannot verify or pull data from Fitbit, but it has the capability for users to work towards personal goals and objectives, and keep track of their total running and calorie burning statistics in various time increments.</p>
             <p>The layout of the app is rooted in a navigation drawer, which has options to visit screens for personal information and statistics, personal goals, objectives (that we provide and the user tries to fulfill), and competitions (again, that we provide but all users can enter). We use local storage (Sugar ORM) for personal goals, as users can set these themselves. We use Backendless to store a User's information plus their status in competitions and objectives. We also use Backendless to set the objectives and competitions for the users to see and enter and work toward.</p>
             <p>The goal is to continue to work on this project whenever we have time, with the obvious next step being to incorporate Fitbit in order to take Users' workout data straight from there. Once we do that, we can begin to market it as an app with a competitive aspect, rather than just a personal gain type of app.</p>
-            <p>Coded using Android Studio, project can be found on my Github at <a href="https://github.com/nmajumder/Run4it">https://github.com/nmajumder/Run4it</a>.</p> 
+            <p>Coded using Android Studio, project can be found on my Github <a href="https://github.com/nmajumder/Run4it">here</a>.</p> 
           </section>
           <br>
           <br>
@@ -97,7 +97,7 @@
             </section>
             <section class="androidDescrip">
               <p>My first Android project, a classic Minesweeper game, with the option for 3 different board sizes (as seen in the example screen shot). A user can toggle a "place flag" / "go mining" button to determine the action that will be taken upon touch. The game determines when the user has won or lost, based on flags placed, non-bomb spaces uncovered, or a bomb hit.</p>
-              <p>Coded using Android Studio, project can be found on my Github at <a href="https://github.com/nmajumder/Minesweeper">https://github.com/nmajumder/Minesweeper</a>.</p> 
+              <p>Coded using Android Studio, project can be found on my Github <a href="https://github.com/nmajumder/Minesweeper">here</a>.</p> 
             </section>
           </div>
           <h4 id="shopping_list" class="italics">Shopping List</h4>
@@ -108,7 +108,7 @@
             </section>
             <section class="androidDescrip">
               <p>A shopping list app, where a user can arrange items by category. Provided are 6 categories, including a miscellaneous option, for the user to choose from for each item, allowing for easier shopping later on. The user can enter a description and an expected price for each item (price in Hungarian forints as I developed this while living in Budapest), and at any point can edit this information by clicking on the details button. A simple swipe of the item off the screen or a check in the box plus a click of the "delete checked" button in the toolbar will remove an item.</p>
-              <p>Coded using Android Studio, project can be found on my Github at <a href="https://github.com/nmajumder/ShoppingList">https://github.com/nmajumder/ShoppingList</a>.</p> 
+              <p>Coded using Android Studio, project can be found on my Github <a href="https://github.com/nmajumder/ShoppingList">here</a>.</p> 
             </section>
           </div>
           <h4 id="weather_report" class="italics">Weather Report</h4>
@@ -119,7 +119,7 @@
             </section>
             <section class="androidDescrip">
               <p>A weather app that stores a list of locations that the user has looked up (until they are deleted via a swipe or the trash can button). Makes use of the OpenWeatherMap API, so when the user enters a new city (or hits the update button), this API is queried and the data is returned. The user can then click to see the details of that city's weather in a summarized or detailed view.</p>
-              <p>Coded using Android Studio, project can be found on my Github at <a href="https://github.com/nmajumder/WeatherReport">https://github.com/nmajumder/WeatherReport</a>.</p> 
+              <p>Coded using Android Studio, project can be found on my Github <a href="https://github.com/nmajumder/WeatherReport">here</a>.</p> 
             </section>
           </div>
           <h4 class="italics">More to come...</h4>

@@ -308,6 +308,18 @@ video {
 *****  RESUME PAGE  *****
 *************************/
 
+#resume_wrap {
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 408px;
+}
+
+#resume_pdf {
+  width: 100%;
+  height: 100%;
+}
+
 .underlined {
   text-decoration: underline;
 }
@@ -326,10 +338,10 @@ section p {
   padding: 0;
 }
 
-.resume-section {
+/*.resume-section {
   display: block;
   margin: 0 2%;
-}
+}*/
 
 #skill-list {
   list-style: none;
