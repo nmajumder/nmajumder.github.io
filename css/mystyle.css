@@ -68,7 +68,7 @@ header h1 {
   padding: 8px 0;
 }
 
-h4 {
+header h4 {
   font-family: 'Exo', sans-serif;
   font-weight: normal;
   font-size: 1.25em;
@@ -113,7 +113,7 @@ nav li {
 /* nav link */
 nav a, nav a:visited {
   color: white;
-  font-weight: bold;
+  font-weight: normal;
   padding: 15px 10px;
   opacity: .7;
 }
@@ -167,6 +167,7 @@ footer a {
   margin: 0;
   padding: 5%;
   font-size: 0.75em;
+  font-weight: normal;
   color: #7F7F7F; /*#bdc3c7;*/
 }
 
@@ -243,6 +244,9 @@ footer a {
 h4.italics {
   color: gray;
   padding-top: 10px;
+  font-family: 'Exo', sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
 }
 
 #project_contents {

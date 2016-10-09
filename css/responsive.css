@@ -1,3 +1,21 @@
+@media screen and (min-width: 350px) {
+  nav li {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 33%;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  nav li {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 25%;
+  }
+}
+
 @media screen and (min-width: 560px) {
 
   /***********************
@@ -8,6 +26,7 @@
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 5px;
+    width: auto;
   }
 
   /***********************
@@ -81,10 +100,6 @@
   .android_row {
     min-height: auto;
     overflow: hidden;
-  }
-
-  nav li {
-    width: auto;
   }
 
 }
