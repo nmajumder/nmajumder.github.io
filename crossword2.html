@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nathan Majumder</title>
+    <script type='text/javascript' language='javascript' src='CanvasInput-master/CanvasInput.js'></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Exo:400,600,600italic|Muli' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body id="crosswords">
+    <header>
+      <a href="index.html" id="logo">
+        <h1>Nathan Majumder</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Homepage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects.html">Projects</a></li> 
+          <li><a href="crossword.html" class="selected">Crosswords</a></li>         
+          <li><a href="abroad.html">Abroad</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="screenSizeMsg">
+    	<h2>Sorry, crosswords are not supported on screens of this size.</h2>
+    	<h3>Please try again on a larger device. Screen width must be greater than 680 pixels to use this feature, but the best experience is on devices of 1100 pixels or greater (any normal computer will work). Thanks!
+    </div>
+    <div id="crosswordWrapper">
+        <div class="crossTitleBar">
+    		<h2 class="crossTitle">Party Time</h2>
+    		<h4 class="crossAuthor">By Nathan Majumder</h4>
+        </div>
+        <div class="checkDropdown">
+          <button class="dropbtn">Check</button>
+          <div class="dropdown-content">
+            <a onclick="help(0,0)">Square</a>
+            <a onclick="help(0,1)">Word</a>
+            <a onclick="help(0,2)">Puzzle</a>
+          </div>
+        </div>
+        <div class="revealDropdown">
+          <button class="dropbtn">Reveal</button>
+          <div class="dropdown-content">
+            <a onclick="help(1,0)">Square</a>
+            <a onclick="help(1,1)">Word</a>
+            <a onclick="help(1,2)">Puzzle</a>
+          </div>
+        </div>
+        <button id="backbtn" onclick="crossBack()">Back</button>
+
+    	<canvas id="canvas" width="600px" height="600px" style="border: 1px solid black;"></canvas>
+    	<canvas id="midCanvas" width="600px" height="600px"></canvas>
+    	<canvas id="topCanvas" width="600px" height="600px" style="border: 1px solid black;"></canvas>
+    	<div id="clues">
+    		<div id="across">
+    			<h3 class="center">Across</h3>
+    			<div class="clueScroll">
+        			<ul class="numClues">
+                        <li onclick="clueClicked(this,0)"><span class="bold">1.</span> "To be, or not to be" speaker </li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">7.</span> Text, for short</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">10.</span> Sun follower?</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">13.</span> 1966 Broadway musical written by Tom   Jones</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">14.</span> Utterance of amazement</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">15.</span> Nickname on Mount Rushmore</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">16.</span> Stubborn Soviet, maybe</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">18.</span> Neither partner</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">19.</span> Now, in Naples</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">20.</span> Hawaiian port city</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">21.</span> Take off</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">22.</span> It collects post on a post</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">25.</span> India : Rupee :: Bangladesh : ___</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">27.</span> Worldly</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">31.</span> Some dips</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">34.</span> Happening now</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">35.</span> Number of stripes on the bandiera di Italia</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">36.</span> ___ pickle</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">37.</span> Charged particle</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">38.</span> Suffix with hex and oct</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">39.</span> Connected computer grp.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">40.</span> Mimicked a bird </li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">42.</span> Declared</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">45.</span> Traditional</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">48.</span> Apple app</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">49.</span> Sporadically raining</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">52.</span> Leading actor</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">54.</span> Founded: Abbr.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">56.</span> "Eureka!"</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">57.</span> Card game of luck</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">58.</span> Marcia Clark, in the Simpson case</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">61.</span> Biblical couple carrier</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">62.</span> Pressure unit, for short</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">63.</span> Tack on</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">64.</span> "New York State of Mind" rapper</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">65.</span> SF to LA dir.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">66.</span> Crowe, Brand, and Wilson, to their friends</li>
+        			</ul>
+    			</div>
+    		</div>
+    		<div id="down">
+    			<h3 class="center">Down</h3>
+    			<div class="clueScroll">
+        			<ul class="numClues">
+                        <li onclick="clueClicked(this,1)"><span class="bold">1.</span> After school pickup words, perhaps</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">2.</span> Fictional princess whose alter ego is She-Ra</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">3.</span> Inlaid works of art</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">4.</span> D.M.V. item</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">5.</span> Tokyo, until 1868</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">6.</span> Words beginning some cover letters</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">7.</span> Marvin Gaye's genre</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">8.</span> Bottle-based weapon</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">9.</span> "___ Will Be Loved"</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">10.</span> "The Big Short" setting</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">11.</span> High-pitched wind</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">12.</span> Jock counterpart</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">17.</span> Those who might have made this puzzle</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">21.</span> Winter vacation type</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">23.</span> Mauna ___</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">24.</span> Some engineering majors' degs.</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">26.</span> Lager alternative</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">28.</span> Necessity at a 62-Across</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">29.</span> "Rule Britannia" composer Thomas</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">30.</span> Basis of some scholarships</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">31.</span> Grain storer</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">32.</span> ___-retentive</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">33.</span> Wonders of the World, e.g.</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">37.</span> T.B. treatment antibiotic</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">40.</span> Maple fluid</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">41.</span> States with conviction</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">42.</span> Plastic ___ Band</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">43.</span> Church seating</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">44.</span> Thinks</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">46.</span> Lead-in to out and away</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">47.</span> Cry of dismay</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">50.</span> Major European river passing through   Lyon</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">51.</span> Many football players' desires</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">52.</span> Elegant waterbird</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">53.</span> "Gone with the Wind" plantation</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">55.</span> A few</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">58.</span> Faux ___</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">59.</span> Computer core: Abbr.</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">60.</span> Increases</li>
+        			</ul>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div id="popup">
+		<h2 id="popupmsg">Congratulations, you've successfully solved the puzzle!</h2>
+		<button id="closebtn" onclick="closePopup()">Close</button>
+	</div>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById("canvas");
+      var topcanvas = document.getElementById("topCanvas");
+      var midcanvas = document.getElementById("midCanvas");
+      if (canvas.getContext) {
+        // Get the canvas contexts
+        var ctx = canvas.getContext("2d");
+        var tctx = topcanvas.getContext("2d");
+        var mctx = midcanvas.getContext("2d");
+
+
+        // Get entire crossword wrapper
+        var wrapper = document.getElementById("crosswordWrapper");
+        var popup = document.getElementById("popup");
+        var popupmsg = document.getElementById("popupmsg");
+        var closebtn = document.getElementById("closebtn");
+
+        function closePopup() {
+        	wrapper.style.cssText = "filter: blur(0px);";
+        	popup.style.cssText = "display: none;";
+            noClick = false;
+        }
+
+        // msg = 0 (WIN) | 1 (NOT WIN)
+        function openPopup(msg) {
+        	var msgstr = "";
+        	switch(msg) {
+        		case 0:
+        			msgstr = "Congratulations, you've successfully solved the puzzle!";
+        			break;
+        		case 1:
+        			msgstr = "Oops, there are still one or more errors to fix!";
+        			break;
+        		default:
+        			console.log("Error: Invalid msg number passed into openPopup.");
+
+        	}
+        	wrapper.style.cssText = "filter: blur(5px);";
+        	popupmsg.innerHTML = msgstr;
+        	popup.style.cssText = "display: inline-block";
+            noClick = true;
+        }
+        
+
+        // initialize variables to be used throughout
+        blanks = [];
+        highlighted = [];
+
+        const ARR_SIZE = 15;
+
+        var curx = 2;
+        var cury = 1;
+        var dir = true; // true is across, false is down
+        var last = [2,1,4,true];
+
+        //
+        // The Answer Key (must obviously be modified for every different puzzle)
+        //
+        var answers = new Array(ARR_SIZE);
+        answers[0] =  [ 0 ,'H','A','M','L','E','T', 0 ,'S','M','S', 0 ,'M','O','N'];
+        answers[1] =  [ 0 ,'I','D','O','I','D','O', 0 ,'O','O','H', 0 ,'A','B','E'];
+        answers[2] =  [ 0 ,'M','O','S','C','O','W','M','U','L','E', 0 ,'N','O','R'];
+        answers[3] =  [ 0 ,'O','R','A', 0 , 0 ,'H','I','L','O', 0 ,'S','H','E','D'];
+        answers[4] =  [ 0 ,'M','A','I','L','B','O','X', 0 ,'T','A','K','A', 0 , 0 ];
+        answers[5] =  [ 0 , 0 , 0 ,'C','O','S','M','O','P','O','L','I','T','A','N'];
+        answers[6] =  ['S','A','L','S','A','S', 0 ,'L','I','V','E', 0 ,'T','R','E'];
+        answers[7] =  ['I','N','A', 0 , 0 , 0 ,'I','O','N', 0 , 0 , 0 ,'A','N','E'];
+        answers[8] =  ['L','A','N', 0 ,'S','A','N','G', 0 ,'O','P','I','N','E','D'];
+        answers[9] =  ['O','L','D','F','A','S','H','I','O','N','E','D', 0 , 0 , 0 ];
+        answers[10] = [ 0 , 0 ,'M','A','P','S', 0 ,'S','H','O','W','E','R','Y', 0 ];
+        answers[11] = ['S','T','A','R', 0 ,'E','S','T','D', 0 , 0 ,'A','H','A', 0 ];
+        answers[12] = ['W','A','R', 0 ,'P','R','O','S','E','C','U','T','O','R', 0 ];
+        answers[13] = ['A','R','K', 0 ,'A','T','M', 0 ,'A','P','P','E','N','D', 0 ];
+        answers[14] = ['N','A','S', 0 ,'S','S','E', 0 ,'R','U','S','S','E','S', 0 ];
+
+        //console.log(answers);
+
+        //
+        // Draw the darker gray "highlighted" answer boxes (must be done custom by hand)
+        //
+
+        // NOT NECESSARY IN THIS ONE
+
+        //
+        // Draw the basic grid for the puzzle (good for all 15x15 puzzles)
+        // 
+        tctx.beginPath();
+
+        tctx.moveTo(40,0); tctx.lineTo(40,600);
+        tctx.moveTo(80,0); tctx.lineTo(80,600);
+        tctx.moveTo(120,0); tctx.lineTo(120,600);
+        tctx.moveTo(160,0); tctx.lineTo(160,600);
+        tctx.moveTo(200,0); tctx.lineTo(200,600);
+        tctx.moveTo(240,0); tctx.lineTo(240,600);
+        tctx.moveTo(280,0); tctx.lineTo(280,600);
+        tctx.moveTo(320,0); tctx.lineTo(320,600);
+        tctx.moveTo(360,0); tctx.lineTo(360,600);
+        tctx.moveTo(400,0); tctx.lineTo(400,600);
+        tctx.moveTo(440,0); tctx.lineTo(440,600);
+        tctx.moveTo(480,0); tctx.lineTo(480,600);
+        tctx.moveTo(520,0); tctx.lineTo(520,600);
+        tctx.moveTo(560,0); tctx.lineTo(560,600);
+
+        tctx.moveTo(0,40); tctx.lineTo(600,40);
+        tctx.moveTo(0,80); tctx.lineTo(600,80);
+        tctx.moveTo(0,120); tctx.lineTo(600,120);
+        tctx.moveTo(0,160); tctx.lineTo(600,160);
+        tctx.moveTo(0,200); tctx.lineTo(600,200);
+        tctx.moveTo(0,240); tctx.lineTo(600,240);
+        tctx.moveTo(0,280); tctx.lineTo(600,280);
+        tctx.moveTo(0,320); tctx.lineTo(600,320);
+        tctx.moveTo(0,360); tctx.lineTo(600,360);
+        tctx.moveTo(0,400); tctx.lineTo(600,400);
+        tctx.moveTo(0,440); tctx.lineTo(600,440);
+        tctx.moveTo(0,480); tctx.lineTo(600,480);
+        tctx.moveTo(0,520); tctx.lineTo(600,520);
+        tctx.moveTo(0,560); tctx.lineTo(600,560);
+        tctx.stroke();
+        tctx.closePath();
+
+
+        //
+        // draw the black spaces in the puzzle (must be done custom by hand)
+        //
+        tctx.beginPath();
+
+        tctx.rect(0, 0, 40, 200);
+        tctx.rect(280, 0, 40, 80);
+        tctx.rect(440, 0, 40, 120);
+        tctx.rect(160, 120, 80, 40);
+        tctx.rect(400, 120, 40, 40);
+        tctx.rect(320, 160, 40, 40);
+        tctx.rect(520, 160, 80, 40);
+        tctx.rect(0, 200, 120, 40);
+        tctx.rect(240, 240, 40, 40);
+        tctx.rect(440, 240, 40, 40);
+        tctx.rect(120, 280, 120, 40);
+        tctx.rect(360, 280, 120, 40);
+        tctx.rect(120, 320, 40, 40);
+        tctx.rect(320, 320, 40, 40);
+        tctx.rect(480, 360, 120, 40);
+        tctx.rect(0, 400, 80, 40);
+        tctx.rect(240, 400, 40, 40);
+        tctx.rect(560, 400, 40, 200);
+        tctx.rect(160, 440, 40, 40);
+        tctx.rect(360, 440, 80, 40);
+        tctx.rect(120, 480, 40, 120);
+        tctx.rect(280, 520, 40, 80);
+
+        tctx.fillStyle = "#000000";
+        tctx.fill();
+
+        tctx.closePath();
+
+        //
+        // Draw the numbers in the corners (automated for all puzzles)
+        //
+        // Also store the space where each number is
+        //
+        var numbers = new Array(ARR_SIZE);
+
+        ctx.font = "10px Arial";
+        var ctr = 1;
+        for (var i = 0; i < ARR_SIZE; i = i+1) {
+          numbers[i] = new Array(ARR_SIZE);
+          for (var j = 0; j < ARR_SIZE; j = j+1) {
+            if (answers[i][j] == 0) {
+              numbers[i][j] = 0;
+              continue;
+            }
+            if (j == 0 || i == 0 || answers[i][j-1] == 0 || answers[i-1][j] == 0) {
+              if (i == 0) {
+                tctx.fillText(ctr,j*40 + 3, i*40 + 10);
+              } else if (j == 0) {
+                tctx.fillText(ctr,j*40 + 1, i*40 + 12);
+              } else {
+                tctx.fillText(ctr,j*40 + 3, i*40 + 12);
+              }
+              // store this number at correct space
+              numbers[i][j] = ctr;
+
+              ctr = ctr + 1;
+            } else {
+              numbers[i][j] = -1;
+            }
+          }
+        }
+
+        //console.log(numbers);
+
+        //
+        // initialize the array of blanks (black squares) and highlighted (darker gray words)
+        // this should be the same for all puzzles as long as the same colors are used
+        // i.e. #000000 --> (0,0,0,255) and #D3D3D3 --> (211,211,211,255)
+        //
+        for (var i = 20; i < 600; i = i + 40) {
+          for (var j = 20; j < 600; j = j + 40) {
+            tobj = tctx.getImageData(i,j,1,1);
+            obj = ctx.getImageData(i,j,1,1);
+            //console.log(i,j,obj.data);
+            if (tobj.data[0] == 0 && tobj.data[1] == 0 && tobj.data[2] == 0 && tobj.data[3] == 255) {
+              var tx = Math.ceil(i/40);
+              var ty = Math.ceil(j/40);
+              blanks.push([tx,ty]); 
+            } else if (obj.data[0] == 211 && obj.data[1] == 211 && obj.data[2] == 211 && obj.data[3] == 255) {
+              var tx = Math.ceil(i/40);
+              var ty = Math.ceil(j/40);
+              highlighted.push([tx,ty]);
+            }
+          }
+        }
+
+        // check to make sure blanks has right values
+        /*for (i = 0; i < blanks.length; i++) {
+          console.log(blanks[i][0], blanks[i][1]);
+        }*/
+
+
+        //
+        // DEAL WITH THE CLUE-BOX INTERACTIONS HERE
+        //
+
+        // get clue lists as javascript variables
+        var acrossList = document.getElementById("across").getElementsByTagName("li");
+        var downList = document.getElementById("down").getElementsByTagName("li");
+
+        var acrossClues = document.getElementById("across").getElementsByClassName("clueScroll")[0];
+        var downClues = document.getElementById("down").getElementsByClassName("clueScroll")[0];
+
+        var pcIndex = 0; // index in prev clue list
+        var pcList = acrossList;
+        var pcListInd = 0;
+        //clueClicked(pcList[pcIndex],0);
+
+
+
+        //
+        // contains:
+        //  takes in an array of tuples e.g. [[1,2],[3,4],[5,2]]
+        //  takes in a value that is a tuple e.g. [3,4]
+        //  returns true if the value is in the array and false if not
+        //
+        function contains(arr,val) {
+          //console.log(val,blanks);
+          for (var i = 0; i < arr.length; i++) {
+            if (arr[i][0] == val[0] && arr[i][1] == val[1]) {
+              return true;
+            }
+          }
+          return false;
+        }
+
+       	function getNext(xc,yc,direction) {
+       		switch(direction) {
+       			case 0:
+       				// right
+                    var i = xc+1;
+                    var j = yc;
+                    if (i > ARR_SIZE) {
+                        i = i - ARR_SIZE;
+                        j = (j % ARR_SIZE) + 1;
+                    }
+                    while (contains(blanks,[i,j])) {
+                        i++;
+                        if (i > ARR_SIZE) {
+                            i = i - ARR_SIZE;
+                            j = (j % ARR_SIZE) + 1;
+                        }
+                    }
+                    return [i,j];
+       			case 1:
+       				// down
+                    var j = yc+1;
+                    var i = xc;
+                    if (j > ARR_SIZE) {
+                        j = j - ARR_SIZE;
+                        i = (i % ARR_SIZE) + 1;
+                    }
+                    while (contains(blanks,[i,j])) {
+                        j++;
+                        if (j > ARR_SIZE) {
+                            j = j - ARR_SIZE;
+                            i = (i % ARR_SIZE) + 1;
+                        }
+                    }
+       				return [i,j];
+       			case 2:
+       				// left
+       				var i = xc-1;
+                    var j = yc;
+                    if (i <= 0) {
+                        i = i + ARR_SIZE;
+                        j =  j - 1;
+                        if (j <= 0) {
+                            j = j + ARR_SIZE;
+                        }
+                    }
+                    while (contains(blanks,[i,j])) {
+                        i--;
+                        if (i <= 0) {
+                            i = i + ARR_SIZE;
+                            j = j - 1;
+                            if (j == 0) {
+                                j = 15;
+                            }
+                        }
+                    }
+                    return [i,j];
+       			case 3:
+       				// up
+       				var j = yc-1;
+                    var i = xc;
+                    if (j <= 0) {
+                        j = j + ARR_SIZE;
+                        i = i - 1;
+                        if (i <= 0) {
+                            i = i + ARR_SIZE;
+                        }
+                    }
+                    while (contains(blanks,[i,j])) {
+                        j--;
+                        if (j <= 0) {
+                            j = j + ARR_SIZE;
+                            i = i - 1;
+                            if (i == 0) {
+                                i = 15;
+                            }
+                        }
+                    }
+                    return [i,j];
+       			default: 
+       				// if invalid dir number
+       				console.log("invalid dir: " + direction);
+       		}
+       		return [xc,yc];
+       	}
+
+
+        // given the box being input to, returns whether the puzzle will be
+        //  entirely filled in after this box
+        function lastLtr(curx,cury) {
+            var lastLetter = false;
+            if (inputBoxes[curx-1][cury-1].value() == "") {
+                lastLetter = true;
+                for (var i = 1; i <= ARR_SIZE; i++) {
+                    for (var j = 1; j <= ARR_SIZE; j++) {
+                        if (contains(blanks,[i,j]) || (curx == i && cury == j)) {
+                            continue;
+                        } else {
+                            if (inputBoxes[i-1][j-1].value() == "") {
+                                lastLetter = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (!lastLetter) {
+                        break;
+                    }
+                }
+            }
+            return lastLetter;
+        }
+
+
+        // when selected words are implemented this should set the word given by
+        //    the x,y coords (given in 1...15 each) and dir (true for horizontal)
+        //    as the currently selected word, whatever we want that to mean
+        //
+        function setSelected(curx,cury,dir) {
+        	// clear prev highlighted text boxes
+        	for (var i = 0; i < ARR_SIZE; i++) {
+        		for (var j = 0; j < ARR_SIZE; j++) {
+        			if (inputBoxes[i][j] != 0) {
+        				if (contains(highlighted,[i+1,j+1])) {
+        					inputBoxes[i][j].backgroundColor('#D3D3D3');
+        				} else {
+        					inputBoxes[i][j].backgroundColor('#F0F0F0');
+        				}
+        			}
+        		}
+        	}
+
+        	// clear prev highlighted rectangle
+        	mctx.clearRect(0,0,midcanvas.width,midcanvas.height);
+
+        	// paint new highlighted area
+	        if (dir) {
+	        	//console.log("GOING ACROSS");
+	            var i1 = curx;
+	            while (!contains(blanks,[i1,cury]) && i1 <= ARR_SIZE) {
+	              i1++;
+	            }
+	            var i2 = curx;
+	            while (!contains(blanks,[i2,cury]) && i2 >= 1) {
+	              i2--;
+	            }
+	            mctx.beginPath();
+	            mctx.rect(40*i2, 40*cury - 40, (i1-i2-1)*40, 40);
+	            mctx.fillStyle = 'rgba(230, 218, 0, 1.0)';
+	            mctx.fill();
+	            mctx.closePath();
+
+	            for (var i = i2; i < i1-1; i++) {
+	        		inputBoxes[i][cury-1].backgroundColor('rgba(230, 218, 0, 1.0)');
+	        	}
+	        } else {
+	        	//console.log("GOING DOWN");
+	        	var j1 = cury;
+	        	while (!contains(blanks,[curx,j1]) && j1 <= ARR_SIZE) {
+	        		j1++;
+	        	}
+	        	var j2 = cury;
+	        	while (!contains(blanks,[curx,j2]) && j2 >= 1) {
+	        		j2--;
+	        	}
+	        	mctx.beginPath();
+	        	mctx.rect(40*curx - 40, 40*j2,  40, (j1-j2-1)*40);
+	        	mctx.fillStyle = 'rgba(230, 218, 0, 1.0)';
+	        	mctx.fill();
+	        	mctx.closePath();
+
+	        	for (var j = j2; j < j1-1; j++) {
+	        		inputBoxes[curx-1][j].backgroundColor('rgba(230, 218, 0, 1.0)');
+	        	}
+	        }
+	        mctx.beginPath();
+	        mctx.rect((curx-1)*40, (cury-1)*40, 40, 40);
+	        mctx.fillStyle = 'rgba(180,170,0,1.0)';
+	        mctx.fill();
+	        mctx.closePath();
+
+        	inputBoxes[curx-1][cury-1].backgroundColor('rgba(180,170,0,0.4)');
+
+        	//
+        	// highlight clue
+        	//
+        	
+        	// clear prev highlighted clue
+        	pcList[pcIndex].style.cssText = 'background-color: clear;';
+
+        	var num = -1;
+        	if (dir) {
+        		var i = curx-1;
+				while (i >= 0 && numbers[cury-1][i] != 0) {
+					i = i-1;
+				}
+				num = numbers[cury-1][i+1];
+        	} else {
+        		var j = cury-1;
+        		while (j >= 0 && numbers[j][curx-1] != 0) {
+        			j = j-1;
+        		}
+        		num = numbers[j+1][curx-1];
+        	}
+
+        	//console.log("Number: " + num + " Across? " + dir);
+
+        	pcList = acrossList;
+            pcListInd = 0;
+        	var clueScroll = acrossClues;
+        	if (!dir) {
+        		pcList = downList;
+                pcListInd = 1;
+        		clueScroll = downClues;
+        	}
+        	for (var i = 0; i < pcList.length; i = i+1) {
+        		var obj = pcList[i];
+        		var n = getClueNum(obj);
+        		if (n == num) {
+        			pcIndex = i;
+        			obj.style.cssText = 'background-color: yellow;';
+        			var topCoord = pcList[0].offsetTop;
+        			clueScroll.scrollTop = obj.offsetTop - topCoord;
+        			break;
+        		}
+        	}
+
+            // DEALING WITH LOCAL STORAGE
+
+            localStorage.setItem('curx2',JSON.stringify(curx));
+            localStorage.setItem('cury2',JSON.stringify(cury));
+            localStorage.setItem('direction2',JSON.stringify(dir));
+            localStorage.setItem('inputVals2',JSON.stringify(inputVals));
+            localStorage.setItem('fixedBoxes2',JSON.stringify(fixedBoxes));
+            localStorage.setItem('pcListInd2',JSON.stringify(pcListInd));
+            localStorage.setItem('pcIndex2',JSON.stringify(pcIndex));
+
+        }
+
+        // 
+        //	ON CLICK OF BOX, SET SELECTED BOX / CLUE
+        //
+        topcanvas.addEventListener('click', function(event) {
+			var x = Math.ceil((event.pageX - canvas.offsetLeft)/40);
+			var y = Math.ceil((event.pageY - canvas.offsetTop)/40);
+            if (contains(blanks,[x,y])) {
+                return;
+            }
+			if (curx == x && cury == y) {
+				dir = !dir;
+			} else {
+				curx = x;
+				cury = y;
+			}
+			setSelected(curx,cury,dir);
+        });
+      
+
+        //
+        // CODE TO CALL TO DELAY
+        // 		delay(function(){
+		//			[all code to do delayed here]
+		//		}, 1000 );  <---- this will delay 1 second
+        //
+      	var delay = (function() {
+		    var timer = 0;
+		    return function(callback, ms) {
+		        clearTimeout (timer);
+		        timer = setTimeout(callback, ms);
+		    };
+		})();
+
+        // 0 = blank space
+        // 1 = normal
+        // 2 = fixed (no marks, i.e. revealed)
+        // 3 = checked but not right (not changed since checked)
+        // 4 = normal after checked (changed since checked)
+        // 5 = fixed (with checkmark, i.e. checked and correct)
+        var fixedBoxes = new Array(ARR_SIZE);
+        for (var i = 1; i <= ARR_SIZE; i = i+1) {
+            fixedBoxes[i-1] = new Array(ARR_SIZE);
+            for (var j = 1; j <= ARR_SIZE; j = j+1) {
+                if (contains(blanks,[i,j])) {
+                    fixedBoxes[i-1][j-1] = 0;
+                } else {
+                    fixedBoxes[i-1][j-1] = 1;
+                }
+            }
+        }
+
+        //console.log(fixedBoxes);
+
+        //
+        // Define the array of inputBoxes that will allow the user to fill letters
+        //    into the squares in the puzzle -- stored as a 2D 15x15 array
+        //
+        var inputBoxes = new Array(ARR_SIZE);
+        var inputVals = [];
+
+        for (var i = 1; i <= ARR_SIZE; i = i+1) {
+          inputBoxes[i-1] = new Array(ARR_SIZE);
+          inputVals[i-1] = [];
+          for (var j = 1; j <= ARR_SIZE; j = j+1) {
+            inputVals[i-1][j-1] = "";
+            if (contains(blanks,[i,j])) {
+              inputBoxes[i-1][j-1] = 0;
+            } else if (contains(highlighted,[i,j])) {
+              inputBoxes[i-1][j-1] = new CanvasInput({
+                canvas: topcanvas,
+                fontSize: 24,
+                readonly: true,
+                x: 40*(i-1) + 11,
+                y: 40*(j-1) + 16,
+                fontFamily: 'Arial',
+                fontColor: '#212121',
+                fontWeight: 'bold',
+                width: 23,
+                height: 23,
+                padding: 0,
+                borderWidth: 0,
+                borderColor: '#000',
+                borderRadius: 0,
+                backgroundColor: '#D3D3D3',
+                boxShadow: '0px 0px 0px #000',
+                innerShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
+                placeHolder: ''
+              });
+            } else {
+              inputBoxes[i-1][j-1] = new CanvasInput({
+                canvas: topcanvas,
+                fontSize: 24,
+                readonly: true,
+                x: 40*(i-1) + 11,
+                y: 40*(j-1) + 16,
+                fontFamily: 'Arial',
+                fontColor: '#000000',
+                fontWeight: 'bold',
+                width: 23,
+                height: 23,
+                padding: 0,
+                borderWidth: 0,
+                borderColor: '#000',
+                borderRadius: 0,
+                backgroundColor: '#F0F0F0',
+                boxShadow: '0px 0px 0px #000',
+                innerShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
+                placeHolder: ''
+              });
+            }
+          }
+        }
+
+        if (window.localStorage) {
+            //
+            // Revert to saved state...
+            //
+
+            if (localStorage.getItem("curx2") != null && localStorage.getItem("cury2") != null
+                    && localStorage.getItem("direction2") != null) {
+                curx = JSON.parse(localStorage.getItem("curx2"));
+                cury = JSON.parse(localStorage.getItem("cury2"));
+                dir = JSON.parse(localStorage.getItem("direction2"));                
+            }
+
+            if (localStorage.getItem("pcListInd2") != null && localStorage.getItem("pcIndex2") != null) {
+                pcListInd = JSON.parse(localStorage.getItem("pcListInd2"));
+                pcList = acrossList;
+                if (pcListInd == 1) {
+                    pcList = downList;
+                }
+                if (localStorage.getItem("pcIndex2")) {
+                    pcIndex = localStorage.getItem("pcIndex2");
+                }
+            }
+
+            if (localStorage.getItem("fixedBoxes2") != null && localStorage.getItem("inputVals2") != null) {
+                fixedBoxes = JSON.parse(localStorage.getItem("fixedBoxes2"));
+                inputVals = JSON.parse(localStorage.getItem("inputVals2"));
+                
+                for (var i = 1; i <= ARR_SIZE; i = i+1) {
+                    for (var j = 1; j <= ARR_SIZE; j = j+1) {
+                        if (inputBoxes[i-1][j-1] == 0) {
+                            continue;
+                        }
+                        inputBoxes[i-1][j-1].value(inputVals[i-1][j-1]);
+                        if (fixedBoxes[i-1][j-1] == 2) {
+                            inputBoxes[i-1][j-1].fontColor("#0044cc");
+                        } else if (fixedBoxes[i-1][j-1] == 3) {
+                            drawX(i,j);
+                        } else if (fixedBoxes[i-1][j-1] == 4) {
+                            drawTriangle(i,j);
+                        } else if (fixedBoxes[i-1][j-1] == 5) {
+                            drawCheckmark(i,j);
+                        }
+                    }
+                }
+            }
+        }
+
+        setSelected(curx,cury,dir);
+
+        var extraKeyDown = false;
+        var noClick = false;
+
+        document.onkeyup = function(evt) {
+            evt = evt || window.event;
+            key = evt.keyCode;
+            if (key == 91 || key == 93 || key == 224 || key == 16 || key == 17 || key == 18 || key == 27) {
+                extraKeyDown = false;
+                return;
+            }
+        }
+
+        document.onkeydown = function(evt) {
+            if (noClick) {
+                return;
+            }
+
+            evt = evt || window.event;
+            key = evt.keyCode;
+            if (key == 91 || key == 93 || key == 224 || key == 16 || key == 17 || key == 18 || key == 27) {
+                extraKeyDown = true;
+                return;
+            }
+
+            if (extraKeyDown) {
+                return;
+            }
+
+            if (key == 37) {
+                // left
+                evt.preventDefault();
+                if (dir) {
+                    var [nx,ny] = getNext(curx,cury,2);
+                    curx = nx;
+                    cury = ny;
+                } else {
+                    dir = !dir;
+                }
+                //console.log(curx,cury,dir);
+                setSelected(curx,cury,dir);
+                return;
+            } else if (key == 38) {
+                // up
+                evt.preventDefault();
+                if (dir) {
+                    dir = !dir;
+                } else {
+                    var [nx,ny] = getNext(curx,cury,3);
+                    curx = nx;
+                    cury = ny;
+                }
+                //console.log(curx,cury,dir);
+                setSelected(curx,cury,dir);
+                return;
+            } else if (key == 39) {
+                // right
+                evt.preventDefault();
+                if (dir) {
+                    var [nx,ny] = getNext(curx,cury,0);
+                    curx = nx;
+                    cury = ny;
+                } else {
+                    dir = !dir;
+                }
+                //console.log(curx,cury,dir);
+                setSelected(curx,cury,dir);
+                return;
+            } else if (key == 40) {
+                // down
+                evt.preventDefault();
+                if (dir) {
+                    dir = !dir;
+                } else {
+                    var [nx,ny] = getNext(curx,cury,1);
+                    curx = nx;
+                    cury = ny;
+                }
+                //console.log(curx,cury,dir);
+                setSelected(curx,cury,dir);
+                return;
+            }
+
+            if (fixedBoxes[curx-1][cury-1] == 2 || fixedBoxes[curx-1][cury-1] == 5) {
+                if (dir) {
+                    var [nx,ny] = getNext(curx,cury,0);
+                    curx = nx;
+                    cury = ny;
+                } else {
+                    var [nx,ny] = getNext(curx,cury,1);
+                    curx = nx;
+                    cury = ny;
+                }
+            
+                setSelected(curx,cury,dir);
+                return;
+            }
+
+            if (key != 8 && (key < 65 || (key > 90 && key < 97) || key > 122)) {
+                return;
+            }
+
+            if (fixedBoxes[curx-1][cury-1] == 3) {
+                fixedBoxes[curx-1][cury-1] = 4;
+                drawTriangle(curx,cury);  
+            }
+
+            if (key == 8) {
+                // delete
+                inputBoxes[curx-1][cury-1].value("");
+                inputVals[curx-1][cury-1] = "";
+                var d = -1;
+                if (dir) {
+                    d = 2;
+                } else {
+                    d = 3;
+                }
+                var [nx,ny] = getNext(curx,cury,d);
+                curx = nx;
+                cury = ny;
+                setSelected(curx,cury,dir);
+                return;
+            }
+
+            // make uppercase
+            if (key >= 97 && key <= 122) {
+                key = key - 32;
+            }
+
+            if (key >= 65 && key <= 90) {
+                // check if finishing puzzle
+                var lastLetter = lastLtr(curx,cury);
+
+                var str = String.fromCharCode(key);
+                inputBoxes[curx-1][cury-1].value(str);
+                inputVals[curx-1][cury-1] = str;
+                if (dir) {
+                    var [nx,ny] = getNext(curx,cury,0);
+                    curx = nx;
+                    cury = ny;
+                } else {
+                    var [nx,ny] = getNext(curx,cury,1);
+                    curx = nx;
+                    cury = ny;
+                }
+            
+                setSelected(curx,cury,dir);
+
+                if (lastLetter) {
+                    if (playerWins()) {
+                        delay(function() {
+                            // CALL WINNING FUNCTION HERE
+                            openPopup(0);
+                        }, 10);
+                    } else {
+                        delay(function() {
+                            openPopup(1);
+                        }, 10);
+                    }
+                }
+
+            } else {
+                return;
+            }
+
+            //console.log("key code pressed: " + key);
+        };
+
+        function playerWins() {
+          for (var i = 0; i < ARR_SIZE; i = i+1) {
+            for (var j = 0; j < ARR_SIZE; j = j+1) {
+              if (inputBoxes[j][i] == 0) {
+                continue;
+              } else if (answers[i][j] != inputBoxes[j][i].value()) {
+                return false;
+              }
+            }
+          }
+          return true;
+        }
+
+        function getClueNum(obj) {
+        	var txt = obj.innerHTML;
+			var pos1 = txt.indexOf(">");
+			var pos1 = pos1 + 1; // first digit of number
+			var pos2 = txt.indexOf(".");
+			var pos2 = pos2 - 1; // last digit of number
+			var numstr = txt.substr(pos1,pos2);
+			var num = parseInt(numstr);
+			return num;
+        }
+
+        // d = 0 (across) | 1 (down)
+        function clueClicked(obj,d) {
+
+        	var num = getClueNum(obj);
+
+        	for (var i = 0; i < ARR_SIZE; i = i+1) {
+        		for (var j = 0; j < ARR_SIZE; j = j+1) {
+        			if (numbers[i][j] == num) {
+        				curx = j+1;
+        				cury = i+1;
+        			}
+        		}
+        	}
+
+        	switch(d) {
+        		case 0:
+        			// across
+        			dir = true;
+        			break;
+        		case 1:
+        			// down
+        			dir = false;
+        			break;
+        		default:
+        			console.log("Error: invalid direction " + d);
+        	}
+			setSelected(curx,cury,dir);
+        }
+
+        function clearCorner(xcoord,ycoord) {
+            tctx.clearRect(xcoord*40 - 15, (ycoord-1)*40 + 1, 14, 14);
+        }
+
+        function drawX(xcoord,ycoord) {
+            clearCorner(xcoord,ycoord);
+
+            tctx.beginPath();
+            tctx.moveTo(xcoord*40 - 3, (ycoord-1)*40 + 3); tctx.lineTo(xcoord*40 - 13, (ycoord-1)*40 + 13);
+            tctx.moveTo(xcoord*40 - 13, (ycoord-1)*40 + 3); tctx.lineTo(xcoord*40 - 3, (ycoord-1)*40 + 13);
+            tctx.strokeStyle = "#CC0000";
+            tctx.lineWidth = 2;
+            tctx.stroke();
+            tctx.closePath();
+        }
+
+        function drawCheckmark(xcoord,ycoord) {
+            clearCorner(xcoord,ycoord);
+
+            tctx.beginPath();
+            tctx.moveTo(xcoord*40 - 13, (ycoord-1)*40 + 7);
+            tctx.lineTo(xcoord*40 - 10, (ycoord-1)*40 + 10);
+            tctx.lineTo(xcoord*40 - 3, (ycoord-1)*40 + 3);
+            tctx.strokeStyle = "#00802b";
+            tctx.lineWidth = 3;
+            tctx.stroke();
+            tctx.closePath();
+        }
+
+        function drawTriangle(xcoord,ycoord) {
+            clearCorner(xcoord,ycoord);
+
+            tctx.beginPath();
+            tctx.moveTo(xcoord*40-13, (ycoord-1)*40 + 3);
+            tctx.lineTo(xcoord*40-3, (ycoord-1)*40 + 13);
+            tctx.lineTo(xcoord*40-3, (ycoord-1)*40 + 3);
+            tctx.lineTo(xcoord*40-13, (ycoord-1)*40 + 3);
+
+            tctx.fillStyle = "#FF0000";
+            tctx.fill();
+
+            tctx.closePath();
+
+            tctx.beginPath();
+            tctx.moveTo(xcoord*40-11, (ycoord-1)*40 + 4);
+            tctx.lineTo(xcoord*40-4, (ycoord-1)*40 + 11);
+            tctx.lineTo(xcoord*40-4, (ycoord-1)*40 + 4);
+            tctx.lineTo(xcoord*40-11, (ycoord-1)*40 + 4);
+
+            tctx.fillStyle = "#000000";
+            tctx.fill();
+
+            tctx.closePath();
+        }
+
+        //
+        //  type = 0 (check) | 1 (reveal)
+        //
+        function helpBox(type,x,y) {
+            if (type == 0) { // if check box 
+                if (fixedBoxes[x-1][y-1] == 2 || fixedBoxes[x-1][y-1] == 5) {
+                    return;
+                }
+                if (inputBoxes[x-1][y-1].value() == answers[y-1][x-1]) {
+                    fixedBoxes[x-1][y-1] = 5;
+                    drawCheckmark(x,y);
+                } else {
+                    fixedBoxes[x-1][y-1] = 3;
+                    drawX(x,y);
+                }
+            } else { // if reveal box
+                clearCorner(x,y);
+
+                var lastLetter = lastLtr(x,y);
+
+                inputBoxes[x-1][y-1].value(answers[y-1][x-1]);
+                inputVals[x-1][y-1] = answers[y-1][x-1];
+                inputBoxes[x-1][y-1].fontColor("#0044cc");
+                fixedBoxes[x-1][y-1] = 2;
+
+                if (lastLetter) {
+                    if (playerWins()) {
+                        delay(function() {
+                            // CALL WINNING FUNCTION HERE
+                            openPopup(0);
+                        }, 10);
+                    } else {
+                        delay(function() {
+                            openPopup(1);
+                        }, 10);
+                    }
+                }
+            }
+        }
+
+        //
+        //  type = 0 (check) | 1 (reveal)
+        //  quant = 0 (square) | 1 (word) | 2 (puzzle)
+        //
+        function help(type,quant) {
+            switch(quant) {
+                case 0:
+                    helpBox(type,curx,cury);
+                    break;
+                case 1:
+                    if (dir) {
+                        var i1 = curx, i2 = curx + 1;
+                        while (!contains(blanks,[i1,cury]) && i1 > 0) {
+                            helpBox(type,i1,cury);
+                            i1--;
+                        }
+                        while (!contains(blanks,[i2,cury]) && i2 <= ARR_SIZE) {
+                            helpBox(type,i2,cury);
+                            i2++;
+                        }
+
+                    } else {
+                        var j1 = cury, j2 = cury + 1;
+                        while (!contains(blanks,[curx,j1]) && j1 > 0) {
+                            helpBox(type,curx,j1);
+                            j1--;
+                        }
+                        while (!contains(blanks,[curx,j2]) && j2 <= ARR_SIZE) {
+                            helpBox(type,curx,j2);
+                            j2++;
+                        }
+                    }
+                    break;
+                case 2:
+                    for (var i = 0; i < ARR_SIZE; i++) {
+                        for (var j = 0; j < ARR_SIZE; j++) {
+                            if (inputBoxes[i][j] == 0) {
+                                continue;
+                            } else {
+                                helpBox(type,i+1,j+1);
+                            }
+                        }
+                    }
+                    if (type == 1) {
+                        delay(function() {
+                            // CALL WINNING FUNCTION HERE
+                            openPopup(0);
+                        }, 10);
+                    }
+                    break;
+                default:
+                    console.log("Error: Invalid input as variable 'quant'");
+            }
+            
+            localStorage.setItem('fixedBoxes2',JSON.stringify(fixedBoxes));
+            localStorage.setItem('inputVals2',JSON.stringify(inputVals));
+        }
+
+        function crossBack() {
+            // SAVE STATE OF PUZZLE AND GO BACK
+            document.location.href = "crossword.html";
+        }
+
+     
+      } else {
+        console.log("Didn't get context...");
+      }
+
+    </script>
+
+
+    <footer>
+        <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>
+        <a href="https://github.com/nmajumder"><img src="img/GH_logo.png" alt="Github logo"></a>
+        <a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34?domainCountryName=&csrfToken=ajax%3A6249601243831115177"><img src="img/LI_logo.png" alt="LinkedIn logo"></a>
+        <p>&copy; 2017 Nathan Majumder.</p>
+      </footer>
+    </div>
+  </body>
+</html>

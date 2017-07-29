@@ -35,11 +35,29 @@ h3 {
   font-style: italic;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 ul {
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+/************************
+********  INDEX  ********
+*************************/
+
+#index {
+  margin-top: -19.5px;
+}
+
+.indexUpdateMsg {
+  border: solid 2px darkgrey;
+  border-radius: 2em;
+  text-align: center;
 }
 
 /************************
@@ -320,6 +338,10 @@ video {
   height: 100%;
 }
 
+#resume footer {
+  margin-top: 230px;
+}
+
 .underlined {
   text-decoration: underline;
 }
@@ -338,11 +360,6 @@ section p {
   padding: 0;
 }
 
-/*.resume-section {
-  display: block;
-  margin: 0 2%;
-}*/
-
 #skill-list {
   list-style: none;
 }
@@ -354,13 +371,92 @@ section p {
 }
 
 #activities {
-
   margin-top: 0px;
 }
 
 .addPaddingTop {
   margin-top: 27px;
 }
+
+/*******************
+** CROSSWORD PAGE **
+*******************/
+
+#crossword {
+  margin-top: -19.5px;
+}
+
+#cIndexWrapper {
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+
+#crossGallery .crossLi {
+  float: left;
+  width: 90%;
+  height: 220px;
+  margin: 20px 5%;
+  background-color: lightgrey;
+  border-radius: 1em;
+  border-color: black;
+  border-width: 1px;
+  color: #7F7F7F;
+  list-style: none;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: rgba(0,0,0,.99);
+  border-radius: 1em;
+  -moz-transition: all 1s;
+  -webkit-transition: all 1s;
+  transition: all 0.5s;
+}
+
+.titleDescrip {
+  text-align: center;
+  color: white;
+}
+
+.titleDescrip h2 {
+  margin: 0px;
+  padding: 40px 0px;
+}
+
+#crossGallery .crossLi:hover .titleDescrip {
+  visibility: visible;
+}
+
+#crossGallery .crossLi:hover .overlay{
+  opacity: 0.8;
+}
+
+#crossword1 {
+  background-image: url("../img/c2-empty-crossword.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#crossword2 {
+  background-image: url("../img/c3-empty-crossword.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#crossword3 {
+  background-image: url("../img/c4-empty-crossword.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#crossword4 {
+  background-image: url("../img/c5-empty-crossword.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 /**** site body ****/
 
