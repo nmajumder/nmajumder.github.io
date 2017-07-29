@@ -55,10 +55,19 @@ ul {
 }
 
 .indexUpdateMsg {
-  border: solid 2px darkgrey;
+  border: solid 2px #606060;
+  background-color: lightgrey;
   border-radius: 2em;
+  padding-top: 2px;
+  padding-bottom: 5px;
   text-align: center;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.indexUpdateMsg:hover {
+  background-color: silver;
+}
+
 
 /************************
 *******  HEADING  *******
@@ -179,6 +188,7 @@ footer a {
   margin: 2.5%;
   background-color: #D5D5D5;/*#E8E8E8;*/
   color: #7F7F7F;/*#bdc3c7;*/
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #gallery li a p {
