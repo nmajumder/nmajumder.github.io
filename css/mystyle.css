@@ -431,6 +431,8 @@ section p {
 .titleDescrip {
   text-align: center;
   color: white;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 .titleDescrip h2 {
