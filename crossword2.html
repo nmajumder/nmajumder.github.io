@@ -562,6 +562,35 @@
             }
         }
 
+        // only goes into this function if the space selected while the delete
+        //      button is hit is currently empty (other case dealt with in onkeyup)
+        // direction = 0 (right) | 1 (down)
+        function getNextDelete(xc,yc,direction) {
+            switch(direction) {
+                case 0:
+                    if (contains(blanks,[xc-1,yc]) || xc == 1) {
+                        return [xc,yc];
+                    }
+                    if (inputVals[xc-2][yc-1] != "") {
+                        inputVals[xc-2][yc-1] = "";
+                        inputBoxes[xc-2][yc-1].value("");
+                    }
+                    return [xc-1,yc];
+                case 1:
+                    if (contains(blanks,[xc,yc-1]) || yc == 1) {
+                        return [xc,yc];
+                    }
+                    if (inputVals[xc-1][yc-2] != "") {
+                        inputVals[xc-1][yc-2] = "";
+                        inputBoxes[xc-1][yc-2].value("");
+                    }
+                    return [xc,yc-1];
+                default:
+                    // if invalid dir number
+                    console.log("invalid dir: " + direction);
+            }
+        }
+
 
         // given the box being input to, returns whether the puzzle will be
         //  entirely filled in after this box
@@ -984,14 +1013,18 @@
 
             if (key == 8) {
                 // delete
+                if (fixedBoxes[curx-1][cury-1] == 2 || fixedBoxes[curx-1][cury-1] == 5) {
+                    var [nx,ny] = getNextDelete(curx,cury,d);
+                    curx = nx;
+                    cury = ny;
+                    setSelected(curx,cury,dir);
+                }
                 if (inputBoxes[curx-1][cury-1].value() == "") {
-                    var d = -1;
-                    if (dir) {
-                        d = 2;
-                    } else {
-                        d = 3;
+                    var d = 0;
+                    if (!dir) {
+                        d = 1;
                     }
-                    var [nx,ny] = getNextArrows(curx,cury,d);
+                    var [nx,ny] = getNextDelete(curx,cury,d);
                     curx = nx;
                     cury = ny;
                     setSelected(curx,cury,dir);
