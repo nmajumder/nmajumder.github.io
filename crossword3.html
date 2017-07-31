@@ -501,6 +501,8 @@
         localStorage.setItem('fixedBoxes3',JSON.stringify(fixedBoxes));
         localStorage.setItem('pcListInd3',JSON.stringify(pcListInd));
         localStorage.setItem('pcIndex3',JSON.stringify(pcIndex));
+        var perc = getCompletionPercent();
+        localStorage.setItem('percent3',perc);
 
     }
 
@@ -707,6 +709,8 @@
         
         localStorage.setItem('fixedBoxes3',JSON.stringify(fixedBoxes));
         localStorage.setItem('inputVals3',JSON.stringify(inputVals));
+        var perc = getCompletionPercent();
+        localStorage.setItem('percent3',perc);
     }
 
     </script>

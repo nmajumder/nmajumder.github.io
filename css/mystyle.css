@@ -438,7 +438,8 @@ section p {
 
 .titleDescrip h2 {
   margin: 0px;
-  padding: 40px 0px;
+  padding: 30px 0px;
+  margin-bottom: -20px;
 }
 
 #crossGallery .crossLi:hover .titleDescrip {
@@ -446,7 +447,36 @@ section p {
 }
 
 #crossGallery .crossLi:hover .overlay{
-  opacity: 0.8;
+  opacity: 0.9;
+}
+
+.progressBarShaded {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 30px;
+  width: 20%;
+  height: 32px;
+  background: rgba(92,188,179,1.0); /* #5CBCB3; */
+  border-radius: .3em 0 0 .3em;
+}
+
+.progressBarOutline {
+  margin-top: -33px;
+  margin-left: calc(10% - 2px);
+  margin-right: calc(10% - 2px);
+  width: 80%;
+  height: 30px;
+  border: solid 2px #5CBCB3;
+  border-radius: .5em;
+}
+
+.progressVal {
+  text-align: center;
+  margin-top: 0.5px;
+  padding: 2px 2px;
+  height: 26px;
+  color: rgba(255,255,255,1); /* rgba(255,242,128,1.0); */
+  font-weight: bold;
 }
 
 #crossword1 {

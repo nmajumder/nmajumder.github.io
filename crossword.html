@@ -46,6 +46,10 @@
                 <h2>Second Time's the Charm</h2>
                 <p>May 2017</p>
               </div>
+              <div id="progBar4" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c4prog" class="progressVal">X%</h3>
+              </div>
             </div>
             </a>
           </li>
@@ -55,6 +59,10 @@
               <div class="titleDescrip">
                 <h2>Party Time</h2>
                 <p>April 2017</p>
+              </div>
+              <div id="progBar3" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c3prog" class="progressVal">X%</h3>
               </div>
             </div>
             </a>
@@ -66,6 +74,10 @@
                 <h2>You'll Need a Drink After This One</h2>
                 <p>March 2017</p>
               </div>
+              <div id="progBar2" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c2prog" class="progressVal">X%</h3>
+              </div>
             </div>
             </a>
           </li>
@@ -76,13 +88,67 @@
                 <h2>Back to School</h2>
                 <p>Februrary 2017</p>
               </div>
+              <div id="progBar1" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c1prog" class="progressVal">X%</h3>
+              </div>
             </div>
             </a>
           </li>
         </ul>
       </section>
-
     </div>
+
+    <script type="text/javascript">
+      var p1div = document.getElementById("c1prog");
+      var p1bar = document.getElementById("progBar1");
+      var p1 = "0.0";
+      if (localStorage.getItem("percent1")) {
+        p1 = localStorage.getItem("percent1");
+      }
+      p1div.innerHTML = p1 + " %";
+      var p1num = parseFloat(p1);
+      p1num = (p1num / 100) * 80;
+      p1CSS = "width: " + p1num.toString() + "%;";
+      p1bar.style.cssText = p1CSS;
+
+      var p2div = document.getElementById("c2prog");
+      var p2bar = document.getElementById("progBar2");
+      var p2 = "0.0";
+      if (localStorage.getItem("percent2")) {
+        p2 = localStorage.getItem("percent2");
+      }
+      p2div.innerHTML = p2 + " %";
+      var p2num = parseFloat(p2);
+      p2num = (p2num / 100) * 80;
+      p2CSS = "width: " + p2num.toString() + "%;";
+      p2bar.style.cssText = p2CSS;
+
+      var p3div = document.getElementById("c3prog");
+      var p3bar = document.getElementById("progBar3");
+      var p3 = "0.0";
+      if (localStorage.getItem("percent3")) {
+        p3 = localStorage.getItem("percent3");
+      }
+      p3div.innerHTML = p3 + " %";
+      var p3num = parseFloat(p3);
+      p3num = (p3num / 100) * 80;
+      p3CSS = "width: " + p3num.toString() + "%;";
+      p3bar.style.cssText = p3CSS;
+
+      var p4div = document.getElementById("c4prog");
+      var p4bar = document.getElementById("progBar4");
+      var p4 = "0.0";
+      if (localStorage.getItem("percent4")) {
+        p4 = localStorage.getItem("percent4");
+      }
+      p4div.innerHTML = p4 + " %";
+      var p4num = parseFloat(p4);
+      p4num = (p4num / 100) * 80;
+      p4CSS = "width: " + p4num.toString() + "%;";
+      p4bar.style.cssText = p4CSS;
+
+    </script>
 
     <footer>
         <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>

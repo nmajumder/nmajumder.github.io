@@ -596,6 +596,33 @@ function helpBox(type,x,y) {
     }
 }
 
+function getCompletionPercent() {
+    var tot = 0;
+    var comp = 0;
+    for (var i = 0; i < ARR_SIZE; i++) {
+        for (var j = 0; j < ARR_SIZE; j++) {
+            if (contains(blanks,[i+1,j+1])) {
+                continue;
+            } else {
+                tot++;
+                if (inputVals[i][j] != "") {
+                    comp++;
+                }
+            }
+        }
+    }
+    if (tot == 0) {
+        console.log("Error: couldn't count completed percent of squares");
+        return -1;
+    } else {
+        var perc = comp / tot;
+        perc = perc * 100; // get it in percent
+        perc = perc.toFixed(1);
+        return perc;
+    }
+}
+
+
 function crossBack() {
     // SAVE STATE OF PUZZLE AND GO BACK
     document.location.href = "crossword.html";
