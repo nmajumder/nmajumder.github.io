@@ -163,32 +163,6 @@
 
     <script type="text/javascript">
 
-    var gameover = false;
-    if (localStorage.getItem("gameover4")) {
-        gameover = JSON.parse(localStorage.getItem("gameover4"));
-    } else {
-        localStorage.setItem('gameover4',JSON.stringify(gameover));
-    }
-
-    var minutesLabel = document.getElementById("minutes");
-    var secondsLabel = document.getElementById("seconds");
-    var totalSeconds = 0;
-    if (localStorage.getItem("time4")) {
-        totalSeconds = JSON.parse(localStorage.getItem("time4"));
-        secondsLabel.innerHTML = pad(totalSeconds%60);
-        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-    }
-    if (!gameover) {
-        var timer = setInterval(setTime, 1000);
-    }
-    function setTime()
-    {
-        ++totalSeconds;
-        secondsLabel.innerHTML = pad(totalSeconds%60);
-        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-        localStorage.setItem('time4',JSON.stringify(totalSeconds));
-    }
-
     var canvas = document.getElementById("canvas");
     var topcanvas = document.getElementById("topCanvas");
     var midcanvas = document.getElementById("midCanvas");
@@ -204,6 +178,36 @@
     var popup = document.getElementById("popup");
     var popupmsg = document.getElementById("popupmsg");
     var closebtn = document.getElementById("closebtn");
+
+    var gameover = false;
+    if (localStorage.getItem("gameover4")) {
+        gameover = JSON.parse(localStorage.getItem("gameover4"));
+    } else {
+        localStorage.setItem('gameover4',JSON.stringify(gameover));
+    }
+
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    if (localStorage.getItem("time4")) {
+        totalSeconds = JSON.parse(localStorage.getItem("time4"));
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
+
+    if (!gameover) {
+        var timer = setInterval(setTime, 1000);
+    }
+
+    openPopup(3);
+
+    function setTime()
+    {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+        localStorage.setItem('time4',JSON.stringify(totalSeconds));
+    }
 
     // initialize variables to be used throughout
     blanks = [];

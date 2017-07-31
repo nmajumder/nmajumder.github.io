@@ -3,13 +3,15 @@ function closePopup() {
 	popup.style.cssText = "display: none;";
     noClick = false;
 
-    if (closebtn.innerHTML == "Resume" || popupmsg.innerHTML == "Oops, there are still one or more errors to fix!") {
+    if (closebtn.innerHTML == "Resume"
+        || popupmsg.innerHTML == "Oops, there are still one or more errors to fix!"
+        || closebtn.innerHTML == "Let's Go") {
         // if game not over...
         timer = setInterval(setTime, 1000);
     }
 }
 
-// msg = 0 (WIN) | 1 (NOT WIN) | 2 (PAUSED)
+// msg = 0 (WIN) | 1 (NOT WIN) | 2 (PAUSED) | 3 (STARTING)
 function openPopup(msg) {
     clearInterval(timer);
 	var msgstr = "";
@@ -37,6 +39,10 @@ function openPopup(msg) {
         case 2:
             msgstr = "The game has been paused."
             closebtn.innerHTML = "Resume";
+            break;
+        case 3:
+            msgstr = "Ready to start?"
+            closebtn.innerHTML = "Let's Go";
             break;
 		default:
 			console.log("Error: Invalid msg number passed into openPopup.");

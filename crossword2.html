@@ -163,6 +163,22 @@
 
     <script type="text/javascript">
 
+    var canvas = document.getElementById("canvas");
+    var topcanvas = document.getElementById("topCanvas");
+    var midcanvas = document.getElementById("midCanvas");
+
+    // Get the canvas contexts
+    var ctx = canvas.getContext("2d");
+    var tctx = topcanvas.getContext("2d");
+    var mctx = midcanvas.getContext("2d");
+
+
+    // Get entire crossword wrapper
+    var wrapper = document.getElementById("crosswordWrapper");
+    var popup = document.getElementById("popup");
+    var popupmsg = document.getElementById("popupmsg");
+    var closebtn = document.getElementById("closebtn");
+
     var gameover = false;
     if (localStorage.getItem("gameover2")) {
         gameover = JSON.parse(localStorage.getItem("gameover2"));
@@ -181,6 +197,9 @@
     if (!gameover) {
         var timer = setInterval(setTime, 1000);
     }
+
+    openPopup(3);
+    
     function setTime()
     {
         ++totalSeconds;
@@ -189,21 +208,6 @@
         localStorage.setItem('time2',JSON.stringify(totalSeconds));
     }
 
-    var canvas = document.getElementById("canvas");
-    var topcanvas = document.getElementById("topCanvas");
-    var midcanvas = document.getElementById("midCanvas");
-
-    // Get the canvas contexts
-    var ctx = canvas.getContext("2d");
-    var tctx = topcanvas.getContext("2d");
-    var mctx = midcanvas.getContext("2d");
-
-
-    // Get entire crossword wrapper
-    var wrapper = document.getElementById("crosswordWrapper");
-    var popup = document.getElementById("popup");
-    var popupmsg = document.getElementById("popupmsg");
-    var closebtn = document.getElementById("closebtn");
 
     // initialize variables to be used throughout
     blanks = [];
