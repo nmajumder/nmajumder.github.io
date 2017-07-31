@@ -686,6 +686,7 @@
     }
 
     setSelected(curx,cury,dir);
+    positionInputBoxes();
 
     //
     //  type = 0 (check) | 1 (reveal)
@@ -737,6 +738,8 @@
             default:
                 console.log("Error: Invalid input as variable 'quant'");
         }
+
+        positionInputBoxes();
         
         if (gameIsOver()) {
             delay(function() {

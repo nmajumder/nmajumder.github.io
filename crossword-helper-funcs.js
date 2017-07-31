@@ -491,6 +491,8 @@ document.onkeydown = function(evt) {
     
         setSelected(curx,cury,dir);
 
+        positionInputBoxes();
+
         if (lastLetter) {
             if (playerWins()) {
                 delay(function() {
@@ -503,7 +505,6 @@ document.onkeydown = function(evt) {
                 }, 10);
             }
         }
-
     } else {
         return;
     }
@@ -685,6 +686,19 @@ function getCompletionPercent() {
     }
 }
 
+function positionInputBoxes() {
+    for (var i = 0; i < ARR_SIZE; i++) {
+        for (var j = 0; j < ARR_SIZE; j++) {
+            if (contains(blanks,[i+1,j+1])) {
+                continue;
+            } else {
+                if (inputVals[i][j] == "I") {
+                    inputBoxes[i][j].value(" I");
+                }
+            }
+        }
+    }
+}
 
 function crossBack() {
     // SAVE STATE OF PUZZLE AND GO BACK
