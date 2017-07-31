@@ -2,18 +2,42 @@ function closePopup() {
 	wrapper.style.cssText = "filter: blur(0px);";
 	popup.style.cssText = "display: none;";
     noClick = false;
+
+    if (closebtn.innerHTML == "Resume" || popupmsg.innerHTML == "Oops, there are still one or more errors to fix!") {
+        // if game not over...
+        timer = setInterval(setTime, 1000);
+    }
 }
 
-// msg = 0 (WIN) | 1 (NOT WIN)
+// msg = 0 (WIN) | 1 (NOT WIN) | 2 (PAUSED)
 function openPopup(msg) {
+    clearInterval(timer);
 	var msgstr = "";
 	switch(msg) {
 		case 0:
-			msgstr = "Congratulations, you've successfully solved the puzzle!";
+            var minstr = Math.floor(totalSeconds/60);
+            var secstr = totalSeconds%60;
+            var timestr = "";
+            if (minstr != 1 && secstr != 1) {
+                timestr = minstr + " minutes and " + secstr + " seconds";
+            } else if (minstr == 1 && secstr != 1) {
+                timestr = minstr + " minute and " + secstr + " seconds";
+            } else if (minstr != 1 && secstr == 1) {
+                timestr = minstr + " minutes and " + secstr + " second";
+            } else {
+                timestr = minstr + " minute and " + secstr + " second";
+            }
+			msgstr = "Congratulations, you've successfully solved the puzzle in " + timestr + "!";
+            closebtn.innerHTML = "Close";
 			break;
 		case 1:
 			msgstr = "Oops, there are still one or more errors to fix!";
+            closebtn.innerHTML = "Close";
 			break;
+        case 2:
+            msgstr = "The game has been paused."
+            closebtn.innerHTML = "Resume";
+            break;
 		default:
 			console.log("Error: Invalid msg number passed into openPopup.");
 
@@ -22,6 +46,39 @@ function openPopup(msg) {
 	popupmsg.innerHTML = msgstr;
 	popup.style.cssText = "display: inline-block";
     noClick = true;
+}
+
+function pad(val) {
+    var valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
+}
+
+function pauseGame() {
+    if (gameover) {
+        return;
+    }
+    openPopup(2);
+}
+
+function gameIsOver() {
+    for (var i = 0; i < ARR_SIZE; i++) {
+        for (var j = 0; j < ARR_SIZE; j++) {
+            if (contains(blanks,[i+1,j+1])) {
+                continue;
+            }
+            if (inputVals[i][j] == "") {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 
@@ -204,10 +261,10 @@ function getNextDelete(xc,yc,direction) {
             if (contains(blanks,[xc-1,yc]) || xc == 1) {
                 return [xc,yc];
             }
-            if (fixedBoxes[xc-1][yc-1] == 2 || fixedBoxes[xc-1][yc-1] == 5) {
+            if (gameover) {
                 return [xc-1,yc];
             }
-            if (inputVals[xc-2][yc-1] != "" && fixedBoxes[xc-2][yc-1] != 2 && fixedBoxes[xc-2][yc-1] != 5) {
+            if (fixedBoxes[xc-2][yc-1] != 2 && fixedBoxes[xc-2][yc-1] != 5) {
                 inputVals[xc-2][yc-1] = "";
                 inputBoxes[xc-2][yc-1].value("");
             }
@@ -216,7 +273,7 @@ function getNextDelete(xc,yc,direction) {
             if (contains(blanks,[xc,yc-1]) || yc == 1) {
                 return [xc,yc];
             }
-            if (fixedBoxes[xc-1][yc-1] == 2 || fixedBoxes[xc-1][yc-1] == 5) {
+            if (gameover) {
                 return [xc,yc-1];
             }
             if (inputVals[xc-1][yc-2] != "" && fixedBoxes[xc-1][yc-2] != 2 && fixedBoxes[xc-1][yc-2] != 5) {
@@ -351,7 +408,7 @@ document.onkeydown = function(evt) {
         return;
     }
 
-    if (fixedBoxes[curx-1][cury-1] == 2 || fixedBoxes[curx-1][cury-1] == 5) {
+    if (fixedBoxes[curx-1][cury-1] == 2 || fixedBoxes[curx-1][cury-1] == 5 || gameover) {
         var d = 0;
         if (!dir) {
             d = 1;
@@ -431,7 +488,7 @@ document.onkeydown = function(evt) {
         if (lastLetter) {
             if (playerWins()) {
                 delay(function() {
-                    // CALL WINNING FUNCTION HERE
+                    gameover = true;
                     openPopup(0);
                 }, 10);
             } else {

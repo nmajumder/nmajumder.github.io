@@ -54,6 +54,10 @@
             <a onclick="help(1,2)">Puzzle</a>
           </div>
         </div>
+        <div class="timer">
+            <button id="pauseBtn" onclick="pauseGame()"><img src="img/pause.png"></button>
+            <span id="timeCounter"><label id="minutes">00</label>:<label id="seconds">00</label></span>
+        </div>
         <button id="backbtn" onclick="crossBack()">Back</button>
 
     	<canvas id="canvas" width="600px" height="600px" style="border: 1px solid black;"></canvas>
@@ -162,6 +166,32 @@
 	</div>
 
     <script type="text/javascript">
+
+    var gameover = false;
+    if (localStorage.getItem("gameover1")) {
+        gameover = JSON.parse(localStorage.getItem("gameover1"));
+    } else {
+        localStorage.setItem('gameover1',JSON.stringify(gameover));
+    }
+
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    if (localStorage.getItem("time1")) {
+        totalSeconds = JSON.parse(localStorage.getItem("time1"));
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
+    if (!gameover) {
+        var timer = setInterval(setTime, 1000);
+    }
+    function setTime()
+    {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+        localStorage.setItem('time1',JSON.stringify(totalSeconds));
+    }
 
     var canvas = document.getElementById("canvas");
     var topcanvas = document.getElementById("topCanvas");
@@ -650,6 +680,9 @@
     //  quant = 0 (square) | 1 (word) | 2 (puzzle)
     //
     function help(type,quant) {
+        if (gameover) {
+            return;
+        }
         switch(quant) {
             case 0:
                 helpBox(type,curx,cury);
@@ -688,17 +721,18 @@
                         }
                     }
                 }
-                if (type == 1) {
-                    delay(function() {
-                        // CALL WINNING FUNCTION HERE
-                        openPopup(0);
-                    }, 10);
-                }
                 break;
             default:
                 console.log("Error: Invalid input as variable 'quant'");
         }
         
+        if (gameIsOver()) {
+            delay(function() {
+                gameover = true;
+                localStorage.setItem('gameover1',JSON.stringify(gameover));
+                openPopup(0);
+            }, 10);
+        }
         localStorage.setItem('fixedBoxes1',JSON.stringify(fixedBoxes));
         localStorage.setItem('inputVals1',JSON.stringify(inputVals));
         var perc = getCompletionPercent();
