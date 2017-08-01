@@ -200,9 +200,8 @@
     }
     if (!gameover) {
         var timer = setInterval(setTime, 1000);
+        openPopup(3);
     }
-
-    openPopup(3);
     
     function setTime()
     {
@@ -241,6 +240,14 @@
     answers[12] = ['A','S','T','R','O','N','O','M','Y', 0 ,'N','Y','L','O','N'];
     answers[13] = ['S','N','A','F','U', 0 ,'N','O','M', 0 ,'C','R','O','W','N'];
     answers[14] = ['P','A','B','S','T', 0 ,'E','R','S', 0 ,'E','A','G','L','E'];
+
+    for (var i = 0; i < ARR_SIZE; i++) {
+        for (var j = 0; j < ARR_SIZE; j++) {
+            if (answers[i][j] == 'I') {
+                answers[i][j] = " I";
+            }
+        }
+    }
 
     //console.log(answers);
 
