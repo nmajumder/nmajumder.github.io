@@ -58,8 +58,10 @@ ul {
   border: solid 2px #606060;
   background-color: lightgrey;
   border-radius: 2em;
-  padding-top: 2px;
-  padding-bottom: 5px;
+  padding-top: 12px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   text-align: center;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
