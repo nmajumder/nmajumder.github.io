@@ -100,6 +100,7 @@
     </div>
 
     <script type="text/javascript">
+      // CROSSWORD 1
       var p1div = document.getElementById("c1prog");
       var p1bar = document.getElementById("progBar1");
       var p1 = "0.0";
@@ -107,11 +108,25 @@
         p1 = localStorage.getItem("percent1");
       }
       p1div.innerHTML = p1 + " %";
+      if (localStorage.getItem("gameover1")) {
+        var gameover = JSON.parse(localStorage.getItem("gameover1"));
+        if (gameover) {
+          p1div.innerHTML = "Completed";
+        } else {
+          if (p1 == 100.0) {
+            p1div.innerHTML += " (Errors remain)";
+          }
+        }
+      }
       var p1num = parseFloat(p1);
       p1num = (p1num / 100) * 80;
       p1CSS = "width: " + p1num.toString() + "%;";
+      if (p1 > 99) {
+        p1CSS += " border-radius: .3em .3em .3em .3em;";
+      }
       p1bar.style.cssText = p1CSS;
 
+      // CROSSWORD 2
       var p2div = document.getElementById("c2prog");
       var p2bar = document.getElementById("progBar2");
       var p2 = "0.0";
@@ -119,11 +134,25 @@
         p2 = localStorage.getItem("percent2");
       }
       p2div.innerHTML = p2 + " %";
+      if (localStorage.getItem("gameover2")) {
+        var gameover = JSON.parse(localStorage.getItem("gameover2"));
+        if (gameover) {
+          p2div.innerHTML = "Completed";
+        } else {
+          if (p2 == 100.0) {
+            p2div.innerHTML += " (Errors remain)";
+          }
+        }
+      }
       var p2num = parseFloat(p2);
       p2num = (p2num / 100) * 80;
       p2CSS = "width: " + p2num.toString() + "%;";
+      if (p2 > 99) {
+        p2CSS += " border-radius: .3em .3em .3em .3em;";
+      }
       p2bar.style.cssText = p2CSS;
 
+      // CROSSWORD 3
       var p3div = document.getElementById("c3prog");
       var p3bar = document.getElementById("progBar3");
       var p3 = "0.0";
@@ -131,11 +160,25 @@
         p3 = localStorage.getItem("percent3");
       }
       p3div.innerHTML = p3 + " %";
+      if (localStorage.getItem("gameover3")) {
+        var gameover = JSON.parse(localStorage.getItem("gameover3"));
+        if (gameover) {
+          p3div.innerHTML = "Completed";
+        } else {
+          if (p3 == 100.0) {
+            p3div.innerHTML += " (Errors remain)";
+          }
+        }
+      }
       var p3num = parseFloat(p3);
       p3num = (p3num / 100) * 80;
       p3CSS = "width: " + p3num.toString() + "%;";
+      if (p3 > 99) {
+        p3CSS += " border-radius: .3em .3em .3em .3em;";
+      }
       p3bar.style.cssText = p3CSS;
 
+      // CROSSWORD 4
       var p4div = document.getElementById("c4prog");
       var p4bar = document.getElementById("progBar4");
       var p4 = "0.0";
@@ -143,9 +186,22 @@
         p4 = localStorage.getItem("percent4");
       }
       p4div.innerHTML = p4 + " %";
+      if (localStorage.getItem("gameover4")) {
+        var gameover = JSON.parse(localStorage.getItem("gameover4"));
+        if (gameover) {
+          p4div.innerHTML = "Completed";
+        } else {
+          if (p4 == 100.0) {
+            p4div.innerHTML += " (Errors remain)";
+          }
+        }
+      }
       var p4num = parseFloat(p4);
       p4num = (p4num / 100) * 80;
       p4CSS = "width: " + p4num.toString() + "%;";
+      if (p4 > 99) {
+        p4CSS += " border-radius: .3em .3em .3em .3em;";
+      }
       p4bar.style.cssText = p4CSS;
 
     </script>
