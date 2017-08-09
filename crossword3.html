@@ -745,10 +745,8 @@
                 console.log("Error: Invalid input as variable 'quant'");
         }
 
-        if (gameIsOver()) {
+        if (playerWins()) {
             delay(function() {
-                gameover = true;
-                localStorage.setItem('gameover3',JSON.stringify(gameover));
                 openPopup(0);
             }, 10);
         }
@@ -756,6 +754,21 @@
         localStorage.setItem('inputVals3',JSON.stringify(inputVals));
         var perc = getCompletionPercent();
         localStorage.setItem('percent3',perc);
+    }
+
+    function playerWins() {
+      for (var i = 0; i < ARR_SIZE; i = i+1) {
+        for (var j = 0; j < ARR_SIZE; j = j+1) {
+          if (inputBoxes[j][i] == 0) {
+            continue;
+          } else if (answers[i][j] != inputBoxes[j][i].value()) {
+            return false;
+          }
+        }
+      }
+      gameover = true;
+      localStorage.setItem('gameover3',JSON.stringify(gameover));
+      return true;
     }
 
     </script>

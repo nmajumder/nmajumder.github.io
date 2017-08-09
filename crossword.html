@@ -39,6 +39,20 @@
       </section>
       <section>
         <ul id="crossGallery">
+          <li id="crossword5" class="crossLi">
+            <a href="crossword5.html" class="overlay">
+            <div class="crossWrap">
+              <div class="titleDescrip">
+                <h2>Arrangements Have Been Made</h2>
+                <p>July 2017</p>
+              </div>
+              <div id="progBar5" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c5prog" class="progressVal">X%</h3>
+              </div>
+            </div>
+            </a>
+          </li>
           <li id="crossword4" class="crossLi">
             <a href="crossword4.html" class="overlay">
             <div class="crossWrap">
@@ -203,6 +217,32 @@
         p4CSS += " border-radius: .3em .3em .3em .3em;";
       }
       p4bar.style.cssText = p4CSS;
+
+      // CROSSWORD 5
+      var p5div = document.getElementById("c5prog");
+      var p5bar = document.getElementById("progBar5");
+      var p5 = "0.0";
+      if (localStorage.getItem("percent5")) {
+        p5 = localStorage.getItem("percent5");
+      }
+      p5div.innerHTML = p5 + " %";
+      if (localStorage.getItem("gameover5")) {
+        var gameover = JSON.parse(localStorage.getItem("gameover5"));
+        if (gameover) {
+          p5div.innerHTML = "Completed";
+        } else {
+          if (p5 == 100.0) {
+            p5div.innerHTML += " (Errors remain)";
+          }
+        }
+      }
+      var p5num = parseFloat(p5);
+      p5num = (p5num / 100) * 80;
+      p5CSS = "width: " + p5num.toString() + "%;";
+      if (p5 > 99) {
+        p5CSS += " border-radius: .3em .3em .3em .3em;";
+      }
+      p5bar.style.cssText = p5CSS;
 
     </script>
 

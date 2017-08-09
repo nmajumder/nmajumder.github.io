@@ -73,21 +73,6 @@ function pauseGame() {
     openPopup(2);
 }
 
-function gameIsOver() {
-    for (var i = 0; i < ARR_SIZE; i++) {
-        for (var j = 0; j < ARR_SIZE; j++) {
-            if (contains(blanks,[i+1,j+1])) {
-                continue;
-            }
-            if (inputVals[i][j] == "") {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-
 //
 // contains:
 //  takes in an array of tuples e.g. [[1,2],[3,4],[5,2]]
@@ -297,23 +282,20 @@ function getNextDelete(xc,yc,direction) {
 // given the box being input to, returns whether the puzzle will be
 //  entirely filled in after this box
 function lastLtr(curx,cury) {
-    var lastLetter = false;
-    if (inputBoxes[curx-1][cury-1].value() == "") {
-        lastLetter = true;
-        for (var i = 1; i <= ARR_SIZE; i++) {
-            for (var j = 1; j <= ARR_SIZE; j++) {
-                if (contains(blanks,[i,j]) || (curx == i && cury == j)) {
-                    continue;
-                } else {
-                    if (inputBoxes[i-1][j-1].value() == "") {
-                        lastLetter = false;
-                        break;
-                    }
+    lastLetter = true;
+    for (var i = 1; i <= ARR_SIZE; i++) {
+        for (var j = 1; j <= ARR_SIZE; j++) {
+            if (contains(blanks,[i,j]) || (curx == i && cury == j)) {
+                continue;
+            } else {
+                if (inputBoxes[i-1][j-1].value() == "") {
+                    lastLetter = false;
+                    break;
                 }
             }
-            if (!lastLetter) {
-                break;
-            }
+        }
+        if (!lastLetter) {
+            break;
         }
     }
     return lastLetter;
@@ -499,7 +481,7 @@ document.onkeydown = function(evt) {
                     gameover = true;
                     openPopup(0);
                 }, 10);
-            } else {
+            } else if (prevEmpty) {
                 delay(function() {
                     openPopup(1);
                 }, 10);
@@ -511,19 +493,6 @@ document.onkeydown = function(evt) {
 
     //console.log("key code pressed: " + key);
 };
-
-function playerWins() {
-  for (var i = 0; i < ARR_SIZE; i = i+1) {
-    for (var j = 0; j < ARR_SIZE; j = j+1) {
-      if (inputBoxes[j][i] == 0) {
-        continue;
-      } else if (answers[i][j] != inputBoxes[j][i].value()) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
 
 function getClueNum(obj) {
     var txt = obj.innerHTML;

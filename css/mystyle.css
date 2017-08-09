@@ -482,22 +482,27 @@ section p {
 }
 
 #crossword1 {
-  background-image: url("../img/c2-empty-crossword.png");
+  background-image: url("../img/c1-empty.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 #crossword2 {
-  background-image: url("../img/c3-empty-crossword.png");
+  background-image: url("../img/c2-empty.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 #crossword3 {
-  background-image: url("../img/c4-empty-crossword.png");
+  background-image: url("../img/c3-empty.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 #crossword4 {
-  background-image: url("../img/c5-empty-crossword.png");
+  background-image: url("../img/c4-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#crossword5 {
+  background-image: url("../img/c5-empty.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -418,9 +418,7 @@
   }
 
   .numClues li {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 5px;
+    padding: 1px 5px;
     width: 97%;
     border-radius: 0.5em;
   }
