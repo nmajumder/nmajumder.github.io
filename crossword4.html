@@ -195,6 +195,7 @@
         minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
     }
 
+    var noClick = false;
     if (!gameover) {
         var timer = setInterval(setTime, 1000);
         openPopup(3);
@@ -421,7 +422,6 @@
     //clueClicked(pcList[pcIndex],0);
 
     var extraKeyDown = false;
-    var noClick = false;
 
 
     // when selected words are implemented this should set the word given by
@@ -704,7 +704,7 @@
     //  quant = 0 (square) | 1 (word) | 2 (puzzle)
     //
     function help(type,quant) {
-        if (gameover) {
+        if (gameover || noClick) {
             return;
         }
         switch(quant) {
