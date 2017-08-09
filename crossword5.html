@@ -216,10 +216,6 @@
 
     const ARR_SIZE = 15;
 
-    var curx = 2;
-    var cury = 1;
-    var dir = true; // true is across, false is down
-
     //
     // The Answer Key (must obviously be modified for every different puzzle)
     //
@@ -247,6 +243,14 @@
             }
         }
     }
+
+    var i = 1;
+    while (answers[0][i-1] == 0) {
+        i++;
+    }
+    var curx = i;
+    var cury = 1;
+    var dir = true; // true is across, false is down
 
     //console.log(answers);
 
