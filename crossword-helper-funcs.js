@@ -31,6 +31,9 @@ function openPopup(msg) {
             }
 			msgstr = "Congratulations, you've successfully solved the puzzle in " + timestr + "!";
             closebtn.innerHTML = "Close";
+
+            var audio = new Audio('sounds/applause.mp3');
+            audio.play();
 			break;
 		case 1:
 			msgstr = "Oops, there are still one or more errors to fix!";
@@ -473,8 +476,6 @@ document.onkeydown = function(evt) {
     
         setSelected(curx,cury,dir);
 
-        positionInputBoxes();
-
         if (lastLetter) {
             if (playerWins()) {
                 delay(function() {
@@ -652,20 +653,6 @@ function getCompletionPercent() {
         perc = perc * 100; // get it in percent
         perc = perc.toFixed(1);
         return perc;
-    }
-}
-
-function positionInputBoxes() {
-    for (var i = 0; i < ARR_SIZE; i++) {
-        for (var j = 0; j < ARR_SIZE; j++) {
-            if (contains(blanks,[i+1,j+1])) {
-                continue;
-            } else {
-                if (inputVals[i][j] == "I") {
-                    inputBoxes[i][j].value(" I");
-                }
-            }
-        }
     }
 }
 

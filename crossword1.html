@@ -239,13 +239,6 @@
     answers[13] = ['S','N','A','F','U', 0 ,'N','O','M', 0 ,'C','R','O','W','N'];
     answers[14] = ['P','A','B','S','T', 0 ,'E','R','S', 0 ,'E','A','G','L','E'];
 
-    for (var i = 0; i < ARR_SIZE; i++) {
-        for (var j = 0; j < ARR_SIZE; j++) {
-            if (answers[i][j] == 'I') {
-                answers[i][j] = " I";
-            }
-        }
-    }
 
     var i = 1;
     while (answers[0][i-1] == 0) {
@@ -598,11 +591,11 @@
         } else if (contains(highlighted,[i,j])) {
           inputBoxes[i-1][j-1] = new CanvasInput({
             canvas: topcanvas,
-            fontSize: 24,
+            fontSize: 26,
             readonly: true,
-            x: 40*(i-1) + 11,
+            x: 40*(i-1) + 12,
             y: 40*(j-1) + 16,
-            fontFamily: 'Arial',
+            fontFamily: 'Consolas',
             fontColor: '#212121',
             fontWeight: 'bold',
             width: 23,
@@ -619,11 +612,11 @@
         } else {
           inputBoxes[i-1][j-1] = new CanvasInput({
             canvas: topcanvas,
-            fontSize: 24,
+            fontSize: 26,
             readonly: true,
-            x: 40*(i-1) + 11,
+            x: 40*(i-1) + 12,
             y: 40*(j-1) + 16,
-            fontFamily: 'Arial',
+            fontFamily: 'Consolas',
             fontColor: '#000000',
             fontWeight: 'bold',
             width: 23,
