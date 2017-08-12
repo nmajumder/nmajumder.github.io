@@ -670,8 +670,6 @@
     }
 
     setSelected(curx,cury,dir);
-    positionInputBoxes();
-
     //
     //  type = 0 (check) | 1 (reveal)
     //  quant = 0 (square) | 1 (word) | 2 (puzzle)
@@ -722,8 +720,6 @@
             default:
                 console.log("Error: Invalid input as variable 'quant'");
         }
-
-        positionInputBoxes();
         
         if (playerWins()) {
             delay(function() {
