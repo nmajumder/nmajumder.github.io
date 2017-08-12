@@ -5,6 +5,7 @@
     <title>Nathan Majumder</title>
     <script type='text/javascript' language='javascript' src='CanvasInput-master/CanvasInput.js'></script>
     <script type='text/javascript' language='javascript' src='crossword-helper-funcs.js'></script>
+    <script type='text/javascript' language='javascript' src='ca1.js'></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Exo:400,600,600italic|Muli' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/mystyle.css">
@@ -218,27 +219,6 @@
     highlighted = [];
 
     const ARR_SIZE = 15;
-
-    //
-    // The Answer Key (must obviously be modified for every different puzzle)
-    //
-    var answers = new Array(ARR_SIZE);
-    answers[0] =  ['D','E','M','O','N', 0 ,'V','S','O', 0 ,'A','R','O','M','A'];
-    answers[1] =  ['O','M','A','H','A', 0 ,'I','A','N', 0 ,'B','A','S','I','C'];
-    answers[2] =  ['L','E','G','I','T', 0 ,'C','H','E','M','I','S','T','R','Y'];
-    answers[3] =  [ 0 , 0 ,'N','O','U', 0 ,'E','L','S','O','L', 0 , 0 , 0 , 0 ];
-    answers[4] =  ['S','R','I', 0 ,'R','A','R', 0 ,'T','R','I','E','S','T','E'];
-    answers[5] =  ['O','A','F', 0 ,'A','D','O', 0 ,'O','P','T','I','C','A','L'];
-    answers[6] =  ['S','T','Y', 0 ,'L','A','Y', 0 ,'P','H','Y','S','I','C','S'];
-    answers[7] =  [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ];
-    answers[8] =  ['B','I','O','L','O','G','Y', 0 ,'E','S','S', 0 ,'B','R','A'];
-    answers[9] =  ['O','C','T','U','P','L','E', 0 ,'P','I','C', 0 ,'A','I','R'];
-    answers[10] = ['I','C','E','D','T','E','A', 0 ,'O','B','I', 0 ,'C','A','T'];
-    answers[11] = [ 0 , 0 , 0 , 0 ,'S','A','R','A','N', 0 ,'E','L','K', 0 , 0 ];
-    answers[12] = ['A','S','T','R','O','N','O','M','Y', 0 ,'N','Y','L','O','N'];
-    answers[13] = ['S','N','A','F','U', 0 ,'N','O','M', 0 ,'C','R','O','W','N'];
-    answers[14] = ['P','A','B','S','T', 0 ,'E','R','S', 0 ,'E','A','G','L','E'];
-
 
     var i = 1;
     while (answers[0][i-1] == 0) {
