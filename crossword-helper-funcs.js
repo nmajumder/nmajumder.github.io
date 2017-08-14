@@ -51,6 +51,12 @@ function openPopup(msg) {
 			console.log("Error: Invalid msg number passed into openPopup.");
 
 	}
+    if (msg == 0) {
+        popupmsg.style.cssText = "font-size: 16pt;";
+    } else {
+        popupmsg.style.cssText = "font-size: 22pt;";
+    }
+
 	wrapper.style.cssText = "filter: blur(5px);";
 	popupmsg.innerHTML = msgstr;
 	popup.style.cssText = "display: inline-block";
@@ -595,6 +601,9 @@ function drawTriangle(xcoord,ycoord) {
 //
 function helpBox(type,x,y) {
     if (type == 0) { // if check box 
+        if (inputVals[x-1][y-1] == "") {
+            return;
+        }
         if (fixedBoxes[x-1][y-1] == 2 || fixedBoxes[x-1][y-1] == 5) {
             return;
         }
