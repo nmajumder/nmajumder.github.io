@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nathan Majumder</title>
+    <script type='text/javascript' language='javascript' src='CanvasInput-master/CanvasInput.js'></script>
+    <script type='text/javascript' language='javascript' src='crossword-helper-funcs.js'></script>
+    <script type='text/javascript' language='javascript' src='ca6.js'></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Exo:400,600,600italic|Muli' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body id="crosswords">
+    <header>
+      <a href="index.html" id="logo">
+        <h1>Nathan Majumder</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Homepage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects.html">Projects</a></li> 
+          <li><a href="crossword.html" class="selected">Crosswords</a></li>         
+          <li><a href="abroad.html">Abroad</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="screenSizeMsg">
+    	<h2>Sorry, crosswords are not supported on screens of this size.</h2>
+    	<h3>Please try again on a larger device. Screen width must be greater than 680 pixels to use this feature, but the best experience is on devices of 1100 pixels or greater (any normal computer will work). Thanks!
+    </div>
+    <div id="crosswordWrapper">
+        <div class="crossTitleBar">
+    		<h2 class="crossTitle">Year Round Fun</h2>
+    		<h4 class="crossAuthor">By Nathan Majumder</h4>
+        </div>
+        <div class="checkDropdown">
+          <button class="dropbtn">Check</button>
+          <div class="dropdown-content">
+            <a onclick="help(0,0)">Square</a>
+            <a onclick="help(0,1)">Word</a>
+            <a onclick="help(0,2)">Puzzle</a>
+          </div>
+        </div>
+        <div class="revealDropdown">
+          <button class="dropbtn">Reveal</button>
+          <div class="dropdown-content">
+            <a onclick="help(1,0)">Square</a>
+            <a onclick="help(1,1)">Word</a>
+            <a onclick="help(1,2)">Puzzle</a>
+          </div>
+        </div>
+        <div class="timer">
+            <button id="pauseBtn" onclick="pauseGame()"><img src="img/pause.png"></button>
+            <span id="timeCounter"><label id="minutes">00</label>:<label id="seconds">00</label></span>
+        </div>
+        <button id="backbtn" onclick="crossBack()">Back</button>
+
+    	<canvas id="canvas" width="600px" height="600px" style="border: 1px solid black;"></canvas>
+    	<canvas id="midCanvas" width="600px" height="600px"></canvas>
+    	<canvas id="topCanvas" width="600px" height="600px" style="border: 1px solid black;"></canvas>
+    	<div id="clues">
+    		<div id="across">
+    			<h3 class="center">Across</h3>
+    			<div class="clueScroll">
+        			<ul class="numClues">
+                        <li onclick="clueClicked(this,0)"><span class="bold">1.</span> Asserts to be true</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">7.</span> Venetian blind piece</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">11.</span> Charles Ponzi, for one</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">14.</span> Tiki bar order</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">15.</span> Calcium hydroxide, by a more familiar name</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">16.</span> Fuss</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">17.</span> * 1965 Elvis song</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">19.</span> Larry Page is one: Abbr.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">20.</span> * 1978 show tune</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">22.</span> Bose competitor</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">25.</span> Said with a sore throat</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">26.</span> Blood vessel network, anatomically</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">27.</span> Reporters' desires</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">29.</span> Says "I've" or "gonna"</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">31.</span> Female domestic servant, often in Asia</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">32.</span> DC Comics character who rides on a Mobius Chair</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">35.</span> Luxurious traveler's spot ... or the first word of each of the starred answers</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">39.</span> "I Believe I Can Fly" singer</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">40.</span> Tallest active volcano in Europe</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">43.</span> Russian tsar and reformer in the 1600s</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">46.</span> Alkali metal with 11 protons in its nucleus</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">48.</span> "East of Eden" director Kazan</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">49.</span> Some terrorists</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">53.</span> Messenger or transfer substance</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">54.</span> * 1955 jazz standard</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">57.</span> Chinese zodiac sign in 2008</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">58.</span> * 2009 Mumford & Sons hit</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">62.</span> N.F.L. medical worry</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">63.</span> Rat ___ Cat (memory card game)</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">64.</span> Bistro</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">65.</span> Always, poetically</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">66.</span> Purple Heart recipient, maybe</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">67.</span> Anarchist's bane, with "the"</li>
+        			</ul>
+    			</div>
+    		</div>
+    		<div id="down">
+    			<h3 class="center">Down</h3>
+    			<div class="clueScroll">
+        			<ul class="numClues">
+                        <li onclick="clueClicked(this,1)"><span class="bold">1.</span> 160,934.4 make up a mi.</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">2.</span> Baby seat?</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">3.</span> ___ Jordan</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">4.</span> Disease suffix</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">5.</span> Farm stench cause</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">6.</span> Mathematical summation signs</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">7.</span> Go black, as a computer</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">8.</span> Book, in Bordeaux</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">9.</span> Bill of Rights writers</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">10.</span> Hatcher of "Desperate Housewives"</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">11.</span> Like some data after a web page visit</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">12.</span> "Swan Lake" heroine</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">13.</span> Gallows tighteners</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">18.</span> KIIS and WLTW, for two</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">21.</span> Imitated the Cheshire Cat</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">22.</span> U.S. prez elected in 1924</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">23.</span> Follower of beach or ski</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">24.</span> What a 23-Down might do</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">28.</span> "Civil Disobedience" writer</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">30.</span> Bathroom, to a Brit</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">32.</span> Ocean height avg.</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">33.</span> Unadon fish</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">34.</span> Longest river in Scotland</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">36.</span> Former U.S.S.R. member</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">37.</span> Light from dying embers, perhaps</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">38.</span> Begin to wake up</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">41.</span> Hebrew letter for which a Dreidel player  neither gives nor takes from the pot</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">42.</span> Type of Reddit interview, for short</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">43.</span> "Memento" star Guy</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">44.</span> Solution obtained by washing a substance  with a solvent</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">45.</span> Giggle</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">46.</span> Parisian commune known for its porcelain</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">47.</span> Like many New York streets</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">50.</span> Funny bone nerve</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">51.</span> Igor who captained the USSR soccer  team to victory at the first ever European  Championship in 1960</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">52.</span> Consumer banking company Sallie ___</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">55.</span> Air smooch sound</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">56.</span> Rides the pine</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">59.</span> Total gain or loss</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">60.</span> Dr. of NWA</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">61.</span> Pathetic and phony prefix</li>
+        			</ul>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div id="popup">
+		<h2 id="popupmsg">Congratulations, you've successfully solved the puzzle!</h2>
+		<button id="closebtn" onclick="closePopup()">Close</button>
+	</div>
+
+    <script type="text/javascript">
+
+    var canvas = document.getElementById("canvas");
+    var topcanvas = document.getElementById("topCanvas");
+    var midcanvas = document.getElementById("midCanvas");
+
+    // Get the canvas contexts
+    var ctx = canvas.getContext("2d");
+    var tctx = topcanvas.getContext("2d");
+    var mctx = midcanvas.getContext("2d");
+
+
+    // Get entire crossword wrapper
+    var wrapper = document.getElementById("crosswordWrapper");
+    var popup = document.getElementById("popup");
+    var popupmsg = document.getElementById("popupmsg");
+    var closebtn = document.getElementById("closebtn");
+
+    var gameover = false;
+    if (localStorage.getItem("gameover6")) {
+        gameover = JSON.parse(localStorage.getItem("gameover6"));
+    } else {
+        localStorage.setItem('gameover6',JSON.stringify(gameover));
+    }
+
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    if (localStorage.getItem("time6")) {
+        totalSeconds = JSON.parse(localStorage.getItem("time6"));
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
+
+    var noClick = false;
+    if (!gameover) {
+        var timer = setInterval(setTime, 1000);
+        openPopup(3);
+    }
+
+    function setTime()
+    {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+        localStorage.setItem('time6',JSON.stringify(totalSeconds));
+    }
+
+    // initialize variables to be used throughout
+    blanks = [];
+    highlighted = [];
+
+    const ARR_SIZE = 15;
+
+    var i = 1;
+    while (answers[0][i-1] == 0) {
+        i++;
+    }
+    var curx = i;
+    var cury = 1;
+    var dir = true; // true is across, false is down
+
+    //console.log(answers);
+
+    //
+    // Draw the darker gray "highlighted" answer boxes (must be done custom by hand)
+    //
+    ctx.beginPath();
+
+    ctx.rect(0,80,440,40);
+    ctx.rect(120,120,480,40);
+    ctx.rect(80,280,440,40);
+    ctx.rect(0,440,480,40);
+    ctx.rect(160,480,440,40);
+    ctx.fillStyle = "#D3D3D3";
+    ctx.fill();
+
+    ctx.closePath();
+
+    //
+    // Draw the basic grid for the puzzle (good for all 15x15 puzzles)
+    // 
+    tctx.beginPath();
+
+    tctx.moveTo(40,0); tctx.lineTo(40,600);
+    tctx.moveTo(80,0); tctx.lineTo(80,600);
+    tctx.moveTo(120,0); tctx.lineTo(120,600);
+    tctx.moveTo(160,0); tctx.lineTo(160,600);
+    tctx.moveTo(200,0); tctx.lineTo(200,600);
+    tctx.moveTo(240,0); tctx.lineTo(240,600);
+    tctx.moveTo(280,0); tctx.lineTo(280,600);
+    tctx.moveTo(320,0); tctx.lineTo(320,600);
+    tctx.moveTo(360,0); tctx.lineTo(360,600);
+    tctx.moveTo(400,0); tctx.lineTo(400,600);
+    tctx.moveTo(440,0); tctx.lineTo(440,600);
+    tctx.moveTo(480,0); tctx.lineTo(480,600);
+    tctx.moveTo(520,0); tctx.lineTo(520,600);
+    tctx.moveTo(560,0); tctx.lineTo(560,600);
+
+    tctx.moveTo(0,40); tctx.lineTo(600,40);
+    tctx.moveTo(0,80); tctx.lineTo(600,80);
+    tctx.moveTo(0,120); tctx.lineTo(600,120);
+    tctx.moveTo(0,160); tctx.lineTo(600,160);
+    tctx.moveTo(0,200); tctx.lineTo(600,200);
+    tctx.moveTo(0,240); tctx.lineTo(600,240);
+    tctx.moveTo(0,280); tctx.lineTo(600,280);
+    tctx.moveTo(0,320); tctx.lineTo(600,320);
+    tctx.moveTo(0,360); tctx.lineTo(600,360);
+    tctx.moveTo(0,400); tctx.lineTo(600,400);
+    tctx.moveTo(0,440); tctx.lineTo(600,440);
+    tctx.moveTo(0,480); tctx.lineTo(600,480);
+    tctx.moveTo(0,520); tctx.lineTo(600,520);
+    tctx.moveTo(0,560); tctx.lineTo(600,560);
+    tctx.stroke();
+    tctx.closePath();
+
+
+    //
+    // draw the black spaces in the puzzle (must be done custom by hand)
+    //
+    tctx.beginPath();
+    tctx.rect(240, 0, 40, 80);
+    tctx.rect(440, 0, 40, 120);
+    tctx.rect(0, 120, 120, 40);
+    tctx.rect(120, 160, 40, 40);
+    tctx.rect(400, 160, 40, 40);
+    tctx.rect(240, 200, 120, 40);
+    tctx.rect(160, 240, 80, 40);
+    tctx.rect(480, 240, 120, 40);
+    tctx.rect(0, 280, 80, 40);
+    tctx.rect(520, 280, 80, 40);
+    tctx.rect(0, 320, 120, 40);
+    tctx.rect(360, 320, 80, 40);
+    tctx.rect(240, 360, 120, 40);
+    tctx.rect(160, 400, 40, 40);
+    tctx.rect(440, 400, 40, 40);
+    tctx.rect(480, 440, 120, 40);
+    tctx.rect(120, 480, 40, 120);
+    tctx.rect(320, 520, 40, 80);
+
+    tctx.fillStyle = "#000000";
+    tctx.fill();
+
+    tctx.closePath();
+
+    //
+    // Draw the numbers in the corners (automated for all puzzles)
+    //
+    // Also store the space where each number is
+    //
+    var numbers = new Array(ARR_SIZE);
+
+    ctx.font = "10px Arial";
+    var ctr = 1;
+    for (var i = 0; i < ARR_SIZE; i = i+1) {
+      numbers[i] = new Array(ARR_SIZE);
+      for (var j = 0; j < ARR_SIZE; j = j+1) {
+        if (answers[i][j] == 0) {
+          numbers[i][j] = 0;
+          continue;
+        }
+        if (j == 0 || i == 0 || answers[i][j-1] == 0 || answers[i-1][j] == 0) {
+          if (i == 0) {
+            tctx.fillText(ctr,j*40 + 3, i*40 + 10);
+          } else if (j == 0) {
+            tctx.fillText(ctr,j*40 + 1, i*40 + 12);
+          } else {
+            tctx.fillText(ctr,j*40 + 3, i*40 + 12);
+          }
+          // store this number at correct space
+          numbers[i][j] = ctr;
+
+          ctr = ctr + 1;
+        } else {
+          numbers[i][j] = -1;
+        }
+      }
+    }
+
+    //console.log(numbers);
+
+    //
+    // initialize the array of blanks (black squares) and highlighted (darker gray words)
+    // this should be the same for all puzzles as long as the same colors are used
+    // i.e. #000000 --> (0,0,0,255) and #D3D3D3 --> (211,211,211,255)
+    //
+    for (var i = 20; i < 600; i = i + 40) {
+      for (var j = 20; j < 600; j = j + 40) {
+        tobj = tctx.getImageData(i,j,1,1);
+        obj = ctx.getImageData(i,j,1,1);
+        //console.log(i,j,obj.data);
+        if (tobj.data[0] == 0 && tobj.data[1] == 0 && tobj.data[2] == 0 && tobj.data[3] == 255) {
+          var tx = Math.ceil(i/40);
+          var ty = Math.ceil(j/40);
+          blanks.push([tx,ty]); 
+        } else if (obj.data[0] == 211 && obj.data[1] == 211 && obj.data[2] == 211 && obj.data[3] == 255) {
+          var tx = Math.ceil(i/40);
+          var ty = Math.ceil(j/40);
+          highlighted.push([tx,ty]);
+        }
+      }
+    }
+
+    // check to make sure blanks has right values
+    /*for (i = 0; i < blanks.length; i++) {
+      console.log(blanks[i][0], blanks[i][1]);
+    }*/
+
+
+    //
+    // DEAL WITH THE CLUE-BOX INTERACTIONS HERE
+    //
+
+    // get clue lists as javascript variables
+    var acrossList = document.getElementById("across").getElementsByTagName("li");
+    var downList = document.getElementById("down").getElementsByTagName("li");
+
+    var acrossClues = document.getElementById("across").getElementsByClassName("clueScroll")[0];
+    var downClues = document.getElementById("down").getElementsByClassName("clueScroll")[0];
+
+
+    var pcIndex = 0; // index in prev clue list
+    var pcList = acrossList;
+    var pcListInd = 0;
+    //clueClicked(pcList[pcIndex],0);
+
+    var extraKeyDown = false;
+
+
+    // when selected words are implemented this should set the word given by
+    //    the x,y coords (given in 1...15 each) and dir (true for horizontal)
+    //    as the currently selected word, whatever we want that to mean
+    //
+    function setSelected(curx,cury,dir) {
+        // clear prev highlighted text boxes
+        for (var i = 0; i < ARR_SIZE; i++) {
+            for (var j = 0; j < ARR_SIZE; j++) {
+                if (inputBoxes[i][j] != 0) {
+                    if (contains(highlighted,[i+1,j+1])) {
+                        inputBoxes[i][j].backgroundColor('#D3D3D3');
+                    } else {
+                        inputBoxes[i][j].backgroundColor('#F0F0F0');
+                    }
+                }
+            }
+        }
+
+        // clear prev highlighted rectangle
+        mctx.clearRect(0,0,midcanvas.width,midcanvas.height);
+
+        // paint new highlighted area
+        if (dir) {
+            //console.log("GOING ACROSS");
+            var i1 = curx;
+            while (!contains(blanks,[i1,cury]) && i1 <= ARR_SIZE) {
+              i1++;
+            }
+            var i2 = curx;
+            while (!contains(blanks,[i2,cury]) && i2 >= 1) {
+              i2--;
+            }
+            mctx.beginPath();
+            mctx.rect(40*i2, 40*cury - 40, (i1-i2-1)*40, 40);
+            mctx.fillStyle = 'rgba(230, 218, 0, 1.0)';
+            mctx.fill();
+            mctx.closePath();
+
+            for (var i = i2; i < i1-1; i++) {
+                inputBoxes[i][cury-1].backgroundColor('rgba(230, 218, 0, 1.0)');
+            }
+        } else {
+            //console.log("GOING DOWN");
+            var j1 = cury;
+            while (!contains(blanks,[curx,j1]) && j1 <= ARR_SIZE) {
+                j1++;
+            }
+            var j2 = cury;
+            while (!contains(blanks,[curx,j2]) && j2 >= 1) {
+                j2--;
+            }
+            mctx.beginPath();
+            mctx.rect(40*curx - 40, 40*j2,  40, (j1-j2-1)*40);
+            mctx.fillStyle = 'rgba(230, 218, 0, 1.0)';
+            mctx.fill();
+            mctx.closePath();
+
+            for (var j = j2; j < j1-1; j++) {
+                inputBoxes[curx-1][j].backgroundColor('rgba(230, 218, 0, 1.0)');
+            }
+        }
+        mctx.beginPath();
+        mctx.rect((curx-1)*40, (cury-1)*40, 40, 40);
+        mctx.fillStyle = 'rgba(180,170,0,1.0)';
+        mctx.fill();
+        mctx.closePath();
+
+        inputBoxes[curx-1][cury-1].backgroundColor('rgba(180,170,0,0.4)');
+
+        //
+        // highlight clue
+        //
+        
+        // clear prev highlighted clue
+        pcList[pcIndex].style.cssText = 'background-color: clear;';
+
+        var num = -1;
+        if (dir) {
+            var i = curx-1;
+            while (i >= 0 && numbers[cury-1][i] != 0) {
+                i = i-1;
+            }
+            num = numbers[cury-1][i+1];
+        } else {
+            var j = cury-1;
+            while (j >= 0 && numbers[j][curx-1] != 0) {
+                j = j-1;
+            }
+            num = numbers[j+1][curx-1];
+        }
+
+        //console.log("Number: " + num + " Across? " + dir);
+
+        pcList = acrossList;
+        pcListInd = 0;
+        var clueScroll = acrossClues;
+        if (!dir) {
+            pcList = downList;
+            pcListInd = 1;
+            clueScroll = downClues;
+        }
+        for (var i = 0; i < pcList.length; i = i+1) {
+            var obj = pcList[i];
+            var n = getClueNum(obj);
+            if (n == num) {
+                pcIndex = i;
+                obj.style.cssText = 'background-color: yellow;';
+                var topCoord = pcList[0].offsetTop;
+                clueScroll.scrollTop = obj.offsetTop - topCoord;
+                break;
+            }
+        }
+
+        // DEALING WITH LOCAL STORAGE
+
+        localStorage.setItem('curx6',JSON.stringify(curx));
+        localStorage.setItem('cury6',JSON.stringify(cury));
+        localStorage.setItem('direction6',JSON.stringify(dir));
+        localStorage.setItem('inputVals6',JSON.stringify(inputVals));
+        localStorage.setItem('fixedBoxes6',JSON.stringify(fixedBoxes));
+        localStorage.setItem('pcListInd6',JSON.stringify(pcListInd));
+        localStorage.setItem('pcIndex6',JSON.stringify(pcIndex));
+        var perc = getCompletionPercent();
+        localStorage.setItem('percent6',perc);
+    }
+
+    // 
+    //	ON CLICK OF BOX, SET SELECTED BOX / CLUE
+    //
+    topcanvas.addEventListener('click', function(event) {
+    	var x = Math.ceil((event.pageX - canvas.offsetLeft)/40);
+    	var y = Math.ceil((event.pageY - canvas.offsetTop)/40);
+        if (contains(blanks,[x,y])) {
+            return;
+        }
+    	if (curx == x && cury == y) {
+    		dir = !dir;
+    	} else {
+    		curx = x;
+    		cury = y;
+    	}
+    	setSelected(curx,cury,dir);
+    });
+
+    // 0 = blank space
+    // 1 = normal
+    // 2 = fixed (no marks, i.e. revealed)
+    // 3 = checked but not right (not changed since checked)
+    // 4 = normal after checked (changed since checked)
+    // 5 = fixed (with checkmark, i.e. checked and correct)
+    var fixedBoxes = new Array(ARR_SIZE);
+    for (var i = 1; i <= ARR_SIZE; i = i+1) {
+        fixedBoxes[i-1] = new Array(ARR_SIZE);
+        for (var j = 1; j <= ARR_SIZE; j = j+1) {
+            if (contains(blanks,[i,j])) {
+                fixedBoxes[i-1][j-1] = 0;
+            } else {
+                fixedBoxes[i-1][j-1] = 1;
+            }
+        }
+    }
+
+    //console.log(fixedBoxes);
+
+    //
+    // Define the array of inputBoxes that will allow the user to fill letters
+    //    into the squares in the puzzle -- stored as a 2D 15x15 array
+    //
+    var inputBoxes = new Array(ARR_SIZE);
+    var inputVals = [];
+
+    for (var i = 1; i <= ARR_SIZE; i = i+1) {
+      inputBoxes[i-1] = new Array(ARR_SIZE);
+      inputVals[i-1] = [];
+      for (var j = 1; j <= ARR_SIZE; j = j+1) {
+        inputVals[i-1][j-1] = "";
+        if (contains(blanks,[i,j])) {
+          inputBoxes[i-1][j-1] = 0;
+        } else if (contains(highlighted,[i,j])) {
+          inputBoxes[i-1][j-1] = new CanvasInput({
+            canvas: topcanvas,
+            fontSize: 26,
+            readonly: true,
+            x: 40*(i-1) + 12,
+            y: 40*(j-1) + 16,
+            fontFamily: 'Consolas',
+            fontColor: '#212121',
+            fontWeight: 'bold',
+            width: 23,
+            height: 23,
+            padding: 0,
+            borderWidth: 0,
+            borderColor: '#000',
+            borderRadius: 0,
+            backgroundColor: '#D3D3D3',
+            boxShadow: '0px 0px 0px #000',
+            innerShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
+            placeHolder: ''
+          });
+        } else {
+          inputBoxes[i-1][j-1] = new CanvasInput({
+            canvas: topcanvas,
+            fontSize: 26,
+            readonly: true,
+            x: 40*(i-1) + 12,
+            y: 40*(j-1) + 16,
+            fontFamily: 'Consolas',
+            fontColor: '#000000',
+            fontWeight: 'bold',
+            width: 23,
+            height: 23,
+            padding: 0,
+            borderWidth: 0,
+            borderColor: '#000',
+            borderRadius: 0,
+            backgroundColor: '#F0F0F0',
+            boxShadow: '0px 0px 0px #000',
+            innerShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
+            placeHolder: ''
+          });
+        }
+      }
+    }
+
+    if (window.localStorage) {
+        //
+        // Revert to saved state...
+        //
+
+        if (localStorage.getItem("curx6") != null && localStorage.getItem("cury6") != null
+                && localStorage.getItem("direction6") != null) {
+            curx = JSON.parse(localStorage.getItem("curx6"));
+            cury = JSON.parse(localStorage.getItem("cury6"));
+            dir = JSON.parse(localStorage.getItem("direction6"));                
+        }
+
+        if (localStorage.getItem("pcListInd6") != null && localStorage.getItem("pcIndex6") != null) {
+            pcListInd = JSON.parse(localStorage.getItem("pcListInd6"));
+            pcList = acrossList;
+            if (pcListInd == 1) {
+                pcList = downList;
+            }
+            if (localStorage.getItem("pcIndex6")) {
+                pcIndex = localStorage.getItem("pcIndex6");
+            }
+        }
+
+        if (localStorage.getItem("fixedBoxes6") != null && localStorage.getItem("inputVals6") != null) {
+            fixedBoxes = JSON.parse(localStorage.getItem("fixedBoxes6"));
+            inputVals = JSON.parse(localStorage.getItem("inputVals6"));
+            
+            for (var i = 1; i <= ARR_SIZE; i = i+1) {
+                for (var j = 1; j <= ARR_SIZE; j = j+1) {
+                    if (inputBoxes[i-1][j-1] == 0) {
+                        continue;
+                    }
+                    inputBoxes[i-1][j-1].value(inputVals[i-1][j-1]);
+                    if (fixedBoxes[i-1][j-1] == 2) {
+                        inputBoxes[i-1][j-1].fontColor("#0044cc");
+                    } else if (fixedBoxes[i-1][j-1] == 3) {
+                        drawX(i,j);
+                    } else if (fixedBoxes[i-1][j-1] == 4) {
+                        drawTriangle(i,j);
+                    } else if (fixedBoxes[i-1][j-1] == 5) {
+                        drawCheckmark(i,j);
+                    }
+                }
+            }
+        }
+    }
+
+    setSelected(curx,cury,dir);
+
+    //
+    //  type = 0 (check) | 1 (reveal)
+    //  quant = 0 (square) | 1 (word) | 2 (puzzle)
+    //
+    function help(type,quant) {
+        if (gameover || noClick) {
+            return;
+        }
+        switch(quant) {
+            case 0:
+                helpBox(type,curx,cury);
+                break;
+            case 1:
+                if (dir) {
+                    var i1 = curx, i2 = curx + 1;
+                    while (!contains(blanks,[i1,cury]) && i1 > 0) {
+                        helpBox(type,i1,cury);
+                        i1--;
+                    }
+                    while (!contains(blanks,[i2,cury]) && i2 <= ARR_SIZE) {
+                        helpBox(type,i2,cury);
+                        i2++;
+                    }
+
+                } else {
+                    var j1 = cury, j2 = cury + 1;
+                    while (!contains(blanks,[curx,j1]) && j1 > 0) {
+                        helpBox(type,curx,j1);
+                        j1--;
+                    }
+                    while (!contains(blanks,[curx,j2]) && j2 <= ARR_SIZE) {
+                        helpBox(type,curx,j2);
+                        j2++;
+                    }
+                }
+                break;
+            case 2:
+                for (var i = 0; i < ARR_SIZE; i++) {
+                    for (var j = 0; j < ARR_SIZE; j++) {
+                        if (inputBoxes[i][j] == 0) {
+                            continue;
+                        } else {
+                            helpBox(type,i+1,j+1);
+                        }
+                    }
+                }
+                break;
+            default:
+                console.log("Error: Invalid input as variable 'quant'");
+        }
+        
+        if (playerWins()) {
+            delay(function() {
+                openPopup(0);
+            }, 10);
+        }
+        localStorage.setItem('fixedBoxes6',JSON.stringify(fixedBoxes));
+        localStorage.setItem('inputVals6',JSON.stringify(inputVals));
+        var perc = getCompletionPercent();
+        localStorage.setItem('percent6',perc);
+    }
+
+    function playerWins() {
+      for (var i = 0; i < ARR_SIZE; i = i+1) {
+        for (var j = 0; j < ARR_SIZE; j = j+1) {
+          if (inputBoxes[j][i] == 0) {
+            continue;
+          } else if (answers[i][j] != inputBoxes[j][i].value()) {
+            return false;
+          }
+        }
+      }
+      gameover = true;
+      localStorage.setItem('gameover6',JSON.stringify(gameover));
+      return true;
+    }
+
+    </script>
+
+
+    <footer>
+        <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>
+        <a href="https://github.com/nmajumder"><img src="img/GH_logo.png" alt="Github logo"></a>
+        <a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34?domainCountryName=&csrfToken=ajax%3A6249601243831115177"><img src="img/LI_logo.png" alt="LinkedIn logo"></a>
+        <p>&copy; 2017 Nathan Majumder.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -508,6 +508,11 @@ section p {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#crossword6 {
+  background-image: url("../img/c6-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 
 /**** site body ****/
