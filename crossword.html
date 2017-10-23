@@ -49,6 +49,21 @@
       </section>
       <section>
         <ul id="crossGallery">
+          <li id="crossword7" class="crossLi">
+            <a href="crossword7.html" class="overlay">
+            <div class="crossWrap">
+              <img src="img/pumpkin.png" alt="Pumpkin img" class="holidayIcon">
+              <div class="titleDescrip">
+                <h2>Scared Yet?</h2>
+                <p>October 2017</p>
+              </div>
+              <div id="progBar7" class="progressBarShadedHalloween"></div>
+              <div class="progressBarOutlineHalloween">
+                <h3 id="c7prog" class="progressVal">X%</h3>
+              </div>
+            </div>
+            </a>
+          </li>
           <li id="crossword6" class="crossLi">
             <a href="crossword6.html" class="overlay">
             <div class="crossWrap">
@@ -293,6 +308,32 @@
         p6CSS += " border-radius: .3em .3em .3em .3em;";
       }
       p6bar.style.cssText = p6CSS;
+
+      // CROSSWORD 7
+      var p7div = document.getElementById("c7prog");
+      var p7bar = document.getElementById("progBar7");
+      var p7 = "0.0";
+      if (localStorage.getItem("percent7")) {
+        p7 = localStorage.getItem("percent7");
+      }
+      p7div.innerHTML = p7 + " %";
+      if (localStorage.getItem("gameover7")) {
+        var gameover = JSON.parse(localStorage.getItem("gameover7"));
+        if (gameover) {
+          p7div.innerHTML = "Completed";
+        } else {
+          if (p7 == 100.0) {
+            p7div.innerHTML += " (Errors remain)";
+          }
+        }
+      }
+      var p7num = parseFloat(p7);
+      p7num = (p7num / 100) * 80;
+      p7CSS = "width: " + p7num.toString() + "%;";
+      if (p7 > 99) {
+        p7CSS += " border-radius: .3em .3em .3em .3em;";
+      }
+      p7bar.style.cssText = p7CSS;
 
     </script>
 
