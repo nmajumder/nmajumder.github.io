@@ -519,6 +519,14 @@ section p {
   background-size: cover;
 }
 
+.difficultIcon {
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 8px;
+  height: 22px;
+  width: 100px;
+}
+
 .holidayIcon {
   position: absolute;
   margin-left: 13px;
