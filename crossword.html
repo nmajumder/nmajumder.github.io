@@ -49,6 +49,21 @@
       </section>
       <section>
         <ul id="crossGallery">
+          <li id="crossword8" class="crossLi">
+            <a href="crossword8.html" class="overlay">
+            <div class="crossWrap">
+              <!--<img src="img/difficult.png" alt="Difficult img" class="difficultIcon">-->
+              <div class="titleDescrip">
+                <h2>Capital Punishment</h2>
+                <p>November 2017</p>
+              </div>
+              <div id="progBar8" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c8prog" class="progressVal">X%</h3>
+              </div>
+            </div>
+            </a>
+          </li>
           <li id="crossword7" class="crossLi">
             <a href="crossword7.html" class="overlay">
             <div class="crossWrap">
@@ -154,187 +169,38 @@
     </div>
 
     <script type="text/javascript">
-      // CROSSWORD 1
-      var p1div = document.getElementById("c1prog");
-      var p1bar = document.getElementById("progBar1");
-      var p1 = "0.0";
-      if (localStorage.getItem("percent1")) {
-        p1 = localStorage.getItem("percent1");
-      }
-      p1div.innerHTML = p1 + " %";
-      if (localStorage.getItem("gameover1")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover1"));
-        if (gameover) {
-          p1div.innerHTML = "Completed";
-        } else {
-          if (p1 == 100.0) {
-            p1div.innerHTML += " (Errors remain)";
-          }
-        }
-      }
-      var p1num = parseFloat(p1);
-      p1num = (p1num / 100) * 80;
-      p1CSS = "width: " + p1num.toString() + "%;";
-      if (p1 > 99) {
-        p1CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p1bar.style.cssText = p1CSS;
 
-      // CROSSWORD 2
-      var p2div = document.getElementById("c2prog");
-      var p2bar = document.getElementById("progBar2");
-      var p2 = "0.0";
-      if (localStorage.getItem("percent2")) {
-        p2 = localStorage.getItem("percent2");
-      }
-      p2div.innerHTML = p2 + " %";
-      if (localStorage.getItem("gameover2")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover2"));
-        if (gameover) {
-          p2div.innerHTML = "Completed";
-        } else {
-          if (p2 == 100.0) {
-            p2div.innerHTML += " (Errors remain)";
-          }
-        }
-      }
-      var p2num = parseFloat(p2);
-      p2num = (p2num / 100) * 80;
-      p2CSS = "width: " + p2num.toString() + "%;";
-      if (p2 > 99) {
-        p2CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p2bar.style.cssText = p2CSS;
+      const NUM_CROSSWORDS = 8;
 
-      // CROSSWORD 3
-      var p3div = document.getElementById("c3prog");
-      var p3bar = document.getElementById("progBar3");
-      var p3 = "0.0";
-      if (localStorage.getItem("percent3")) {
-        p3 = localStorage.getItem("percent3");
-      }
-      p3div.innerHTML = p3 + " %";
-      if (localStorage.getItem("gameover3")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover3"));
-        if (gameover) {
-          p3div.innerHTML = "Completed";
-        } else {
-          if (p3 == 100.0) {
-            p3div.innerHTML += " (Errors remain)";
-          }
-        }
-      }
-      var p3num = parseFloat(p3);
-      p3num = (p3num / 100) * 80;
-      p3CSS = "width: " + p3num.toString() + "%;";
-      if (p3 > 99) {
-        p3CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p3bar.style.cssText = p3CSS;
+      for (var i = 1; i <= NUM_CROSSWORDS; i++) {
+        // get crossword number as string to insert into localstorage names
+        var PUZZLE_NUM = i.toString();
 
-      // CROSSWORD 4
-      var p4div = document.getElementById("c4prog");
-      var p4bar = document.getElementById("progBar4");
-      var p4 = "0.0";
-      if (localStorage.getItem("percent4")) {
-        p4 = localStorage.getItem("percent4");
-      }
-      p4div.innerHTML = p4 + " %";
-      if (localStorage.getItem("gameover4")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover4"));
-        if (gameover) {
-          p4div.innerHTML = "Completed";
-        } else {
-          if (p4 == 100.0) {
-            p4div.innerHTML += " (Errors remain)";
+        var div = document.getElementById("c" + PUZZLE_NUM + "prog");
+        var bar = document.getElementById("progBar" + PUZZLE_NUM);
+        var p = "0.0";
+        if (localStorage.getItem("percent" + PUZZLE_NUM)) {
+          p = localStorage.getItem("percent" + PUZZLE_NUM);
+        }
+        div.innerHTML = p + " %";
+        if (localStorage.getItem("gameover" + PUZZLE_NUM)) {
+          var gameover = JSON.parse(localStorage.getItem("gameover" + PUZZLE_NUM));
+          if (gameover) {
+            div.innerHTML = "Completed";
+          } else {
+            if (p == 100.0) {
+              div.innerHTML += " (Errors remain)";
+            }
           }
         }
-      }
-      var p4num = parseFloat(p4);
-      p4num = (p4num / 100) * 80;
-      p4CSS = "width: " + p4num.toString() + "%;";
-      if (p4 > 99) {
-        p4CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p4bar.style.cssText = p4CSS;
-
-      // CROSSWORD 5
-      var p5div = document.getElementById("c5prog");
-      var p5bar = document.getElementById("progBar5");
-      var p5 = "0.0";
-      if (localStorage.getItem("percent5")) {
-        p5 = localStorage.getItem("percent5");
-      }
-      p5div.innerHTML = p5 + " %";
-      if (localStorage.getItem("gameover5")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover5"));
-        if (gameover) {
-          p5div.innerHTML = "Completed";
-        } else {
-          if (p5 == 100.0) {
-            p5div.innerHTML += " (Errors remain)";
-          }
+        var num = parseFloat(p);
+        num = (num / 100) * 80;
+        CSS = "width: " + num.toString() + "%;";
+        if (p > 99) {
+          CSS += " border-radius: .3em .3em .3em .3em;";
         }
+        bar.style.cssText = CSS;
       }
-      var p5num = parseFloat(p5);
-      p5num = (p5num / 100) * 80;
-      p5CSS = "width: " + p5num.toString() + "%;";
-      if (p5 > 99) {
-        p5CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p5bar.style.cssText = p5CSS;
-
-      // CROSSWORD 6
-      var p6div = document.getElementById("c6prog");
-      var p6bar = document.getElementById("progBar6");
-      var p6 = "0.0";
-      if (localStorage.getItem("percent6")) {
-        p6 = localStorage.getItem("percent6");
-      }
-      p6div.innerHTML = p6 + " %";
-      if (localStorage.getItem("gameover6")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover6"));
-        if (gameover) {
-          p6div.innerHTML = "Completed";
-        } else {
-          if (p6 == 100.0) {
-            p6div.innerHTML += " (Errors remain)";
-          }
-        }
-      }
-      var p6num = parseFloat(p6);
-      p6num = (p6num / 100) * 80;
-      p6CSS = "width: " + p6num.toString() + "%;";
-      if (p6 > 99) {
-        p6CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p6bar.style.cssText = p6CSS;
-
-      // CROSSWORD 7
-      var p7div = document.getElementById("c7prog");
-      var p7bar = document.getElementById("progBar7");
-      var p7 = "0.0";
-      if (localStorage.getItem("percent7")) {
-        p7 = localStorage.getItem("percent7");
-      }
-      p7div.innerHTML = p7 + " %";
-      if (localStorage.getItem("gameover7")) {
-        var gameover = JSON.parse(localStorage.getItem("gameover7"));
-        if (gameover) {
-          p7div.innerHTML = "Completed";
-        } else {
-          if (p7 == 100.0) {
-            p7div.innerHTML += " (Errors remain)";
-          }
-        }
-      }
-      var p7num = parseFloat(p7);
-      p7num = (p7num / 100) * 80;
-      p7CSS = "width: " + p7num.toString() + "%;";
-      if (p7 > 99) {
-        p7CSS += " border-radius: .3em .3em .3em .3em;";
-      }
-      p7bar.style.cssText = p7CSS;
 
     </script>
 

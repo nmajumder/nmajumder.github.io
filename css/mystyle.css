@@ -519,6 +519,12 @@ section p {
   background-size: cover;
 }
 
+#crossword8 {
+  background-image: url("../img/c8-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .difficultIcon {
   position: absolute;
   margin-left: 8px;

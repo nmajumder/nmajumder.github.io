@@ -175,6 +175,10 @@
 	</div>
 
     <script type="text/javascript">
+    
+    // SET CROSSWORD PUZZLE NUMBER -- TO BE INSERTED INTO LOCALSTORAGE VAR NAMES
+    // must be a string of the number only
+    const PUZZLE_NUM = "5";
 
     var canvas = document.getElementById("canvas");
     var topcanvas = document.getElementById("topCanvas");
@@ -193,17 +197,17 @@
     var closebtn = document.getElementById("closebtn");
 
     var gameover = false;
-    if (localStorage.getItem("gameover5")) {
-        gameover = JSON.parse(localStorage.getItem("gameover5"));
+    if (localStorage.getItem("gameover" + PUZZLE_NUM)) {
+        gameover = JSON.parse(localStorage.getItem("gameover" + PUZZLE_NUM));
     } else {
-        localStorage.setItem('gameover5',JSON.stringify(gameover));
+        localStorage.setItem('gameover' + PUZZLE_NUM,JSON.stringify(gameover));
     }
 
     var minutesLabel = document.getElementById("minutes");
     var secondsLabel = document.getElementById("seconds");
     var totalSeconds = 0;
-    if (localStorage.getItem("time5")) {
-        totalSeconds = JSON.parse(localStorage.getItem("time5"));
+    if (localStorage.getItem("time" + PUZZLE_NUM)) {
+        totalSeconds = JSON.parse(localStorage.getItem("time" + PUZZLE_NUM));
         secondsLabel.innerHTML = pad(totalSeconds%60);
         minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
     }
@@ -219,7 +223,7 @@
         ++totalSeconds;
         secondsLabel.innerHTML = pad(totalSeconds%60);
         minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-        localStorage.setItem('time5',JSON.stringify(totalSeconds));
+        localStorage.setItem('time' + PUZZLE_NUM,JSON.stringify(totalSeconds));
     }
 
     // initialize variables to be used throughout
@@ -295,30 +299,15 @@
     // draw the black spaces in the puzzle (must be done custom by hand)
     //
     tctx.beginPath();
-    tctx.rect(200, 0, 40, 120);
-    tctx.rect(440, 0, 40, 80);
-    tctx.rect(280, 120, 40, 40);
-    tctx.rect(0, 160, 40, 40);
-    tctx.rect(160, 160, 40, 40);
-    tctx.rect(320, 160, 40, 40);
-    tctx.rect(480, 160, 120, 40);
-    tctx.rect(0, 200, 80, 40);
-    tctx.rect(360, 200, 40, 40);
-    tctx.rect(240, 240, 40, 40);
-    tctx.rect(400, 240, 40, 40);
-    tctx.rect(120, 280, 40, 40);
-    tctx.rect(440, 280, 40, 40);
-    tctx.rect(160, 320, 40, 40);
-    tctx.rect(320, 320, 40, 40);
-    tctx.rect(200, 360, 40, 40);
-    tctx.rect(520, 360, 80, 40);
-    tctx.rect(0, 400, 120, 40);
-    tctx.rect(240, 400, 40, 40);
-    tctx.rect(400, 400, 40, 40);
-    tctx.rect(560, 400, 40, 40);
-    tctx.rect(280, 440, 40, 40);
-    tctx.rect(360, 480, 40, 120);
-    tctx.rect(120, 520, 40, 80);
+    
+    for (var i = 0; i < ARR_SIZE; i++) {
+        for (var j = 0; j < ARR_SIZE; j++) {
+            //console.log(i + " " + j + " " + answers[i][j]);
+            if (answers[i][j] == 0) {
+                tctx.rect(j*40,i*40,40,40);
+            }
+        }
+    }
 
     tctx.fillStyle = "#000000";
     tctx.fill();
@@ -524,15 +513,15 @@
 
         // DEALING WITH LOCAL STORAGE
 
-        localStorage.setItem('curx5',JSON.stringify(curx));
-        localStorage.setItem('cury5',JSON.stringify(cury));
-        localStorage.setItem('direction5',JSON.stringify(dir));
-        localStorage.setItem('inputVals5',JSON.stringify(inputVals));
-        localStorage.setItem('fixedBoxes5',JSON.stringify(fixedBoxes));
-        localStorage.setItem('pcListInd5',JSON.stringify(pcListInd));
-        localStorage.setItem('pcIndex5',JSON.stringify(pcIndex));
+        localStorage.setItem('curx' + PUZZLE_NUM,JSON.stringify(curx));
+        localStorage.setItem('cury' + PUZZLE_NUM,JSON.stringify(cury));
+        localStorage.setItem('direction' + PUZZLE_NUM,JSON.stringify(dir));
+        localStorage.setItem('inputVals' + PUZZLE_NUM,JSON.stringify(inputVals));
+        localStorage.setItem('fixedBoxes' + PUZZLE_NUM,JSON.stringify(fixedBoxes));
+        localStorage.setItem('pcListInd' + PUZZLE_NUM,JSON.stringify(pcListInd));
+        localStorage.setItem('pcIndex' + PUZZLE_NUM,JSON.stringify(pcIndex));
         var perc = getCompletionPercent();
-        localStorage.setItem('percent5',perc);
+        localStorage.setItem('percent' + PUZZLE_NUM,perc);
     }
 
     // 
@@ -638,27 +627,27 @@
         // Revert to saved state...
         //
 
-        if (localStorage.getItem("curx5") != null && localStorage.getItem("cury5") != null
-                && localStorage.getItem("direction5") != null) {
-            curx = JSON.parse(localStorage.getItem("curx5"));
-            cury = JSON.parse(localStorage.getItem("cury5"));
-            dir = JSON.parse(localStorage.getItem("direction5"));                
+        if (localStorage.getItem("curx" + PUZZLE_NUM) != null && localStorage.getItem("cury" + PUZZLE_NUM) != null
+                && localStorage.getItem("direction" + PUZZLE_NUM) != null) {
+            curx = JSON.parse(localStorage.getItem("curx" + PUZZLE_NUM));
+            cury = JSON.parse(localStorage.getItem("cury" + PUZZLE_NUM));
+            dir = JSON.parse(localStorage.getItem("direction" + PUZZLE_NUM));                
         }
 
-        if (localStorage.getItem("pcListInd5") != null && localStorage.getItem("pcIndex5") != null) {
-            pcListInd = JSON.parse(localStorage.getItem("pcListInd5"));
+        if (localStorage.getItem("pcListInd" + PUZZLE_NUM) != null && localStorage.getItem("pcIndex" + PUZZLE_NUM) != null) {
+            pcListInd = JSON.parse(localStorage.getItem("pcListInd" + PUZZLE_NUM));
             pcList = acrossList;
             if (pcListInd == 1) {
                 pcList = downList;
             }
-            if (localStorage.getItem("pcIndex5")) {
-                pcIndex = localStorage.getItem("pcIndex5");
+            if (localStorage.getItem("pcIndex" + PUZZLE_NUM)) {
+                pcIndex = localStorage.getItem("pcIndex" + PUZZLE_NUM);
             }
         }
 
-        if (localStorage.getItem("fixedBoxes5") != null && localStorage.getItem("inputVals5") != null) {
-            fixedBoxes = JSON.parse(localStorage.getItem("fixedBoxes5"));
-            inputVals = JSON.parse(localStorage.getItem("inputVals5"));
+        if (localStorage.getItem("fixedBoxes" + PUZZLE_NUM) != null && localStorage.getItem("inputVals" + PUZZLE_NUM) != null) {
+            fixedBoxes = JSON.parse(localStorage.getItem("fixedBoxes" + PUZZLE_NUM));
+            inputVals = JSON.parse(localStorage.getItem("inputVals" + PUZZLE_NUM));
             
             for (var i = 1; i <= ARR_SIZE; i = i+1) {
                 for (var j = 1; j <= ARR_SIZE; j = j+1) {
@@ -738,10 +727,10 @@
                 openPopup(0);
             }, 10);
         }
-        localStorage.setItem('fixedBoxes5',JSON.stringify(fixedBoxes));
-        localStorage.setItem('inputVals5',JSON.stringify(inputVals));
+        localStorage.setItem('fixedBoxes' + PUZZLE_NUM,JSON.stringify(fixedBoxes));
+        localStorage.setItem('inputVals' + PUZZLE_NUM,JSON.stringify(inputVals));
         var perc = getCompletionPercent();
-        localStorage.setItem('percent5',perc);
+        localStorage.setItem('percent' + PUZZLE_NUM,perc);
     }
 
     function playerWins() {
@@ -755,7 +744,7 @@
         }
       }
       gameover = true;
-      localStorage.setItem('gameover5',JSON.stringify(gameover));
+      localStorage.setItem('gameover' + PUZZLE_NUM,JSON.stringify(gameover));
       return true;
     }
 
