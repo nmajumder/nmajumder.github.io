@@ -287,6 +287,80 @@ function getNextDelete(xc,yc,direction) {
     }
 }
 
+// used for just the enter key
+// if enter is pressed, should go to next word in direction specified in first open space
+function getNextEnter(xc,yc,direction) {
+    switch(direction) {
+        case 0:
+            // ACROSS
+            // find end of this word
+            var i = xc;
+            var j = yc;
+            while (!contains(blanks,[i,j])) {
+                i++;
+                if (i > ARR_SIZE) {
+                    j++;
+                    i = 1;
+                    if (j > ARR_SIZE) {
+                        j = 1;
+                    }
+                    break;
+                }
+            }
+
+            // now we are on a black square or beginning of a row
+            // so go until empty square
+            while (contains(blanks,[i,j]) || inputVals[i-1][j-1] != "") {
+                i++;
+                if (i > ARR_SIZE) {
+                    j++;
+                    i = 1;
+                    if (j > ARR_SIZE) {
+                        j = 1;
+                    }
+                }
+            }
+
+            // now we are on a square that is not black, and is blank
+            return [i,j];
+        case 1:
+            // DOWN
+            // find end of this word
+            var i = xc;
+            var j = yc;
+            while (!contains(blanks,[i,j])) {
+                j++;
+                if (j > ARR_SIZE) {
+                    i++;
+                    j = 1;
+                    if (i > ARR_SIZE) {
+                        i = 1;
+                    }
+                    break;
+                }
+            }
+
+            // now we are on a black square or beginning of a row
+            // so go until empty square
+            while (contains(blanks,[i,j]) || inputVals[i-1][j-1] != "") {
+                j++;
+                if (j > ARR_SIZE) {
+                    i++;
+                    j = 1;
+                    if (i > ARR_SIZE) {
+                        i = 1;
+                    }
+                }
+            }
+
+            // now we are on a square that is not black, and is blank
+            return [i,j];
+        default:
+            // if invalid dir number
+            console.log("invalid dir: " + direction);
+    }
+}
+
 
 // given the box being input to, returns whether the puzzle will be
 //  entirely filled in after this box
@@ -339,9 +413,12 @@ document.onkeydown = function(evt) {
     if (noClick) {
         return;
     }
+    console.log(evt.keyCode);
 
     evt = evt || window.event;
     key = evt.keyCode;
+
+    // check for special keys that might be used to perform a keyboard shortcut -- don't allow typing if so
     if (key == 91 || key == 93 || key == 224 || key == 16 || key == 17 || key == 18 || key == 27) {
         extraKeyDown = true;
         return;
@@ -351,6 +428,7 @@ document.onkeydown = function(evt) {
         return;
     }
 
+    // check the 4 arrow keys for moving about the grid
     if (key == 37) {
         // left
         evt.preventDefault();
@@ -404,6 +482,19 @@ document.onkeydown = function(evt) {
         setSelected(curx,cury,dir);
         return;
     }
+
+    // enter key should move to next word in current direction 
+    if (key == 13) {
+        evt.preventDefault();
+        var d = (dir) ? 0 : 1;
+        var [nx,ny] = getNextEnter(curx,cury,d);
+        curx = nx;
+        cury = ny;
+
+        setSelected(curx,cury,dir);
+        return;
+    }
+
 
     if (fixedBoxes[curx-1][cury-1] == 2 || fixedBoxes[curx-1][cury-1] == 5 || gameover) {
         var d = 0;
