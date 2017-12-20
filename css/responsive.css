@@ -338,32 +338,32 @@
   }
 
   #canvas {
-    width: 600px;
-    min-height: 600px;
+    width: 630px;
+    min-height: 630px;
     background-color: #F0F0F0;
     top: 260px;
-    left: 60px;
+    left: 45px;
     position: absolute;
   }
 
   #midCanvas {
-    width: 600px;
-    min-height: 600px;
+    width: 630px;
+    min-height: 630px;
     top: 260px;
-    left: 60px;
+    left: 45px;
     position: absolute;
   }
 
   #topCanvas {
-    width: 600px;
-    min-height: 600px;
+    width: 630px;
+    min-height: 630px;
     top: 260px;
-    left: 60px;
+    left: 45px;
     position: absolute;
   }
 
   #clues {
-    margin-left: 60px;
+    margin-left: 45px;
     margin-top: 660px;
     float: left;
     width: 600px;
@@ -372,7 +372,7 @@
   #across {
     float: left;
     width: 282px;
-    height: 600px;
+    height: 630px;
     border-style: solid;
     border-color: #696969;
     border-width: 1px;
@@ -385,7 +385,7 @@
     float: left;
     width: 282px;
     margin-left: 10px;
-    height: 600px;
+    height: 630px;
     border-style: solid;
     border-color: #696969;
     border-width: 1px;
