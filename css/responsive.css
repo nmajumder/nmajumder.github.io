@@ -202,6 +202,7 @@
       display: inline-block;
       margin: 0px 6px;
       width: 77px;
+      border-radius: 1em;
       float: left;
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
   }
@@ -214,6 +215,7 @@
       position: relative;
       display: inline-block;
       width: 78px;
+      border-radius: 1em;
       float: left;
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
   }
@@ -366,7 +368,7 @@
     margin-left: 45px;
     margin-top: 660px;
     float: left;
-    width: 600px;
+    width: 632px;
   }
 
   #across {
@@ -384,7 +386,7 @@
   #down {
     float: left;
     width: 282px;
-    margin-left: 10px;
+    margin-left: 42px;
     height: 630px;
     border-style: solid;
     border-color: #696969;

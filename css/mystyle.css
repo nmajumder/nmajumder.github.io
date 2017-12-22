@@ -525,6 +525,20 @@ section p {
   background-size: cover;
 }
 
+#crossword9 {
+  background-image: url("../img/c9-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.largeIcon {
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 8px;
+  height: 25px;
+  width: 90px;
+}
+
 .difficultIcon {
   position: absolute;
   margin-left: 8px;

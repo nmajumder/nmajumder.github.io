@@ -150,7 +150,7 @@ function getNextArrows(xc,yc,direction) {
                 i = i + ARR_SIZE;
                 j = j - 1;
                 if (j == 0) {
-                    j = 15;
+                    j = ARR_SIZE;
                 }
             }
         }
@@ -172,7 +172,7 @@ function getNextArrows(xc,yc,direction) {
                 j = j + ARR_SIZE;
                 i = i - 1;
                 if (i == 0) {
-                    i = 15;
+                    i = ARR_SIZE;
                 }
             }
         }
@@ -867,17 +867,32 @@ function clueClicked(obj,d) {
 }
 
 function clearCorner(xcoord,ycoord) {
-    tctx.clearRect(xcoord*40 - 15, (ycoord-1)*40 + 1, 14, 14);
+    var size = 14;
+    var offset = 15;
+    if (ARR_SIZE == 21) {
+        size = 9;
+        offset = 10;
+    }
+    tctx.clearRect(xcoord*BOX_SIZE - offset, (ycoord-1)*BOX_SIZE + 1, size, size);
 }
 
 function drawX(xcoord,ycoord) {
     clearCorner(xcoord,ycoord);
 
+    var size1 = 3
+    var size2 = 13;
+    var strokeSize = 2;
+    if (ARR_SIZE == 21) {
+        //size1 = 2;
+        size2 = 8;
+        strokeSize = 1;
+    }
+
     tctx.beginPath();
-    tctx.moveTo(xcoord*40 - 3, (ycoord-1)*40 + 3); tctx.lineTo(xcoord*40 - 13, (ycoord-1)*40 + 13);
-    tctx.moveTo(xcoord*40 - 13, (ycoord-1)*40 + 3); tctx.lineTo(xcoord*40 - 3, (ycoord-1)*40 + 13);
+    tctx.moveTo(xcoord*BOX_SIZE - size1, (ycoord-1)*BOX_SIZE + size1); tctx.lineTo(xcoord*BOX_SIZE - size2, (ycoord-1)*BOX_SIZE + size2);
+    tctx.moveTo(xcoord*BOX_SIZE - size2, (ycoord-1)*BOX_SIZE + size1); tctx.lineTo(xcoord*BOX_SIZE - size1, (ycoord-1)*BOX_SIZE + size2);
     tctx.strokeStyle = "#CC0000";
-    tctx.lineWidth = 2;
+    tctx.lineWidth = strokeSize;
     tctx.stroke();
     tctx.closePath();
 }
@@ -885,12 +900,25 @@ function drawX(xcoord,ycoord) {
 function drawCheckmark(xcoord,ycoord) {
     clearCorner(xcoord,ycoord);
 
+    var size1 = 3;
+    var size2 = 7;
+    var size3 = 10;
+    var size4 = 13;
+    var strokeSize = 3;
+    if (ARR_SIZE == 21) {
+        size1 = 2;
+        size2 = 4;
+        size3 = 7;
+        size4 = 8;
+        strokeSize = 1;
+    }
+    
     tctx.beginPath();
-    tctx.moveTo(xcoord*40 - 13, (ycoord-1)*40 + 7);
-    tctx.lineTo(xcoord*40 - 10, (ycoord-1)*40 + 10);
-    tctx.lineTo(xcoord*40 - 3, (ycoord-1)*40 + 3);
+    tctx.moveTo(xcoord*BOX_SIZE - size4, (ycoord-1)*BOX_SIZE + size2);
+    tctx.lineTo(xcoord*BOX_SIZE - size3, (ycoord-1)*BOX_SIZE + size3);
+    tctx.lineTo(xcoord*BOX_SIZE - size1, (ycoord-1)*BOX_SIZE + size1);
     tctx.strokeStyle = "#00802b";
-    tctx.lineWidth = 3;
+    tctx.lineWidth = strokeSize;
     tctx.stroke();
     tctx.closePath();
 }
@@ -898,22 +926,36 @@ function drawCheckmark(xcoord,ycoord) {
 function drawTriangle(xcoord,ycoord) {
     clearCorner(xcoord,ycoord);
 
+    var size1 = 3;
+    var size2 = 13;
+    if (ARR_SIZE == 21) {
+        size1 = 2;
+        size2 = 9;
+    }
+
     tctx.beginPath();
-    tctx.moveTo(xcoord*40-13, (ycoord-1)*40 + 3);
-    tctx.lineTo(xcoord*40-3, (ycoord-1)*40 + 13);
-    tctx.lineTo(xcoord*40-3, (ycoord-1)*40 + 3);
-    tctx.lineTo(xcoord*40-13, (ycoord-1)*40 + 3);
+    tctx.moveTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
+    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size2);
+    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size1);
+    tctx.lineTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
 
     tctx.fillStyle = "#FF0000";
     tctx.fill();
 
     tctx.closePath();
 
+    var size1 = 4;
+    var size2 = 11;
+    if (ARR_SIZE == 21) {
+        size1 = 3;
+        size2 = 7;
+    }
+
     tctx.beginPath();
-    tctx.moveTo(xcoord*40-11, (ycoord-1)*40 + 4);
-    tctx.lineTo(xcoord*40-4, (ycoord-1)*40 + 11);
-    tctx.lineTo(xcoord*40-4, (ycoord-1)*40 + 4);
-    tctx.lineTo(xcoord*40-11, (ycoord-1)*40 + 4);
+    tctx.moveTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
+    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size2);
+    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size1);
+    tctx.lineTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
 
     tctx.fillStyle = "#000000";
     tctx.fill();
