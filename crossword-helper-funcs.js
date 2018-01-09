@@ -651,6 +651,11 @@ document.onkeydown = function(evt) {
         return;
     }
 
+    // prevent going back a page in some browsers on delete press
+    if (key == 8) {
+        evt.preventDefault();
+    }
+
     // check for shift key (used for shift + enter to go back a word)
     if (key == 16) {
         shiftKeyDown = true;
@@ -730,6 +735,8 @@ document.onkeydown = function(evt) {
     }
 
 
+    // if no typing allowed either in this box or anywhere, go back a space with delete,
+    //  and forward a space with any other key
     if (fixedBoxes[curx-1][cury-1] == 2 || fixedBoxes[curx-1][cury-1] == 5 || gameover) {
         var d = 0;
         if (!dir) {
@@ -825,6 +832,60 @@ document.onkeydown = function(evt) {
 
     //console.log("key code pressed: " + key);
 };
+
+
+
+/*****************************************************************************
+/* TAKEN FROM WEBPAGE https://www.samclarke.com/javascript-is-font-available/
+/*****************************************************************************/
+/**
+ * Checks if a font is available to be used on a web page.
+ *
+ * @param {String} fontName The name of the font to check
+ * @return {Boolean}
+ * @license MIT
+ * @copyright Sam Clarke 2013
+ * @author Sam Clarke <sam@samclarke.com>
+ */
+(function (document) {
+  var width;
+  var body = document.body;
+
+  var container = document.createElement('span');
+  container.innerHTML = Array(100).join('wi');
+  container.style.cssText = [
+    'position:absolute',
+    'width:auto',
+    'font-size:128px',
+    'left:-99999px'
+  ].join(' !important;');
+
+  var getWidth = function (fontFamily) {
+    container.style.fontFamily = fontFamily;
+
+    body.appendChild(container);
+    width = container.clientWidth;
+    body.removeChild(container);
+
+    return width;
+  };
+
+  // Pre compute the widths of monospace, serif & sans-serif
+  // to improve performance.
+  var monoWidth  = getWidth('monospace');
+  var serifWidth = getWidth('serif');
+  var sansWidth  = getWidth('sans-serif');
+
+  window.isFontAvailable = function (font) {
+    return monoWidth !== getWidth(font + ',monospace') ||
+      sansWidth !== getWidth(font + ',sans-serif') ||
+      serifWidth !== getWidth(font + ',serif');
+  };
+})(document);
+
+/*******************************************************/
+
+
 
 function getClueNum(obj) {
     var txt = obj.innerHTML;
