@@ -874,6 +874,26 @@ function doesFontExist(fontName) {
     }
 }
 
+/***********************************************************************************
+******************************* USAGE FOR ABOVE FUNCTION ***************************
+***********************************************************************************/
+
+// check to see what fonts are available
+var fontChoice1 = 'Lucida Console';
+var fontChoice2 = 'Consolas';
+var fontChoice3 = 'Courier New'; // web safe: should be available on all browsers
+var myFont = fontChoice3;
+if (doesFontExist(fontChoice1)) {
+    console.log(fontChoice1 + " is available!");
+    myFont = fontChoice1;
+} else if (doesFontExist(fontChoice2)) {
+    console.log(fontChoice1 + " is not available, but " + fontChoice2 + " is.");
+    myFont = fontChoice2;
+} // else will default to fontChoice3
+else {
+    console.log("Neither " + fontChoice1 + " nor " + fontChoice2 + " is available, defaulting to " + fontChoice3);
+}
+
 /***********************************************************************************/
 
 
