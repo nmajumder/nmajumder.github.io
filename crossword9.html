@@ -619,6 +619,17 @@
 
     //console.log(fixedBoxes);
 
+    // check to see what fonts are available
+    var fontChoice1 = 'Lucida Console';
+    var fontChoice2 = 'Consolas';
+    var fontChoice3 = 'Courier New'; // web safe: should be available on all browsers
+    var myFont = fontChoice3;
+    if (doesFontExist(fontChoice1)) {
+        myFont = fontChoice1;
+    } else if (doesFontExist(fontChoice2)) {
+        myFont = fontChoice2;
+    } // else will default to fontChoice3
+
 
     var fontSize = 26;
     var fontWidth = 23;
@@ -653,7 +664,7 @@
             readonly: true,
             x: BOX_SIZE*(i-1) + fontOffsetX,
             y: BOX_SIZE*(j-1) + fontOffsetY,
-            fontFamily: 'Courier New',
+            fontFamily: myFont,
             fontColor: '#212121',
             fontWeight: 'bold',
             width: fontWidth,
@@ -674,7 +685,7 @@
             readonly: true,
             x: BOX_SIZE*(i-1) + fontOffsetX,
             y: BOX_SIZE*(j-1) + fontOffsetY,
-            fontFamily: 'Courier New',
+            fontFamily: myFont,
             fontColor: '#000000',
             fontWeight: 'bold',
             width: fontWidth,

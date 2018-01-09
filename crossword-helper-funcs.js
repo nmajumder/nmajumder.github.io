@@ -834,6 +834,49 @@ document.onkeydown = function(evt) {
 };
 
 
+/***********************************************************************************
+*** GRABBED FROM https://www.kirupa.com/html5/detect_whether_font_is_installed.htm
+***********************************************************************************/
+//
+// Call this function and pass in the name of the font you want to check for availability.
+//
+function doesFontExist(fontName) {
+    // creating our in-memory Canvas element where the magic happens
+    var fontCanvas = document.createElement("canvas");
+    var fontContext = fontCanvas.getContext("2d");
+     
+    // the text whose final pixel size I want to measure
+    var text = "abcdefghijklmnopqrstuvwxyz0123456789";
+     
+    // specifying the baseline font
+    fontContext.font = "72px monospace";
+     
+    // checking the size of the baseline text
+    var baselineSize = fontContext.measureText(text).width;
+     
+    // specifying the font whose existence we want to check
+    fontContext.font = "72px '" + fontName + "', monospace";
+     
+    // checking the size of the font we want to check
+    var newSize = fontContext.measureText(text).width;
+     
+    // removing the Canvas element we created
+    fontCanvas = null;
+     
+    //
+    // If the size of the two text instances is the same, the font does not exist because it is being rendered
+    // using the default sans-serif font
+    //
+    if (newSize == baselineSize) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+/***********************************************************************************/
+
+
 function getClueNum(obj) {
     var txt = obj.innerHTML;
     var pos1 = txt.indexOf(">");
