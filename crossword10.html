@@ -625,13 +625,6 @@
 
     //console.log(fixedBoxes);
 
-    // make sure font to be used is available
-    var fontStr = 'Courier New';
-    var idealFont = 'Lucida Console';
-    if (isFontAvailable(idealFont)) {
-        fontStr = idealFont;
-    }
-
 
     var fontSize = 26;
     var fontWidth = 23;
@@ -666,7 +659,7 @@
             readonly: true,
             x: BOX_SIZE*(i-1) + fontOffsetX,
             y: BOX_SIZE*(j-1) + fontOffsetY,
-            fontFamily: fontStr,
+            fontFamily: 'Courier New',
             fontColor: '#212121',
             fontWeight: 'bold',
             width: fontWidth,
@@ -687,7 +680,7 @@
             readonly: true,
             x: BOX_SIZE*(i-1) + fontOffsetX,
             y: BOX_SIZE*(j-1) + fontOffsetY,
-            fontFamily: fontStr,
+            fontFamily: 'Courier New',
             fontColor: '#000000',
             fontWeight: 'bold',
             width: fontWidth,
