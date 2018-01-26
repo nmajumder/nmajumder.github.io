@@ -405,13 +405,13 @@
   #down h3 {
     padding-top: 7px;
     height: 20px;
-    color: #696969;
+    color: #404040;
   }
 
   #across h3 {
     padding-top: 7px;
     height: 20px;
-    color: #696969;
+    color: #404040;
   }
 
   .numClues {
@@ -422,6 +422,7 @@
   .numClues li {
     padding: 1px 5px;
     width: 97%;
+    color: #404040;
     border-radius: 0.5em;
   }
 

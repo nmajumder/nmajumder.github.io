@@ -289,7 +289,7 @@ function getNextDelete(xc,yc,direction) {
 
 // used for just the enter key
 // if enter is pressed, should go to next word in direction specified in first open space
-// if backward == true, should go to previous word in same direction
+// if backward == true, should go to previous word
 function getNextEnter(xc,yc,direction,backward) {
     switch(direction) {
         case 0:
@@ -442,136 +442,106 @@ function getNextEnter(xc,yc,direction,backward) {
                     // find beginning of this word
                     var i = xc;
                     var j = yc;
-                    while (!contains(blanks,[i,j])) {
+                    while (!contains(blanks,[i,j]) && j > 0) {
                         j--;
-                        if (j <= 0) {
-                            i--;
-                            j = ARR_SIZE;
-                            if (i <= 0) {
-                                i = ARR_SIZE;
-                            }
-                            break;
-                        }
                     }
-
-                    var puzzleFull = false;
-                    // now we are on a black square or end of a row
-                    // so move back until empty square
-                    while (contains(blanks,[i,j]) || inputVals[i-1][j-1] != "") {
-                        j--;
-                        if (j <= 0) {
-                            i--;
-                            j = ARR_SIZE;
-                            if (i <= 0) {
-                                i = ARR_SIZE;
-                            }
-                        }
-                        // test for infinite loop
-                        if (i == xc && j == yc) {
-                            // back to original space so break
-                            puzzleFull = true;
-                            break;
-                        }
-                    }
-
-                    // now we are on a blank square or original location
-                    // so find beginning of this word
-                    while (!contains(blanks,[i,j])) {
-                        if (inputVals[i-1][j-1] == "") {
-                            puzzleFull = false;
-                        }
-                        j--;
-                        if (j == 0) {
-                            // then we are at the beginning of a line so stop
-                            break;
-                        }
-                    }
-                    // we went one too far so readjust
+                    // now we are on a black or at j = 0 (above grid)
                     j++;
-
-                    if (puzzleFull) {
-                        // find beginning of prev word
-                        j--;
-                        if (j <= 0) {
-                            i--;
-                            j = ARR_SIZE;
-                            if (i <= 0) {
-                                i = ARR_SIZE;
-                            }
-                        }
-                        while (contains(blanks,[i,j])) {
+                    // now we are at first square in current word
+                    // need to go left until hit beginning of another word
+                    var ifirst = 0;
+                    var jfirst = 0;
+                    while (true) {
+                        i--;
+                        if (i <= 0) {
                             j--;
+                            i = ARR_SIZE;
                             if (j <= 0) {
-                                i--;
                                 j = ARR_SIZE;
-                                if (i <= 0) {
-                                    i = ARR_SIZE;
+                            }
+                        }
+
+                        if (!contains(blanks,[i,j]) && (contains(blanks,[i,j-1]) || j == 1)) {
+                            // save this location in case full puzzle
+                            if (ifirst == 0 && jfirst == 0) {
+                                ifirst = i;
+                                jfirst = j;
+                            }
+                            // then we are on first of a word so check to see if there is a spot open
+                            var i1 = i;
+                            var j1 = j;
+                            var foundBlank = false;
+                            while (!contains(blanks,[i1,j1]) && j1 != ARR_SIZE) {
+                                if (inputVals[i1-1][j1-1] == "") {
+                                    foundBlank = true;
+                                    break;
                                 }
+                                j1++;
                             }
+                            if (foundBlank) {
+                                return [i1,j1];
+                            }
+                            // else this word is full so move to next one
                         }
 
-                        // now we are on the last letter of a word
-                        while (!contains(blanks,[i,j])) {
-                            j--;
-                            if (j == 0) {
-                                break;
-                            }
-                        }
-                        // readjust to be at beginning of the word
-                        j++;
-
-                        return [i,j];
-                        
-                    }
-
-                    // so now we know puzzle isn't full, so our current word has an empty space
-                    // find first empty space in our word
-                    while (inputVals[i-1][j-1] != "") {
-                        j++;
-                        if (j > ARR_SIZE) {
-                            // this should be impossible given our previous checks
-                            console.log("Went too far somehow, i: " + i + ", j: " + j);
-                            console.log("Reverting to space we were on...");
-                            return [xc,yc];
+                        // check for full puzzle
+                        if (i == xc && j == yc) {
+                            // go to previous word if puzzle is full
+                            return [ifirst,jfirst];
                         }
                     }
-
-                    return [i,j];
                 case false:
-                    // find end of this word
+                    // find beginning of this word
                     var i = xc;
                     var j = yc;
-                    while (!contains(blanks,[i,j])) {
-                        j++;
-                        if (j > ARR_SIZE) {
-                            i++;
-                            j = 1;
-                            if (i > ARR_SIZE) {
-                                i = 1;
-                            }
-                            break;
-                        }
+                    while (!contains(blanks,[i,j]) && j > 0) {
+                        j--;
                     }
+                    // now we are on a black or at j = 0 (above grid)
+                    j++;
+                    // now we are at first square in current word
+                    // need to go right until hit beginning of another word
+                    var ifirst = 0;
+                    var jfirst = 0;
+                    while (true) {
+                        i++;
+                        if (i > ARR_SIZE) {
+                            j++;
+                            i = 1;
+                            if (j > ARR_SIZE) {
+                                j = 1;
+                            }
+                        }
 
-                    // now we are on a black square or beginning of a row
-                    // so go until empty square
-                    while (contains(blanks,[i,j]) || inputVals[i-1][j-1] != "") {
-                        j++;
-                        if (j > ARR_SIZE) {
-                            i++;
-                            j = 1;
-                            if (i > ARR_SIZE) {
-                                i = 1;
+                        if (!contains(blanks,[i,j]) && (contains(blanks,[i,j-1]) || j == 1)) {
+                            // save this location in case full puzzle
+                            if (ifirst == 0 && jfirst == 0) {
+                                ifirst = i;
+                                jfirst = j;
                             }
+                            // then we are on first of a word so check to see if there is a spot open
+                            var i1 = i;
+                            var j1 = j;
+                            var foundBlank = false;
+                            while (!contains(blanks,[i1,j1]) && j1 != ARR_SIZE) {
+                                if (inputVals[i1-1][j1-1] == "") {
+                                    foundBlank = true;
+                                    break;
+                                }
+                                j1++;
+                            }
+                            if (foundBlank) {
+                                return [i1,j1];
+                            }
+                            // else this word is full so move to next one
                         }
-                        // test for infinite loop
+
+                        // check for full puzzle
                         if (i == xc && j == yc) {
-                            // back to original space so return
-                            return [i,j];
+                            // go to next word if puzzle is full
+                            return [ifirst,jfirst];
                         }
                     }
-                    // now we are on a square that is not black, and is blank
-                    return [i,j];
 
                 default:
                     // if invalid backward boolean val
@@ -721,9 +691,9 @@ document.onkeydown = function(evt) {
         return;
     }
 
-    // enter key should move to next word in current direction
+    // enter key or tab key should move to next word in current direction
     // if shift also down should move to prev word in current direction
-    if (key == 13) {
+    if (key == 13 || key == 9) {
         evt.preventDefault();
         var d = (dir) ? 0 : 1;
         var [nx,ny] = getNextEnter(curx,cury,d,shiftKeyDown);
@@ -935,6 +905,184 @@ function clueClicked(obj,d) {
             console.log("Error: invalid direction " + d);
     }
     setSelected(curx,cury,dir);
+}
+
+// given the space, tells what number word it is
+// xc in [0,ARR_SIZE-1], yc in [0,ARR_SIZE-1]
+// across == true if across, false if down
+function getNumberBySpace(xc,yc,across) {
+    if (numbers[yc][xc] == 0) {
+        console.log("Error: Cannot get number for a black space at " + xc + "," + yc);
+        return -1;
+    }
+    var i = xc;
+    var j = yc;
+    if (across) {
+        while (!contains(blanks,[i+1,j+1]) && i >= 0) {
+            i--;
+        }
+        return numbers[j][i+1];
+    } else {
+        while (!contains(blanks,[i+1,j+1]) && j >= 0) {
+            j--;
+        }
+        return numbers[j+1][i];
+    }
+    
+}
+
+// adjusts the word of the spot given to be gray/not gray
+// xc in [1,ARR_SIZE], yc in [1,ARR_SIZE]
+// across == true if across, false if down
+function adjustGrayClues(xc,yc,across) {
+    var dir = 0;
+    if (!across) {
+        dir = 1;
+    }
+    var num = getNumberBySpace(xc-1,yc-1,across);
+    var obj = getClueObjByNumber(num);
+    if (wordIsFull(xc-1,yc-1,dir)) {
+        obj.style.cssText = 'color: #909090;';
+    } else {
+        obj.style.cssText = 'color: #404040;';
+    }
+}
+
+// given a spot in the grid and direction
+// return true if the word is full and false if there is an empty space
+// cx in [0,ARR_SIZE-1], cy in [0,ARR_SIZE-1]
+// dir == 0 if across, dir == 1 if down
+function wordIsFull(cx,cy,dir) {
+    if (inputVals[cx][cy] == "") {
+        return false;
+    }
+    switch(dir) {
+        case 0:
+            var i = cx;
+            var j = cy;
+            while (!contains(blanks,[i+1,j+1]) && i >= 0) {
+                if (inputVals[i][j] == "") {
+                    return false;
+                }
+                i--;
+            }
+            i = cx;
+            while (!contains(blanks,[i+1,j+1]) && i < ARR_SIZE) {
+                if (inputVals[i][j] == "") {
+                    return false;
+                }
+                i++;
+            }
+            return true;
+        case 1:
+            var i = cx;
+            var j = cy;
+            while (!contains(blanks,[i+1,j+1]) && j >= 0) {
+                if (inputVals[i][j] == "") {
+                    return false;
+                }
+                j--;
+            }
+            j = cy;
+            while (!contains(blanks,[i+1,j+1]) && j < ARR_SIZE) {
+                if (inputVals[i][j] == "") {
+                    return false;
+                }
+                j++;
+            }
+            return true;
+        default:
+            console.log("Error: invalid direction " + dir);
+    }
+}
+
+// return the object for the clue (in the clue list)
+// params: num == the number of the clue on the board
+//         across == true for across, across == false for down
+function getClueObjByNumber(num,across) {
+    var clueList = acrossList;
+    var dir = "across";
+    if (!across) {
+        clueList = downList;
+        dir = "down";
+    }
+    for (var i = 0; i < clueList.length; i++) {
+        var n = getClueNum(clueList[i]);
+        if (n == num) {
+            return clueList[i];
+        }
+    }
+    console.log("Error: No " + dir + " clue with the number " + num + " exists.");
+    return null;
+}
+
+// grays out all done clues (for on page load)
+// numbers array (indexed 0 -> ARR_SIZE-1) has 0 for blanks, -1 for non-word starters
+function grayOutDoneClues() {
+    // get current word so can keep it yellow
+    // this dir is true for across / false for down
+    // we redefine dir below to be 0 or 1
+    var curNum = getNumberBySpace(curx-1,cury-1,dir);
+    var curDir = dir;
+
+    // across
+    var clueList = acrossList;
+    var dir = 0;
+    var across = true;
+    for (var j = 0; j < ARR_SIZE; j++) {
+        for (var i = 0; i  < ARR_SIZE; i++) {
+            if (numbers[j][i] != 0 && numbers[j][i] != -1) {
+                var b = false;
+                if (i == 0) {
+                    b = true;
+                } else if (numbers[j][i-1] == 0) {
+                    b = true;
+                }
+                if (b) {
+                    if (wordIsFull(i,j,dir)) {
+                        //console.log("Attempting to gray out clue at " + numbers[j][i] + " going across");
+                        // gray out the corresponding clue
+                        var obj = getClueObjByNumber(numbers[j][i],across);
+
+                        if (curDir && curNum == numbers[j][i]) {
+                            obj.style.cssText = 'color: #909090; background-color: yellow;';
+                        } else {
+                            obj.style.cssText = 'color: #909090;';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // down
+    var clueList = downList;
+    var dir = 1;
+    var across = false;
+    for (var i = 0; i < ARR_SIZE; i++) {
+        for (var j = 0; j < ARR_SIZE; j++) {
+            if (numbers[j][i] != 0 && numbers[j][i] != -1) {
+                var b = false;
+                if (j == 0) {
+                    b = true;
+                } else if (numbers[j-1][i] == 0) {
+                    b = true;
+                }
+                if (b) {
+                    if (wordIsFull(i,j,dir)) {
+                        //console.log("Attempting to gray out clue at " + numbers[j][i] + " going down");
+                        // gray out the corresponding clue
+                        var obj = getClueObjByNumber(numbers[j][i],across);
+                        if (!curDir && curNum == numbers[j][i]) {
+                            obj.style.cssText = 'color: #909090; background-color: yellow;';
+                        } else {
+                            obj.style.cssText = 'color: #909090;';
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 function clearCorner(xcoord,ycoord) {
