@@ -383,6 +383,11 @@
     //    as the currently selected word, whatever we want that to mean
     //
     function setSelected(curx,cury,dir) {
+        // stored current square to pass to gray function at end of this function
+        var thisX = curx;
+        var thisY = cury;
+        var thisDir = dir;
+        
     	// clear prev highlighted text boxes
     	for (var i = 0; i < ARR_SIZE; i++) {
     		for (var j = 0; j < ARR_SIZE; j++) {
@@ -503,7 +508,7 @@
         var perc = getCompletionPercent();
         localStorage.setItem('percent' + PUZZLE_NUM,perc);
 
-        grayOutDoneClues();
+        grayOutDoneClues(thisX, thisY, thisDir);
     }
 
     // 

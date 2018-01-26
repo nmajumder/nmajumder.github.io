@@ -1018,12 +1018,14 @@ function getClueObjByNumber(num,across) {
 
 // grays out all done clues (for on page load)
 // numbers array (indexed 0 -> ARR_SIZE-1) has 0 for blanks, -1 for non-word starters
-function grayOutDoneClues() {
+// params: curx, cury, dir (same as are stored as global vars for each crossword)
+function grayOutDoneClues(curx,cury,dir) {
     // get current word so can keep it yellow
     // this dir is true for across / false for down
     // we redefine dir below to be 0 or 1
     var curNum = getNumberBySpace(curx-1,cury-1,dir);
     var curDir = dir;
+    //console.log("Current word is number: " + curNum + " going across? " + curDir);
 
     // across
     var clueList = acrossList;
