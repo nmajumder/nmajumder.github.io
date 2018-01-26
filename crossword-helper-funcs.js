@@ -512,8 +512,10 @@ function getNextEnter(xc,yc,direction,backward) {
                                 j = 1;
                             }
                         }
+                        console.log("Trying space " + i + "," + j + "...");
 
                         if (!contains(blanks,[i,j]) && (contains(blanks,[i,j-1]) || j == 1)) {
+                            console.log("Found down word at " + i + "," + j);
                             // save this location in case full puzzle
                             if (ifirst == 0 && jfirst == 0) {
                                 ifirst = i;
@@ -523,8 +525,10 @@ function getNextEnter(xc,yc,direction,backward) {
                             var i1 = i;
                             var j1 = j;
                             var foundBlank = false;
-                            while (!contains(blanks,[i1,j1]) && j1 != ARR_SIZE) {
+                            while (!contains(blanks,[i1,j1]) && j1 <= ARR_SIZE) {
+                                console.log("Looking for a blank space at " + i1 + "," + j1);
                                 if (inputVals[i1-1][j1-1] == "") {
+                                    console.log("Found blank space at " + i1 + "," + j1);
                                     foundBlank = true;
                                     break;
                                 }
