@@ -214,18 +214,29 @@
         minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
     }
 
+    var idleSeconds = 0;
+
     var noClick = false;
     if (!gameover) {
         var timer = setInterval(setTime, 1000);
+        var idleTimer = setInterval(incrementIdle, 1000);
         openPopup(3);
     }
 
-    function setTime()
-    {
+    function setTime() {
         ++totalSeconds;
         secondsLabel.innerHTML = pad(totalSeconds%60);
         minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
         localStorage.setItem('time' + PUZZLE_NUM,JSON.stringify(totalSeconds));
+    }
+
+    function incrementIdle() {
+        ++idleSeconds;
+        //console.log("Idle timer now at " + idleSeconds);
+        if (idleSeconds >= 60) {
+            idleSeconds = 0;
+            openPopup(4);
+        }
     }
 
     // initialize variables to be used throughout

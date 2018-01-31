@@ -8,12 +8,14 @@ function closePopup() {
         || closebtn.innerHTML == "Let's Go") {
         // if game not over...
         timer = setInterval(setTime, 1000);
+        idleTimer = setInterval(incrementIdle, 1000);
     }
 }
 
 // msg = 0 (WIN) | 1 (NOT WIN) | 2 (PAUSED) | 3 (STARTING)
 function openPopup(msg) {
     clearInterval(timer);
+    clearInterval(idleTimer);
 	var msgstr = "";
 	switch(msg) {
 		case 0:
@@ -47,8 +49,12 @@ function openPopup(msg) {
             msgstr = "Ready to start?"
             closebtn.innerHTML = "Let's Go";
             break;
+        case 4:
+            msgstr = "Your game has been paused due to inactivity.";
+            closebtn.innerHTML = "Resume";
+            break;
 		default:
-			console.log("Error: Invalid msg number passed into openPopup.");
+			console.log("Error: Invalid msg number passed into openPopup: " + msg);
 
 	}
     if (msg == 0) {
@@ -424,7 +430,28 @@ function getNextEnter(xc,yc,direction,backward) {
                         }
                         // test for infinite loop
                         if (i == xc && j == yc) {
-                            // back to original space so return
+                            // back to original space so return next word
+                            while (!contains(blanks,[i,j])) {
+                                i++;
+                                if (i > ARR_SIZE) {
+                                    j++;
+                                    i = 1;
+                                    if (j > ARR_SIZE) {
+                                        j = 1;
+                                    }
+                                    break;
+                                }
+                            }
+                            while (contains(blanks,[i,j])) {
+                                i++;
+                                if (i > ARR_SIZE) {
+                                    j++;
+                                    i = 1;
+                                    if (j > ARR_SIZE) {
+                                        j = 1;
+                                    }
+                                }
+                            }
                             return [i,j];
                         }
                     }
@@ -448,9 +475,12 @@ function getNextEnter(xc,yc,direction,backward) {
                     // now we are on a black or at j = 0 (above grid)
                     j++;
                     // now we are at first square in current word
+                    // store this spot for check for full puzzle
+                    var initX = i;
+                    var initY = j;
                     // need to go left until hit beginning of another word
-                    var ifirst = 0;
-                    var jfirst = 0;
+                    var ifirst = 1;
+                    var jfirst = 1;
                     while (true) {
                         i--;
                         if (i <= 0) {
@@ -463,7 +493,7 @@ function getNextEnter(xc,yc,direction,backward) {
 
                         if (!contains(blanks,[i,j]) && (contains(blanks,[i,j-1]) || j == 1)) {
                             // save this location in case full puzzle
-                            if (ifirst == 0 && jfirst == 0) {
+                            if (ifirst == 1 && jfirst == 1) {
                                 ifirst = i;
                                 jfirst = j;
                             }
@@ -485,8 +515,9 @@ function getNextEnter(xc,yc,direction,backward) {
                         }
 
                         // check for full puzzle
-                        if (i == xc && j == yc) {
-                            // go to previous word if puzzle is full
+                        if (i == initX && j == initY) {
+                            //console.log("Reverting to the default return value of [" + ifirst + "," + jfirst + "] because i=" + i + ", initX=" + initX + "; j=" + j + ", initY=" + initY);
+                            // go to next word if puzzle is full
                             return [ifirst,jfirst];
                         }
                     }
@@ -500,9 +531,12 @@ function getNextEnter(xc,yc,direction,backward) {
                     // now we are on a black or at j = 0 (above grid)
                     j++;
                     // now we are at first square in current word
+                    // store this spot for check for full puzzle
+                    var initX = i;
+                    var initY = j;
                     // need to go right until hit beginning of another word
-                    var ifirst = 0;
-                    var jfirst = 0;
+                    var ifirst = 1;
+                    var jfirst = 1;
                     while (true) {
                         i++;
                         if (i > ARR_SIZE) {
@@ -512,12 +546,12 @@ function getNextEnter(xc,yc,direction,backward) {
                                 j = 1;
                             }
                         }
-                        console.log("Trying space " + i + "," + j + "...");
+                        //console.log("Trying space " + i + "," + j + "...");
 
                         if (!contains(blanks,[i,j]) && (contains(blanks,[i,j-1]) || j == 1)) {
-                            console.log("Found down word at " + i + "," + j);
+                            //console.log("Found down word at " + i + "," + j);
                             // save this location in case full puzzle
-                            if (ifirst == 0 && jfirst == 0) {
+                            if (ifirst == 1 && jfirst == 1) {
                                 ifirst = i;
                                 jfirst = j;
                             }
@@ -526,9 +560,9 @@ function getNextEnter(xc,yc,direction,backward) {
                             var j1 = j;
                             var foundBlank = false;
                             while (!contains(blanks,[i1,j1]) && j1 <= ARR_SIZE) {
-                                console.log("Looking for a blank space at " + i1 + "," + j1);
+                                //console.log("Looking for a blank space at " + i1 + "," + j1);
                                 if (inputVals[i1-1][j1-1] == "") {
-                                    console.log("Found blank space at " + i1 + "," + j1);
+                                    //console.log("Found blank space at " + i1 + "," + j1);
                                     foundBlank = true;
                                     break;
                                 }
@@ -538,10 +572,14 @@ function getNextEnter(xc,yc,direction,backward) {
                                 return [i1,j1];
                             }
                             // else this word is full so move to next one
-                        }
+                        } 
+                        /*else {
+                            console.log("Space at " + i + " " + j + " is not beginning of a down word.");
+                        }*/
 
                         // check for full puzzle
-                        if (i == xc && j == yc) {
+                        if (i == initX && j == initY) {
+                            //console.log("Reverting to the default return value of [" + ifirst + "," + jfirst + "] because i=" + i + ", initX=" + initX + "; j=" + j + ", initY=" + initY);
                             // go to next word if puzzle is full
                             return [ifirst,jfirst];
                         }
@@ -597,6 +635,16 @@ var delay = (function() {
 })();
 
 
+document.onmousemove = function() {
+    console.log("Mouse moved, resetting idle timer.");
+    idleSeconds = 0;
+}
+
+document.onclick = function() {
+    console.log("Mouse clicked, resetting idle timer.");
+    idleSeconds = 0;
+}
+
 document.onkeyup = function(evt) {
     evt = evt || window.event;
     key = evt.keyCode;
@@ -611,6 +659,9 @@ document.onkeyup = function(evt) {
 }
 
 document.onkeydown = function(evt) {
+    console.log("Key pressed, resetting idle timer.");
+    idleSeconds = 0;
+
     if (noClick) {
         return;
     }
@@ -1025,7 +1076,7 @@ function getClueObjByNumber(num,across) {
 // params: curx, cury, dir (same as are stored as global vars for each crossword)
 function grayOutDoneClues(curx,cury,dir) {
     // get current word so can keep it yellow
-    // this dir is true for across / false for down
+    // parameter dir is true for across / false for down
     // we redefine dir below to be 0 or 1
     var curNum = getNumberBySpace(curx-1,cury-1,dir);
     var curDir = dir;
