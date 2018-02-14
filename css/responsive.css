@@ -683,3 +683,25 @@
   }
 }
 
+.sizeDifficulty {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.easy {
+  color: #33cc33;
+}
+
+.moderate {
+  color: #ffff00;
+}
+
+.difficult {
+  color: #ff9f00;
+}
+
+.expert {
+  color: #ff3333;
+}
+
