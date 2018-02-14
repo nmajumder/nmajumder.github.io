@@ -410,7 +410,7 @@ section p {
 #crossGallery .crossLi {
   float: left;
   width: 90%;
-  height: 220px;
+  height: 250px;
   margin: 20px 5%;
   background-color: lightgrey;
   border-radius: 1em;
@@ -443,7 +443,29 @@ section p {
 .titleDescrip h2 {
   margin: 0px;
   padding: 30px 0px;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
+}
+
+.sizeDifficulty {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.easy {
+  color: #33cc33;
+}
+
+.moderate {
+  color: #ffff00;
+}
+
+.difficult {
+  color: #ff9f00;
+}
+
+.expert {
+  color: #ff3333;
 }
 
 #crossGallery .crossLi:hover .titleDescrip {
