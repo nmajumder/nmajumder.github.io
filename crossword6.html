@@ -70,6 +70,7 @@
             <span id="timeCounter"><label id="minutes">00</label>:<label id="seconds">00</label></span>
         </div>
         <button id="backbtn" onclick="crossBack()">Back</button>
+        <button id="clearbtn" onclick="crossClear()">Reset</button>
 
     	<canvas id="canvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
     	<canvas id="midCanvas" width="630px" height="630px"></canvas>
@@ -169,12 +170,21 @@
 		<h2 id="popupmsg">Congratulations, you've successfully solved the puzzle!</h2>
 		<button id="closebtn" onclick="closePopup()">Close</button>
 	</div>
+    <div id="resetpopup">
+        <h2 id="resetpopupmsg">Are you sure you want to reset this puzzle? This cannot be undone.</h2>
+        <button id="cancelresetbtn" onclick="cancelResetPopup()">Cancel</button>
+        <button id="continueresetbtn" onclick="continueResetPopup()">Reset</button>
+    </div>
 
     <script type="text/javascript">
     
     // SET CROSSWORD PUZZLE NUMBER -- TO BE INSERTED INTO LOCALSTORAGE VAR NAMES
     // must be a string of the number only
     const PUZZLE_NUM = "6";
+
+    const ARR_SIZE = 15;
+    const BOARD_SIZE = 630;
+    const BOX_SIZE = BOARD_SIZE / ARR_SIZE;
 
     var canvas = document.getElementById("canvas");
     var topcanvas = document.getElementById("topCanvas");
@@ -217,37 +227,11 @@
         openPopup(3);
     }
 
-    function setTime() {
-        ++totalSeconds;
-        secondsLabel.innerHTML = pad(totalSeconds%60);
-        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-        localStorage.setItem('time' + PUZZLE_NUM,JSON.stringify(totalSeconds));
-    }
-
-    function incrementIdle() {
-        ++idleSeconds;
-        //console.log("Idle timer now at " + idleSeconds);
-        if (idleSeconds >= 60) {
-            idleSeconds = 0;
-            openPopup(4);
-        }
-    }
-
     // initialize variables to be used throughout
     blanks = [];
     highlighted = [];
 
-    const ARR_SIZE = 15;
-    const BOARD_SIZE = 630;
-    const BOX_SIZE = BOARD_SIZE / ARR_SIZE;
-
-    var i = 1;
-    while (answers[0][i-1] == 0) {
-        i++;
-    }
-    var curx = i;
-    var cury = 1;
-    var dir = true; // true is across, false is down
+    initializeHighlightedSpace();
 
     //console.log(answers);
 
@@ -267,37 +251,10 @@
     ctx.closePath();
 
     //
-    // Draw the basic grid for the puzzle (automated)
-    // 
-    tctx.beginPath();
-
-    for (var i = 1; i < ARR_SIZE; i++) {
-        tctx.moveTo(i*BOX_SIZE,0); tctx.lineTo(i*BOX_SIZE,BOARD_SIZE);
-        tctx.moveTo(0,i*BOX_SIZE); tctx.lineTo(BOARD_SIZE,i*BOX_SIZE);
-    }
-
-    tctx.stroke();
-    tctx.closePath();
-
-
+    // Draw the basic grid for the puzzle
+    // draw the black spaces in the puzzle
     //
-    // draw the black spaces in the puzzle (automated)
-    //
-    tctx.beginPath();
-
-    for (var i = 0; i < ARR_SIZE; i++) {
-        for (var j = 0; j < ARR_SIZE; j++) {
-            //console.log(i + " " + j + " " + answers[i][j]);
-            if (answers[i][j] == 0) {
-                tctx.rect(j*BOX_SIZE,i*BOX_SIZE,BOX_SIZE,BOX_SIZE);
-            }
-        }
-    }
-
-    tctx.fillStyle = "#000000";
-    tctx.fill();
-
-    tctx.closePath();
+    initializeGridPattern();
 
     //
     // Draw the numbers in the corners (automated for all puzzles)
@@ -306,32 +263,7 @@
     //
     var numbers = new Array(ARR_SIZE);
 
-    ctx.font = "10px Arial";
-    var ctr = 1;
-    for (var i = 0; i < ARR_SIZE; i = i+1) {
-      numbers[i] = new Array(ARR_SIZE);
-      for (var j = 0; j < ARR_SIZE; j = j+1) {
-        if (answers[i][j] == 0) {
-          numbers[i][j] = 0;
-          continue;
-        }
-        if (j == 0 || i == 0 || answers[i][j-1] == 0 || answers[i-1][j] == 0) {
-          if (i == 0) {
-            tctx.fillText(ctr,j*BOX_SIZE + 3, i*BOX_SIZE + 10);
-          } else if (j == 0) {
-            tctx.fillText(ctr,j*BOX_SIZE + 1, i*BOX_SIZE + 12);
-          } else {
-            tctx.fillText(ctr,j*BOX_SIZE + 3, i*BOX_SIZE + 12);
-          }
-          // store this number at correct space
-          numbers[i][j] = ctr;
-
-          ctr = ctr + 1;
-        } else {
-          numbers[i][j] = -1;
-        }
-      }
-    }
+    initializeClueNumbers();
 
     //console.log(numbers);
 
@@ -340,22 +272,7 @@
     // this should be the same for all puzzles as long as the same colors are used
     // i.e. #000000 --> (0,0,0,255) and #D3D3D3 --> (211,211,211,255)
     //
-    for (var i = BOX_SIZE/2; i < BOARD_SIZE; i = i + BOX_SIZE) {
-      for (var j = BOX_SIZE/2; j < BOARD_SIZE; j = j + BOX_SIZE) {
-        tobj = tctx.getImageData(i,j,1,1);
-        obj = ctx.getImageData(i,j,1,1);
-        //console.log(i,j,obj.data);
-        if (tobj.data[0] == 0 && tobj.data[1] == 0 && tobj.data[2] == 0 && tobj.data[3] == 255) {
-          var tx = Math.ceil(i/BOX_SIZE);
-          var ty = Math.ceil(j/BOX_SIZE);
-          blanks.push([tx,ty]); 
-        } else if (obj.data[0] == 211 && obj.data[1] == 211 && obj.data[2] == 211 && obj.data[3] == 255) {
-          var tx = Math.ceil(i/BOX_SIZE);
-          var ty = Math.ceil(j/BOX_SIZE);
-          highlighted.push([tx,ty]);
-        }
-      }
-    }
+    initializeBlanksArray();
 
     // check to make sure blanks has right values
     /*for (i = 0; i < blanks.length; i++) {
@@ -383,375 +300,35 @@
     var extraKeyDown = false;
     var shiftKeyDown = false;
 
-    // when selected words are implemented this should set the word given by
-    //    the x,y coords (given in 1...15 each) and dir (true for horizontal)
-    //    as the currently selected word, whatever we want that to mean
-    //
-    function setSelected(curx,cury,dir) {
-        // stored current square to pass to gray function at end of this function
-        var thisX = curx;
-        var thisY = cury;
-        var thisDir = dir;
-        
-        // clear prev highlighted text boxes
-        for (var i = 0; i < ARR_SIZE; i++) {
-            for (var j = 0; j < ARR_SIZE; j++) {
-                if (inputBoxes[i][j] != 0) {
-                    if (contains(highlighted,[i+1,j+1])) {
-                        inputBoxes[i][j].backgroundColor('#D3D3D3');
-                    } else {
-                        inputBoxes[i][j].backgroundColor('#F0F0F0');
-                    }
-                }
-            }
-        }
-
-        // clear prev highlighted rectangle
-        mctx.clearRect(0,0,midcanvas.width,midcanvas.height);
-
-        // paint new highlighted area
-        if (dir) {
-            //console.log("GOING ACROSS");
-            var i1 = curx;
-            while (!contains(blanks,[i1,cury]) && i1 <= ARR_SIZE) {
-              i1++;
-            }
-            var i2 = curx;
-            while (!contains(blanks,[i2,cury]) && i2 >= 1) {
-              i2--;
-            }
-            mctx.beginPath();
-            mctx.rect(BOX_SIZE*i2, BOX_SIZE*cury - BOX_SIZE, (i1-i2-1)*BOX_SIZE, BOX_SIZE);
-            mctx.fillStyle = 'rgba(230, 218, 0, 1.0)';
-            mctx.fill();
-            mctx.closePath();
-
-            for (var i = i2; i < i1-1; i++) {
-                inputBoxes[i][cury-1].backgroundColor('rgba(230, 218, 0, 1.0)');
-            }
-        } else {
-            //console.log("GOING DOWN");
-            var j1 = cury;
-            while (!contains(blanks,[curx,j1]) && j1 <= ARR_SIZE) {
-                j1++;
-            }
-            var j2 = cury;
-            while (!contains(blanks,[curx,j2]) && j2 >= 1) {
-                j2--;
-            }
-            mctx.beginPath();
-            mctx.rect(BOX_SIZE*curx - BOX_SIZE, BOX_SIZE*j2,  BOX_SIZE, (j1-j2-1)*BOX_SIZE);
-            mctx.fillStyle = 'rgba(230, 218, 0, 1.0)';
-            mctx.fill();
-            mctx.closePath();
-
-            for (var j = j2; j < j1-1; j++) {
-                inputBoxes[curx-1][j].backgroundColor('rgba(230, 218, 0, 1.0)');
-            }
-        }
-        mctx.beginPath();
-        mctx.rect((curx-1)*BOX_SIZE, (cury-1)*BOX_SIZE, BOX_SIZE, BOX_SIZE);
-        mctx.fillStyle = 'rgba(180,170,0,1.0)';
-        mctx.fill();
-        mctx.closePath();
-
-        inputBoxes[curx-1][cury-1].backgroundColor('rgba(180,170,0,0.4)');
-
-        //
-        // highlight clue
-        //
-        
-        // clear prev highlighted clue
-        pcList[pcIndex].style.cssText = 'background-color: clear;';
-
-        var num = -1;
-        if (dir) {
-            var i = curx-1;
-            while (i >= 0 && numbers[cury-1][i] != 0) {
-                i = i-1;
-            }
-            num = numbers[cury-1][i+1];
-        } else {
-            var j = cury-1;
-            while (j >= 0 && numbers[j][curx-1] != 0) {
-                j = j-1;
-            }
-            num = numbers[j+1][curx-1];
-        }
-
-        //console.log("Number: " + num + " Across? " + dir);
-
-        pcList = acrossList;
-        pcListInd = 0;
-        var clueScroll = acrossClues;
-        if (!dir) {
-            pcList = downList;
-            pcListInd = 1;
-            clueScroll = downClues;
-        }
-        for (var i = 0; i < pcList.length; i = i+1) {
-            var obj = pcList[i];
-            var n = getClueNum(obj);
-            if (n == num) {
-                pcIndex = i;
-                obj.style.cssText = 'background-color: yellow;';
-                var topCoord = pcList[0].offsetTop;
-                clueScroll.scrollTop = obj.offsetTop - topCoord;
-                break;
-            }
-        }
-
-        // DEALING WITH LOCAL STORAGE
-
-        localStorage.setItem('curx' + PUZZLE_NUM,JSON.stringify(curx));
-        localStorage.setItem('cury' + PUZZLE_NUM,JSON.stringify(cury));
-        localStorage.setItem('direction' + PUZZLE_NUM,JSON.stringify(dir));
-        localStorage.setItem('inputVals' + PUZZLE_NUM,JSON.stringify(inputVals));
-        localStorage.setItem('fixedBoxes' + PUZZLE_NUM,JSON.stringify(fixedBoxes));
-        localStorage.setItem('pcListInd' + PUZZLE_NUM,JSON.stringify(pcListInd));
-        localStorage.setItem('pcIndex' + PUZZLE_NUM,JSON.stringify(pcIndex));
-        var perc = getCompletionPercent();
-        localStorage.setItem('percent' + PUZZLE_NUM,perc);
-
-        grayOutDoneClues(thisX, thisY, thisDir);
-    }
-
     // 
-    //	ON CLICK OF BOX, SET SELECTED BOX / CLUE
+    //  ON CLICK OF BOX, SET SELECTED BOX / CLUE
     //
     topcanvas.addEventListener('click', function(event) {
-    	var x = Math.ceil((event.pageX - canvas.offsetLeft)/BOX_SIZE);
-    	var y = Math.ceil((event.pageY - canvas.offsetTop)/BOX_SIZE);
+        var x = Math.ceil((event.pageX - canvas.offsetLeft)/BOX_SIZE);
+        var y = Math.ceil((event.pageY - canvas.offsetTop)/BOX_SIZE);
         if (contains(blanks,[x,y])) {
             return;
         }
-    	if (curx == x && cury == y) {
-    		dir = !dir;
-    	} else {
-    		curx = x;
-    		cury = y;
-    	}
-    	setSelected(curx,cury,dir);
+        if (curx == x && cury == y) {
+            dir = !dir;
+        } else {
+            curx = x;
+            cury = y;
+        }
+        setSelected(curx,cury,dir);
     });
 
-    // 0 = blank space
-    // 1 = normal
-    // 2 = fixed (no marks, i.e. revealed)
-    // 3 = checked but not right (not changed since checked)
-    // 4 = normal after checked (changed since checked)
-    // 5 = fixed (with checkmark, i.e. checked and correct)
-    var fixedBoxes = new Array(ARR_SIZE);
-    for (var i = 1; i <= ARR_SIZE; i = i+1) {
-        fixedBoxes[i-1] = new Array(ARR_SIZE);
-        for (var j = 1; j <= ARR_SIZE; j = j+1) {
-            if (contains(blanks,[i,j])) {
-                fixedBoxes[i-1][j-1] = 0;
-            } else {
-                fixedBoxes[i-1][j-1] = 1;
-            }
-        }
-    }
+    initializeFixedBoxes();
 
     //console.log(fixedBoxes);
 
+    initializeInputBoxes();
 
-    var fontSize = 26;
-    var fontWidth = 23;
-    var fontHeight = 23;
-    var fontOffsetX = 12;
-    var fontOffsetY = 16;
-    if (ARR_SIZE == 21) {
-        fontSize = 18;
-        fontWidth = 14;
-        fontHeight = 14;
-        fontOffsetX = 9;
-        fontOffsetY = 15;
-    }
-    //
-    // Define the array of inputBoxes that will allow the user to fill letters
-    //    into the squares in the puzzle -- stored as a 2D 15x15 array
-    //
-    var inputBoxes = new Array(ARR_SIZE);
-    var inputVals = [];
-
-    for (var i = 1; i <= ARR_SIZE; i = i+1) {
-      inputBoxes[i-1] = new Array(ARR_SIZE);
-      inputVals[i-1] = [];
-      for (var j = 1; j <= ARR_SIZE; j = j+1) {
-        inputVals[i-1][j-1] = "";
-        if (contains(blanks,[i,j])) {
-          inputBoxes[i-1][j-1] = 0;
-        } else if (contains(highlighted,[i,j])) {
-          inputBoxes[i-1][j-1] = new CanvasInput({
-            canvas: topcanvas,
-            fontSize: fontSize,
-            readonly: true,
-            x: BOX_SIZE*(i-1) + fontOffsetX,
-            y: BOX_SIZE*(j-1) + fontOffsetY,
-            fontFamily: myFont,
-            fontColor: '#212121',
-            fontWeight: 'bold',
-            width: fontWidth,
-            height: fontHeight,
-            padding: 0,
-            borderWidth: 0,
-            borderColor: '#000',
-            borderRadius: 0,
-            backgroundColor: '#D3D3D3',
-            boxShadow: '0px 0px 0px #000',
-            innerShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
-            placeHolder: ''
-          });
-        } else {
-          inputBoxes[i-1][j-1] = new CanvasInput({
-            canvas: topcanvas,
-            fontSize: fontSize,
-            readonly: true,
-            x: BOX_SIZE*(i-1) + fontOffsetX,
-            y: BOX_SIZE*(j-1) + fontOffsetY,
-            fontFamily: myFont,
-            fontColor: '#000000',
-            fontWeight: 'bold',
-            width: fontWidth,
-            height: fontHeight,
-            padding: 0,
-            borderWidth: 0,
-            borderColor: '#000',
-            borderRadius: 0,
-            backgroundColor: '#F0F0F0',
-            boxShadow: '0px 0px 0px #000',
-            innerShadow: '0px 0px 0px rgba(0, 0, 0, 0.5)',
-            placeHolder: ''
-          });
-        }
-      }
-    }
-
-    if (window.localStorage) {
-        //
-        // Revert to saved state...
-        //
-
-        if (localStorage.getItem("curx" + PUZZLE_NUM) != null && localStorage.getItem("cury" + PUZZLE_NUM) != null
-                && localStorage.getItem("direction" + PUZZLE_NUM) != null) {
-            curx = JSON.parse(localStorage.getItem("curx" + PUZZLE_NUM));
-            cury = JSON.parse(localStorage.getItem("cury" + PUZZLE_NUM));
-            dir = JSON.parse(localStorage.getItem("direction" + PUZZLE_NUM));                
-        }
-
-        if (localStorage.getItem("pcListInd" + PUZZLE_NUM) != null && localStorage.getItem("pcIndex" + PUZZLE_NUM) != null) {
-            pcListInd = JSON.parse(localStorage.getItem("pcListInd" + PUZZLE_NUM));
-            pcList = acrossList;
-            if (pcListInd == 1) {
-                pcList = downList;
-            }
-            if (localStorage.getItem("pcIndex" + PUZZLE_NUM)) {
-                pcIndex = localStorage.getItem("pcIndex" + PUZZLE_NUM);
-            }
-        }
-
-        if (localStorage.getItem("fixedBoxes" + PUZZLE_NUM) != null && localStorage.getItem("inputVals" + PUZZLE_NUM) != null) {
-            fixedBoxes = JSON.parse(localStorage.getItem("fixedBoxes" + PUZZLE_NUM));
-            inputVals = JSON.parse(localStorage.getItem("inputVals" + PUZZLE_NUM));
-            
-            for (var i = 1; i <= ARR_SIZE; i = i+1) {
-                for (var j = 1; j <= ARR_SIZE; j = j+1) {
-                    if (inputBoxes[i-1][j-1] == 0) {
-                        continue;
-                    }
-                    inputBoxes[i-1][j-1].value(inputVals[i-1][j-1]);
-                    if (fixedBoxes[i-1][j-1] == 2) {
-                        inputBoxes[i-1][j-1].fontColor("#0044cc");
-                    } else if (fixedBoxes[i-1][j-1] == 3) {
-                        drawX(i,j);
-                    } else if (fixedBoxes[i-1][j-1] == 4) {
-                        drawTriangle(i,j);
-                    } else if (fixedBoxes[i-1][j-1] == 5) {
-                        drawCheckmark(i,j);
-                    }
-                }
-            }
-        }
-    }
+    //console.log(inputBoxes);
+    
+    applyLocalStorage();
 
     setSelected(curx,cury,dir);
-
-    //
-    //  type = 0 (check) | 1 (reveal)
-    //  quant = 0 (square) | 1 (word) | 2 (puzzle)
-    //
-    function help(type,quant) {
-        if (gameover || noClick) {
-            return;
-        }
-        switch(quant) {
-            case 0:
-                helpBox(type,curx,cury);
-                break;
-            case 1:
-                if (dir) {
-                    var i1 = curx, i2 = curx + 1;
-                    while (!contains(blanks,[i1,cury]) && i1 > 0) {
-                        helpBox(type,i1,cury);
-                        i1--;
-                    }
-                    while (!contains(blanks,[i2,cury]) && i2 <= ARR_SIZE) {
-                        helpBox(type,i2,cury);
-                        i2++;
-                    }
-
-                } else {
-                    var j1 = cury, j2 = cury + 1;
-                    while (!contains(blanks,[curx,j1]) && j1 > 0) {
-                        helpBox(type,curx,j1);
-                        j1--;
-                    }
-                    while (!contains(blanks,[curx,j2]) && j2 <= ARR_SIZE) {
-                        helpBox(type,curx,j2);
-                        j2++;
-                    }
-                }
-                break;
-            case 2:
-                for (var i = 0; i < ARR_SIZE; i++) {
-                    for (var j = 0; j < ARR_SIZE; j++) {
-                        if (inputBoxes[i][j] == 0) {
-                            continue;
-                        } else {
-                            helpBox(type,i+1,j+1);
-                        }
-                    }
-                }
-                break;
-            default:
-                console.log("Error: Invalid input as variable 'quant'");
-        }
-        
-        if (playerWins()) {
-            delay(function() {
-                openPopup(0);
-            }, 10);
-        }
-        localStorage.setItem('fixedBoxes' + PUZZLE_NUM,JSON.stringify(fixedBoxes));
-        localStorage.setItem('inputVals' + PUZZLE_NUM,JSON.stringify(inputVals));
-        var perc = getCompletionPercent();
-        localStorage.setItem('percent' + PUZZLE_NUM,perc);
-    }
-
-    function playerWins() {
-      for (var i = 0; i < ARR_SIZE; i = i+1) {
-        for (var j = 0; j < ARR_SIZE; j = j+1) {
-          if (inputBoxes[j][i] == 0) {
-            continue;
-          } else if (answers[i][j] != inputBoxes[j][i].value()) {
-            return false;
-          }
-        }
-      }
-      gameover = true;
-      localStorage.setItem('gameover' + PUZZLE_NUM,JSON.stringify(gameover));
-      return true;
-    }
 
     </script>
 
