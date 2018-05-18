@@ -468,6 +468,7 @@ function continueResetPopup() {
 
     // clear local storage for this puzzle
     resetLocalstorage();
+    applyLocalStorage();
 
     timer = setInterval(setTime, 1000);
     idleTimer = setInterval(incrementIdle, 1000);
@@ -1517,16 +1518,18 @@ function grayOutDoneClues(curx,cury,dir) {
                     b = true;
                 }
                 if (b) {
+                    var obj = getClueObjByNumber(numbers[j][i],across);
                     if (wordIsFull(i,j,dir)) {
                         //console.log("Attempting to gray out clue at " + numbers[j][i] + " going across");
                         // gray out the corresponding clue
-                        var obj = getClueObjByNumber(numbers[j][i],across);
-
                         if (curDir && curNum == numbers[j][i]) {
                             obj.style.cssText = 'color: #909090; background-color: yellow;';
                         } else {
                             obj.style.cssText = 'color: #909090;';
                         }
+                    } else {
+                        // explicitly make clue black if not done (for resetting purposes)
+                        obj.style.cssText = 'color: #000000;';
                     }
                 }
             }
@@ -1547,15 +1550,17 @@ function grayOutDoneClues(curx,cury,dir) {
                     b = true;
                 }
                 if (b) {
+                    var obj = getClueObjByNumber(numbers[j][i],across);
                     if (wordIsFull(i,j,dir)) {
                         //console.log("Attempting to gray out clue at " + numbers[j][i] + " going down");
                         // gray out the corresponding clue
-                        var obj = getClueObjByNumber(numbers[j][i],across);
                         if (!curDir && curNum == numbers[j][i]) {
                             obj.style.cssText = 'color: #909090; background-color: yellow;';
                         } else {
                             obj.style.cssText = 'color: #909090;';
                         }
+                    } else {
+                        obj.style.cssText = 'color: #000000;';
                     }
                 }
             }
