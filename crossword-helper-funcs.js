@@ -1529,7 +1529,11 @@ function grayOutDoneClues(curx,cury,dir) {
                         }
                     } else {
                         // explicitly make clue black if not done (for resetting purposes)
-                        obj.style.cssText = 'color: #000000;';
+                        if (curDir && curNum == numbers[j][i]) {
+                            obj.style.cssText = 'color: #909090; background-color: yellow;';
+                        } else {
+                            obj.style.cssText = 'color: #000000;';
+                        }
                     }
                 }
             }
@@ -1560,7 +1564,11 @@ function grayOutDoneClues(curx,cury,dir) {
                             obj.style.cssText = 'color: #909090;';
                         }
                     } else {
-                        obj.style.cssText = 'color: #000000;';
+                        if (!curDir && curNum == numbers[j][i]) {
+                            obj.style.cssText = 'color: #909090; background-color: yellow;';
+                        } else  {
+                            obj.style.cssText = 'color: #000000;';
+                        }
                     }
                 }
             }
