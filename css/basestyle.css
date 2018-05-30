@@ -2,6 +2,13 @@
 ****  GENERAL STYLE  ****
 ************************/
 
+/* disallow highlighting any div on double click */
+div,h1,h2,h3,h4,h5,h6,p {
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
 body {
   font-family: 'Muli', sans-serif;
 }
