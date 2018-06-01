@@ -621,6 +621,9 @@
     height: 1088px;
   }
 
+}
+
+@media screen and (min-width: 1000px) {
   /*******************
   **** CROSSWORDS ****
   *******************/
@@ -629,7 +632,6 @@
     width: 40%;
     margin: 20px 3%;
   }
-
 }
 
 
