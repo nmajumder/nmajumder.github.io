@@ -581,6 +581,30 @@
     margin: 2.5%;
   }
 
+  /***********************
+  * INDEX PAGE SLIDESHOW *
+  ************************/
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    padding: 20px;
+    font-size: 25px;
+  }
+
+  .prev {
+    padding-left: 19px;
+    padding-right: 21px;
+    margin-left: 50px;
+
+  }
+
+  .next {
+    padding-right: 19px;
+    padding-left: 21px;
+    margin-right: 50px; 
+  }
+
 }
 
 @media screen and (min-width: 940px) {
