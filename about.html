@@ -39,7 +39,7 @@
     
     <div id="wrapper">
       <section>
-        <a href="img/jumbo_mag_shot.jpg" id="aboutPic"><img src="img/jumbo_mag_shot.jpg" alt="headshot photo of Nathan Majumder" class="propic"></a>
+        <div id="aboutPic" onclick="openModal();"><img src="img/jumbo_mag_shot.jpg" alt="Headshot photo of Nathan Majumder" class="propic"></div>
         <h3>About Me</h3>
         <p>Hi, I'm Nathan Majumder. I currently work as a software engineer at IBM based in the Boston area. Previously I completed my undergraduate degree at Tufts University, where I double majored in computer science and mathematics, graduating in 2017.</p>
         <p>I'm originally from Williamstown, MA, a tiny town nestled in the corner of Massachusetts bordering Vermont and New York. I attended Mount Greylock, a small regional high school where I captained the varsity soccer and basketball teams and was a member of the varsity tennis team. I played trumpet in the school band and was the treasurer of the Student Council as well as our chapter of the National Honor Society.</p>
@@ -47,7 +47,15 @@
         <p>My interests include any activity involving playing or watching sports (I'm a huge Boston sports fan, especially of the Patriots and Red Sox), listening to and playing music (aside from the trumpet I like to tinker around on the piano), watching any good tv shows and movies that are out, skiing, hiking, traveling, and much more. More recently, I have taken up the hobby of making crossword puzzles, which you can check out on the <a href="crossword.html">Crosswords</a> page.</p>
         <p>While at Tufts, I had the privilege of spending a semester studying abroad in Budapest, Hungary. I enrolled in a computer science program called AIT-Budapest with about 70 other students, mostly from America. I had the time of my life and fell in love with Budapest, while also traveling around to lots of other interesting European countries. I put up some pictures from that trip in the <a href="abroad.html">Abroad</a> page of my website. Since then, once my interest in traveling was piqued, I've traveled to tons of cool places within the US and internationally. Some of these pictures are in the album on the <a href="index.html">homepage</a> of my website. Enjoy!</p>
       </section>
-      
+      <!-- The Modal/Lightbox -->
+      <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+          <div id="modal-slide">
+            <img id="modal-img" src="img/jumbo_mag_shot.jpg">
+          </div>
+        </div>
+      </div>
       <footer>
         <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>
         <a href="https://github.com/nmajumder"><img src="img/GH_logo.png" alt="Github logo"></a>
@@ -55,5 +63,16 @@
         <p>&copy; 2018 Nathan Majumder.</p>
       </footer>
     </div>
+    <script>
+      function openModal() {
+        console.log("into openModal")
+        document.getElementById('myModal').style.display = "block";
+        document.getElementById("modal-slide").style.display = "block";
+      }
+      function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+        document.getElementById("modal-slide").style.display = "none";
+      }
+    </script>
   </body>
 </html>
