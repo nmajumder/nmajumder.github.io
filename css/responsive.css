@@ -588,6 +588,7 @@
   /* Next & previous buttons */
   .prev,
   .next {
+    top: 45%;
     padding: 20px;
     font-size: 25px;
   }

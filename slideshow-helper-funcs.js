@@ -83,6 +83,26 @@ function checkKey(e) {
 
 }
 
+function updateCss(e) {
+	var prevMobile = document.getElementById('prevMobile');
+	var prevWeb = document.getElementById('prevWeb');
+	var nextMobile = document.getElementById('nextMobile');
+	var nextWeb = document.getElementById('nextWeb');
+	//console.log(e);
+	//console.log(window.innerWidth);
+	if (window.innerWidth >= 680) {
+		nextWeb.style.display = "block";
+		prevWeb.style.display = "block";
+		nextMobile.style.display = "none";
+		prevMobile.style.display = "none";
+	} else {
+		nextWeb.style.display = "none";
+		prevWeb.style.display = "none";
+		nextMobile.style.display = "block";
+		prevMobile.style.display = "block";
+	}
+}
+
 function initializeImgArray() {
 	imgObjs = document.getElementById('gallery').getElementsByTagName('img');
 	imgs = [];
