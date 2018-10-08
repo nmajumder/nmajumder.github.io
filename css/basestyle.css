@@ -782,6 +782,13 @@ section p {
   border-radius: .5em;
 }
 
+#comment_wrapper {
+  display: inline-block;
+  width: 90%;
+  padding-left: 45px; 
+  padding-top: 50px;
+}
+
 /**** site body ****/
 
 body {

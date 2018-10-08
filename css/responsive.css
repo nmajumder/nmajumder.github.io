@@ -78,6 +78,10 @@
   #crossword {
     margin-top: -70px;
   }
+
+  #comment_wrapper {
+    display: none;
+  }
 }
 
 
