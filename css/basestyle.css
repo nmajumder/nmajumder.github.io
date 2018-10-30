@@ -738,6 +738,12 @@ section p {
   background-size: cover;
 }
 
+#crossword16 {
+  background-image: url("../img/crossword_empty_imgs/c16-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .largeIcon {
   position: absolute;
   margin-left: 8px;
