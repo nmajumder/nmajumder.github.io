@@ -744,6 +744,12 @@ section p {
   background-size: cover;
 }
 
+#crossword17 {
+  background-image: url("../img/crossword_empty_imgs/c17-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .largeIcon {
   position: absolute;
   margin-left: 8px;
@@ -760,12 +766,12 @@ section p {
   width: 100px;
 }
 
-.holidayIcon {
+#specialEditionIcon {
   position: absolute;
   margin-left: 13px;
   margin-top: 8px;
   height: 35px;
-  width: 35px; 
+  width: 35px;
 }
 
 .progressBarShadedHalloween {
