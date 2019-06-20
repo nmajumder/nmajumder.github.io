@@ -49,6 +49,23 @@
       </section>
       <section>
         <ul id="crossGallery">
+          <li id="crossword18" class="crossLi">
+            <a href="crossword18.html" class="overlay">
+            <div class="crossWrap">
+              <div class="titleDescrip">
+                <h2>Let's Get Colloquial (Unthemed)</h2>
+                <p>June 2019</p>
+              </div>
+              <div class="sizeDifficulty">
+                <h3 class="difficult">15 x 15 &bull; Difficult</h4>
+              </div>
+              <div id="progBar18" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c18prog" class="progressVal">X%</h3>
+              </div>
+            </div>
+            </a>
+          </li>
           <li id="crossword17" class="crossLi">
             <a href="crossword17.html" class="overlay">
             <div class="crossWrap">
@@ -346,7 +363,7 @@
 
     <script type="text/javascript">
 
-      const NUM_CROSSWORDS = 17;
+      const NUM_CROSSWORDS = document.getElementById("crossGallery").getElementsByTagName("li").length;
 
       for (var i = 1; i <= NUM_CROSSWORDS; i++) {
         // get crossword number as string to insert into localstorage names
