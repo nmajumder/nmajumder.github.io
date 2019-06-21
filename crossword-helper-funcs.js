@@ -316,6 +316,8 @@ function setSelected(curx,cury,dir) {
     localStorage.setItem('percent' + PUZZLE_NUM,perc);
 
     grayOutDoneClues(thisX, thisY, thisDir);
+
+    applyAllBoxDrawings();
 }
 
 function applyLocalStorage() {
@@ -353,13 +355,11 @@ function applyLocalStorage() {
                     }
                     inputBoxes[i-1][j-1].value(inputVals[i-1][j-1]);
                     if (fixedBoxes[i-1][j-1] == 2) {
-                        inputBoxes[i-1][j-1].fontColor("#0044cc");
+                        markRevealed(i,j);
                     } else if (fixedBoxes[i-1][j-1] == 3) {
-                        drawX(i,j);
-                    } else if (fixedBoxes[i-1][j-1] == 4) {
-                        drawTriangle(i,j);
+                        markCheckedWrong(i,j);
                     } else if (fixedBoxes[i-1][j-1] == 5) {
-                        drawCheckmark(i,j);
+                        markCheckedCorrect(i,j);
                     }
                 }
             }
@@ -481,7 +481,7 @@ function resetLocalstorage() {
     localStorage.setItem('time' + PUZZLE_NUM, JSON.stringify(totalSeconds));
     initializeInputBoxes();
     initializeFixedBoxes();
-    clearDrawing();
+    clearAllDrawing();
     initializeHighlightedSpace();
     setSelected(curx,cury,dir);
 }
@@ -691,6 +691,9 @@ function getNextDelete(xc,yc,direction) {
             if (fixedBoxes[xc-2][yc-1] != 2 && fixedBoxes[xc-2][yc-1] != 5) {
                 inputVals[xc-2][yc-1] = "";
                 inputBoxes[xc-2][yc-1].value("");
+                if (fixedBoxes[xc-2][yc-1] == 3) {
+                    fixedBoxes[xc-2][yc-1] = 4;
+                }
             }
             return [xc-1,yc];
         case 1:
@@ -700,9 +703,12 @@ function getNextDelete(xc,yc,direction) {
             if (gameover) {
                 return [xc,yc-1];
             }
-            if (inputVals[xc-1][yc-2] != "" && fixedBoxes[xc-1][yc-2] != 2 && fixedBoxes[xc-1][yc-2] != 5) {
+            if (fixedBoxes[xc-1][yc-2] != 2 && fixedBoxes[xc-1][yc-2] != 5) {
                 inputVals[xc-1][yc-2] = "";
                 inputBoxes[xc-1][yc-2].value("");
+                if (fixedBoxes[xc-1][yc-2] == 3) {
+                    fixedBoxes[xc-1][yc-2] = 4;
+                }
             }
             return [xc,yc-1];
         default:
@@ -1209,7 +1215,6 @@ document.onkeydown = function(evt) {
 
     if (fixedBoxes[curx-1][cury-1] == 3) {
         fixedBoxes[curx-1][cury-1] = 4;
-        drawTriangle(curx,cury);  
     }
 
     if (key == 8) {
@@ -1576,7 +1581,7 @@ function grayOutDoneClues(curx,cury,dir) {
     }
 }
 
-function clearCorner(xcoord,ycoord) {
+/*function clearCorner(xcoord,ycoord) {
     var size = 14;
     var offset = 15;
     if (ARR_SIZE == 21) {
@@ -1584,58 +1589,18 @@ function clearCorner(xcoord,ycoord) {
         offset = 10;
     }
     tctx.clearRect(xcoord*BOX_SIZE - offset, (ycoord-1)*BOX_SIZE + 1, size, size);
-}
+}*/
 
-function drawX(xcoord,ycoord) {
-    clearCorner(xcoord,ycoord);
-
-    var size1 = 3
-    var size2 = 13;
-    var strokeSize = 2;
-    if (ARR_SIZE == 21) {
-        //size1 = 2;
-        size2 = 8;
-        strokeSize = 1;
-    }
-
-    tctx.beginPath();
-    tctx.moveTo(xcoord*BOX_SIZE - size1, (ycoord-1)*BOX_SIZE + size1); tctx.lineTo(xcoord*BOX_SIZE - size2, (ycoord-1)*BOX_SIZE + size2);
-    tctx.moveTo(xcoord*BOX_SIZE - size2, (ycoord-1)*BOX_SIZE + size1); tctx.lineTo(xcoord*BOX_SIZE - size1, (ycoord-1)*BOX_SIZE + size2);
-    tctx.strokeStyle = "#CC0000";
-    tctx.lineWidth = strokeSize;
-    tctx.stroke();
-    tctx.closePath();
-}
-
-function drawCheckmark(xcoord,ycoord) {
-    clearCorner(xcoord,ycoord);
-
-    var size1 = 3;
-    var size2 = 7;
-    var size3 = 10;
-    var size4 = 13;
-    var strokeSize = 3;
-    if (ARR_SIZE == 21) {
-        size1 = 2;
-        size2 = 4;
-        size3 = 7;
-        size4 = 8;
-        strokeSize = 1;
-    }
-    
-    tctx.beginPath();
-    tctx.moveTo(xcoord*BOX_SIZE - size4, (ycoord-1)*BOX_SIZE + size2);
-    tctx.lineTo(xcoord*BOX_SIZE - size3, (ycoord-1)*BOX_SIZE + size3);
-    tctx.lineTo(xcoord*BOX_SIZE - size1, (ycoord-1)*BOX_SIZE + size1);
-    tctx.strokeStyle = "#00802b";
-    tctx.lineWidth = strokeSize;
-    tctx.stroke();
-    tctx.closePath();
+function clearBox(xcoord,ycoord) {
+    console.log("Clearing rectangle with corners " + xcoord + "," + ycoord);
+    // need to avoid clearing whole box due to number in top left being on same canvas
+    // clear bottom left quadrant
+    tctx.clearRect((xcoord-1)*BOX_SIZE + 1, (ycoord-1)*BOX_SIZE + (BOX_SIZE/2) - 1, BOX_SIZE/2, BOX_SIZE/2);
+    // clear top right quadrant
+    tctx.clearRect((xcoord-1)*BOX_SIZE + (BOX_SIZE/2) - 1, (ycoord-1)*BOX_SIZE + 1, BOX_SIZE/2, BOX_SIZE/2);
 }
 
 function drawTriangle(xcoord,ycoord) {
-    clearCorner(xcoord,ycoord);
-
     var size1 = 3;
     var size2 = 13;
     if (ARR_SIZE == 21) {
@@ -1673,14 +1638,72 @@ function drawTriangle(xcoord,ycoord) {
     tctx.closePath();
 }
 
-function clearDrawing() {
+function drawSlash(xcoord,ycoord) {
+    var strokeSize = 3;
+    if (ARR_SIZE == 21) {
+        strokeSize = 1.5;
+    }
+
+    // draw thicker shorter path
+    tctx.beginPath();
+    tctx.moveTo(xcoord*BOX_SIZE-3, (ycoord-1)*BOX_SIZE+3);
+    tctx.lineTo((xcoord-1)*BOX_SIZE+3, ycoord*BOX_SIZE-3);
+    tctx.strokeStyle = "#FF0000";
+    tctx.lineWidth = strokeSize;
+    tctx.stroke();
+    tctx.closePath(); 
+    // draw skinnier slightly longer path so there is not a flat ending to line
+    tctx.beginPath();
+    tctx.moveTo(xcoord*BOX_SIZE-2, (ycoord-1)*BOX_SIZE+2);
+    tctx.lineTo((xcoord-1)*BOX_SIZE+2, ycoord*BOX_SIZE-2);
+    tctx.strokeStyle = "#FF0000";
+    tctx.lineWidth = strokeSize/2;
+    tctx.stroke();
+    tctx.closePath();
+}
+
+function clearAllDrawing() {
     for (var x = 1; x <= ARR_SIZE; x++) {
         for (var y = 1; y <= ARR_SIZE; y++) {
             if (!contains(blanks,[x,y])) {
-                clearCorner(x,y);
+                clearBox(x,y);
             }
         }
     }
+}
+
+function applyAllBoxDrawings() {
+    clearAllDrawing();
+    for (var x = 1; x <= ARR_SIZE; x++) {
+        for (var y = 1; y <= ARR_SIZE; y++) {
+            if (!contains(blanks,[x,y])) {
+                inputBoxes[x-1][y-1].value(inputVals[x-1][y-1]);
+                if (fixedBoxes[x-1][y-1] == 2) {
+                    markRevealed(x,y);
+                } else if (fixedBoxes[x-1][y-1] == 3) {
+                    markCheckedWrong(x,y);
+                } else if (fixedBoxes[x-1][y-1] == 5) {
+                    markCheckedCorrect(x,y);
+                }
+            }
+        }
+    }
+}
+
+function markCheckedCorrect(x,y) {
+    fixedBoxes[x-1][y-1] = 5;
+    inputBoxes[x-1][y-1].fontColor("#0044cc");
+}
+
+function markCheckedWrong(x,y) {
+    fixedBoxes[x-1][y-1] = 3;
+    drawSlash(x,y);
+}
+
+function markRevealed(x,y) {
+    inputBoxes[x-1][y-1].fontColor("#0044cc");
+    drawTriangle(x,y);
+    fixedBoxes[x-1][y-1] = 2;
 }
 
 //
@@ -1688,28 +1711,30 @@ function clearDrawing() {
 //
 function helpBox(type,x,y) {
     if (type == 0) { // if check box 
+        // empty box
         if (inputVals[x-1][y-1] == "") {
             return;
         }
+        // box is unchangeable (prev revealed / checked and right)
         if (fixedBoxes[x-1][y-1] == 2 || fixedBoxes[x-1][y-1] == 5) {
             return;
         }
         if (inputBoxes[x-1][y-1].value() == answers[y-1][x-1]) {
-            fixedBoxes[x-1][y-1] = 5;
-            drawCheckmark(x,y);
+            markCheckedCorrect(x,y);
         } else {
-            fixedBoxes[x-1][y-1] = 3;
-            drawX(x,y);
+            markCheckedWrong(x,y);
         }
     } else { // if reveal box
-        clearCorner(x,y);
+        // if cannot be changed, just return
+        if (fixedBoxes[x-1][y-1] == 2 || fixedBoxes[x-1][y-1] == 5) {
+            return;
+        }
 
         var lastLetter = lastLtr(x,y);
 
         inputBoxes[x-1][y-1].value(answers[y-1][x-1]);
         inputVals[x-1][y-1] = answers[y-1][x-1];
-        inputBoxes[x-1][y-1].fontColor("#0044cc");
-        fixedBoxes[x-1][y-1] = 2;
+        markRevealed(x,y);
 
         if (lastLetter) {
             if (playerWins()) {
