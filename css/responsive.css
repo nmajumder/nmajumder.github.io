@@ -419,6 +419,14 @@
     position: absolute;
   }
 
+  #drawCanvas {
+    width: 630px;
+    min-height: 630px;
+    top: 260px;
+    left: 45px;
+    position: absolute;
+  }
+
   #clues {
     margin-left: 45px;
     margin-top: 660px;
@@ -779,6 +787,10 @@
   }
 
   #topCanvas {
+    top: 230px;
+  }
+
+  #drawCanvas {
     top: 230px;
   }
 

@@ -75,6 +75,7 @@
         <canvas id="canvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
         <canvas id="midCanvas" width="630px" height="630px"></canvas>
         <canvas id="topCanvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
+        <canvas id="drawCanvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
         <div id="clues">
             <div id="across">
                 <h3 class="center">Across</h3>
@@ -214,11 +215,13 @@
     var canvas = document.getElementById("canvas");
     var topcanvas = document.getElementById("topCanvas");
     var midcanvas = document.getElementById("midCanvas");
+    var drawcanvas = document.getElementById("drawCanvas");
 
     // Get the canvas contexts
     var ctx = canvas.getContext("2d");
     var tctx = topcanvas.getContext("2d");
     var mctx = midcanvas.getContext("2d");
+    var dctx = drawcanvas.getContext("2d");
 
 
     // Get entire crossword wrapper
@@ -319,7 +322,7 @@
     // 
     //  ON CLICK OF BOX, SET SELECTED BOX / CLUE
     //
-    topcanvas.addEventListener('click', function(event) {
+    drawcanvas.addEventListener('click', function(event) {
         var x = Math.ceil((event.pageX - canvas.offsetLeft)/BOX_SIZE);
         var y = Math.ceil((event.pageY - canvas.offsetTop)/BOX_SIZE);
         if (contains(blanks,[x,y])) {

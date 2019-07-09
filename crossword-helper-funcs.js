@@ -1595,9 +1595,9 @@ function clearBox(xcoord,ycoord) {
     console.log("Clearing rectangle with corners " + xcoord + "," + ycoord);
     // need to avoid clearing whole box due to number in top left being on same canvas
     // clear bottom left quadrant
-    tctx.clearRect((xcoord-1)*BOX_SIZE + 1, (ycoord-1)*BOX_SIZE + (BOX_SIZE/2) - 1, BOX_SIZE/2, BOX_SIZE/2);
+    dctx.clearRect((xcoord-1)*BOX_SIZE + 1, (ycoord-1)*BOX_SIZE + (BOX_SIZE/2) - 1, BOX_SIZE/2, BOX_SIZE/2);
     // clear top right quadrant
-    tctx.clearRect((xcoord-1)*BOX_SIZE + (BOX_SIZE/2) - 1, (ycoord-1)*BOX_SIZE + 1, BOX_SIZE/2, BOX_SIZE/2);
+    dctx.clearRect((xcoord-1)*BOX_SIZE + (BOX_SIZE/2) - 1, (ycoord-1)*BOX_SIZE + 1, BOX_SIZE/2, BOX_SIZE/2);
 }
 
 function drawTriangle(xcoord,ycoord) {
@@ -1608,16 +1608,16 @@ function drawTriangle(xcoord,ycoord) {
         size2 = 9;
     }
 
-    tctx.beginPath();
-    tctx.moveTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
-    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size2);
-    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size1);
-    tctx.lineTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
+    dctx.beginPath();
+    dctx.moveTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
+    dctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size2);
+    dctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size1);
+    dctx.lineTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
 
-    tctx.fillStyle = "#FF0000";
-    tctx.fill();
+    dctx.fillStyle = "#FF0000";
+    dctx.fill();
 
-    tctx.closePath();
+    dctx.closePath();
 
     var size1 = 4;
     var size2 = 11;
@@ -1626,16 +1626,16 @@ function drawTriangle(xcoord,ycoord) {
         size2 = 7;
     }
 
-    tctx.beginPath();
-    tctx.moveTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
-    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size2);
-    tctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size1);
-    tctx.lineTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
+    dctx.beginPath();
+    dctx.moveTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
+    dctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size2);
+    dctx.lineTo(xcoord*BOX_SIZE-size1, (ycoord-1)*BOX_SIZE + size1);
+    dctx.lineTo(xcoord*BOX_SIZE-size2, (ycoord-1)*BOX_SIZE + size1);
 
-    tctx.fillStyle = "#000000";
-    tctx.fill();
+    dctx.fillStyle = "#000000";
+    dctx.fill();
 
-    tctx.closePath();
+    dctx.closePath();
 }
 
 function drawSlash(xcoord,ycoord) {
@@ -1645,21 +1645,21 @@ function drawSlash(xcoord,ycoord) {
     }
 
     // draw thicker shorter path
-    tctx.beginPath();
-    tctx.moveTo(xcoord*BOX_SIZE-3, (ycoord-1)*BOX_SIZE+3);
-    tctx.lineTo((xcoord-1)*BOX_SIZE+3, ycoord*BOX_SIZE-3);
-    tctx.strokeStyle = "#FF0000";
-    tctx.lineWidth = strokeSize;
-    tctx.stroke();
-    tctx.closePath(); 
+    dctx.beginPath();
+    dctx.moveTo(xcoord*BOX_SIZE-3, (ycoord-1)*BOX_SIZE+3);
+    dctx.lineTo((xcoord-1)*BOX_SIZE+3, ycoord*BOX_SIZE-3);
+    dctx.strokeStyle = "#FF0000";
+    dctx.lineWidth = strokeSize;
+    dctx.stroke();
+    dctx.closePath(); 
     // draw skinnier slightly longer path so there is not a flat ending to line
-    tctx.beginPath();
-    tctx.moveTo(xcoord*BOX_SIZE-2, (ycoord-1)*BOX_SIZE+2);
-    tctx.lineTo((xcoord-1)*BOX_SIZE+2, ycoord*BOX_SIZE-2);
-    tctx.strokeStyle = "#FF0000";
-    tctx.lineWidth = strokeSize/2;
-    tctx.stroke();
-    tctx.closePath();
+    dctx.beginPath();
+    dctx.moveTo(xcoord*BOX_SIZE-2, (ycoord-1)*BOX_SIZE+2);
+    dctx.lineTo((xcoord-1)*BOX_SIZE+2, ycoord*BOX_SIZE-2);
+    dctx.strokeStyle = "#FF0000";
+    dctx.lineWidth = strokeSize/2;
+    dctx.stroke();
+    dctx.closePath();
 }
 
 function clearAllDrawing() {
