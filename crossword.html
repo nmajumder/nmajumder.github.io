@@ -49,6 +49,23 @@
       </section>
       <section>
         <ul id="crossGallery">
+          <li id="crossword19" class="crossLi">
+            <a href="crossword19.html" class="overlay">
+            <div class="crossWrap">
+              <div class="titleDescrip">
+                <h2>It's Your Turn</h2>
+                <p>July 2019</p>
+              </div>
+              <div class="sizeDifficulty">
+                <h3 class="moderate">15 x 15 &bull; Moderate</h4>
+              </div>
+              <div id="progBar19" class="progressBarShaded"></div>
+              <div class="progressBarOutline">
+                <h3 id="c19prog" class="progressVal">X%</h3>
+              </div>
+            </div>
+            </a>
+          </li>
           <li id="crossword18" class="crossLi">
             <a href="crossword18.html" class="overlay">
             <div class="crossWrap">
@@ -393,6 +410,13 @@
           CSS += " border-radius: .3em .3em .3em .3em;";
         }
         bar.style.cssText = CSS;
+
+        // setting background image for crossword tile
+        var fullCrossDiv = document.getElementById("crossword" + PUZZLE_NUM);
+        var backgroundImg = 'img/crossword_empty_imgs/c' + PUZZLE_NUM + '-empty.png';
+        fullCrossDiv.style.backgroundImage = "url('" + backgroundImg + "')";
+        fullCrossDiv.style.backgroundRepeat = "no-repeat";
+        fullCrossDiv.style.backgroundSize = "cover";
       }
 
     </script>

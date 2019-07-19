@@ -9,6 +9,7 @@ function initializeHighlightedSpace() {
 }
 
 function initializeGridPattern() {
+    console.log(answers);
     // draw basic lines for grid
     tctx.beginPath();
 
@@ -25,7 +26,8 @@ function initializeGridPattern() {
 
     for (var i = 0; i < ARR_SIZE; i++) {
         for (var j = 0; j < ARR_SIZE; j++) {
-            //console.log(i + " " + j + " " + answers[i][j]);
+            console.log(i + " " + j);
+            console.log(answers[i][j]);
             if (answers[i][j] == 0) {
                 tctx.rect(j*BOX_SIZE,i*BOX_SIZE,BOX_SIZE,BOX_SIZE);
             }

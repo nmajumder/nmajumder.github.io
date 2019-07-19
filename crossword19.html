@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108165472-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-108165472-1');
+    </script>
+
+    <meta charset="utf-8">
+    <title>Nathan Majumder</title>
+    <script type='text/javascript' language='javascript' src='CanvasInput-master/CanvasInput.js'></script>
+    <script type='text/javascript' language='javascript' src='crossword-helper-funcs.js'></script>
+    <script type='text/javascript' language='javascript' src='ca/ca19.js'></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Exo:400,600,600italic|Muli' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/basestyle.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body id="crosswords">
+    <header>
+      <a href="index.html" id="logo">
+        <h1>Nathan Majumder</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Homepage</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects.html">Projects</a></li> 
+          <li><a href="crossword.html" class="selected">Crosswords</a></li>         
+          <li><a href="abroad.html">Abroad</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="screenSizeMsg">
+        <h2>Sorry, crosswords are not supported on screens of this size.</h2>
+        <h3>Please try again on a larger device. Screen width must be greater than 680 pixels to use this feature, but the best experience is on devices of 1100 pixels or greater (any normal computer will work). Thanks!
+    </div>
+    <div id="crosswordWrapper">
+        <div class="crossTitleBar">
+            <h2 class="crossTitle">It's Your Turn</h2>
+            <h4 class="crossAuthor">By Nathan Majumder</h4>
+        </div>
+        <div class="checkDropdown">
+          <button class="dropbtn">Check</button>
+          <div class="dropdown-content">
+            <a onclick="help(0,0)">Square</a>
+            <a onclick="help(0,1)">Word</a>
+            <a onclick="help(0,2)">Puzzle</a>
+          </div>
+        </div>
+        <div class="revealDropdown">
+          <button class="dropbtn">Reveal</button>
+          <div class="dropdown-content">
+            <a onclick="help(1,0)">Square</a>
+            <a onclick="help(1,1)">Word</a>
+            <a onclick="help(1,2)">Puzzle</a>
+          </div>
+        </div>
+        <div class="timer">
+            <button id="pauseBtn" onclick="pauseGame()"><img src="img/pause.png"></button>
+            <span id="timeCounter"><label id="minutes">00</label>:<label id="seconds">00</label></span>
+        </div>
+        <button id="backbtn" onclick="crossBack()">Back</button>
+        <button id="clearbtn" onclick="crossClear()">Reset</button>
+
+        <canvas id="canvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
+        <canvas id="midCanvas" width="630px" height="630px"></canvas>
+        <canvas id="topCanvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
+        <canvas id="drawCanvas" width="630px" height="630px" style="border: 1px solid black;"></canvas>
+        <div id="clues">
+            <div id="across">
+                <h3 class="center">Across</h3>
+                <div class="clueScroll">
+                    <ul class="numClues">
+                        <li onclick="clueClicked(this,0)"><span class="bold">1.</span> Work alongside a cashier</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">4.</span> Last-minute costume</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">9.</span> Palindromic male name</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">13.</span> Archipelago unit: Abbr.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">14.</span> Like many gymnasts, physically</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">15.</span> * "My bad"</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">16.</span> * Bit of practice for a resident</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">18.</span> Those eligible to be drafted, historically</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">19.</span> Catch wind (of)</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">20.</span> Take second, say</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">22.</span> "Good Will Hunting" sch.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">23.</span> Braved some rapids, perhaps</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">25.</span> * Hot water</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">27.</span> * Fingerprint, maybe</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">28.</span> Rib comedically</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">31.</span> Red or Card, e.g.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">32.</span> Delta hub</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">33.</span> Bodily reflex in a haunted house, maybe</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">34.</span> Place to drop a line</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">35.</span> * Event where the starred answers might be found</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">38.</span> Inferiors of sgts.</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">40.</span> Makes a misstep</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">41.</span> Apt name for a lawyer</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">44.</span> Store window sign</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">45.</span> City destroyed by Godzilla</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">47.</span> * Insurance agent's calculation</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">48.</span> * Head case?</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">50.</span> One of a popular disco trio</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">52.</span> Exit key</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">53.</span> Like cliches</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">56.</span> Something exchanged, or heard, at a wedding</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">57.</span> Essentials</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">59.</span> * Secretary of State's skill</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">62.</span> * Forbidden</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">63.</span> Collect slowly, as information</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">64.</span> Young fella</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">65.</span> Tuck away</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">66.</span> Mournful poem</li>
+                        <li onclick="clueClicked(this,0)"><span class="bold">67.</span> Big shots on campus: Abbr.</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="down">
+                <h3 class="center">Down</h3>
+                <div class="clueScroll">
+                    <ul class="numClues">
+                        <li onclick="clueClicked(this,1)"><span class="bold">1.</span> Social media profile bit, briefly</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">2.</span> Driveway choice</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">3.</span> Overjoyed</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">4.</span> Reason for eye black</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">5.</span> Billboard topper</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">6.</span> Redding of soul</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">7.</span> Something on the court or the bar</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">8.</span> Convictions</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">9.</span> Ball or cart suffix</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">10.</span> Quiver</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">11.</span> Movie precurser</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">12.</span> Kind of bar</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">15.</span> Climbing documentary "Free ___"</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">17.</span> Give stars to</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">21.</span> Works in a gallery</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">23.</span> Early maker of color TVs</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">24.</span> Tap, as one's fingers</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">26.</span> One word in ICU</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">29.</span> Cry in a futbol stadium</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">30.</span> It might keep you up at night</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">33.</span> Heating option</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">34.</span> Chem. class measures</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">35.</span> Narrow</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">36.</span> Tick off</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">37.</span> Seize</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">38.</span> Stereotypical safety item in a minivan</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">39.</span> Group in many a study</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">41.</span> Puts on a blinker</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">42.</span> Junker, e.g.</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">43.</span> Squeeze (out)</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">44.</span> K-9 leads</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">45.</span> ___ Lady (Mary)</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">46.</span> Tiny bit</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">47.</span> Dunder Mifflin unit</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">49.</span> "Wishing won't make ___"</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">51.</span> Dark wood</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">54.</span> Cultivate</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">55.</span> Olympics stabber</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">58.</span> Market index, with "the"</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">60.</span> Gamer's annoyance</li>
+                        <li onclick="clueClicked(this,1)"><span class="bold">61.</span> N.F.L. player's accumulation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popup">
+        <h2 id="popupmsg">Congratulations, you've successfully solved the puzzle!</h2>
+        <button id="closebtn" onclick="closePopup()">Close</button>
+    </div>
+    <div id="resetpopup">
+        <h2 id="resetpopupmsg">Are you sure you want to reset this puzzle? This cannot be undone.</h2>
+        <button id="cancelresetbtn" onclick="cancelResetPopup()">Cancel</button>
+        <button id="continueresetbtn" onclick="continueResetPopup()">Reset</button>
+    </div>
+    <div id="comment_wrapper">
+        <div id="disqus_thread"></div>
+    </div>
+    <script>
+
+
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    
+    var disqus_config = function () {
+    this.page.url = "http://nmajumder.github.io/crossword19.html";  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = "crossword19"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://nmajumder-github-io-crossword.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments.</a></noscript>
+
+    <script type="text/javascript">
+    document.title = document.getElementsByClassName("crossTitle")[0].innerHTML;
+    
+    // SET CROSSWORD PUZZLE NUMBER -- TO BE INSERTED INTO LOCALSTORAGE VAR NAMES
+    // must be a string of the number only
+    const PUZZLE_NUM = "19";
+
+    const ARR_SIZE = 15;
+    const BOARD_SIZE = 630;
+    const BOX_SIZE = BOARD_SIZE / ARR_SIZE;
+
+    var canvas = document.getElementById("canvas");
+    var topcanvas = document.getElementById("topCanvas");
+    var midcanvas = document.getElementById("midCanvas");
+    var drawcanvas = document.getElementById("drawCanvas");
+
+    // Get the canvas contexts
+    var ctx = canvas.getContext("2d");
+    var tctx = topcanvas.getContext("2d");
+    var mctx = midcanvas.getContext("2d");
+    var dctx = drawcanvas.getContext("2d");
+
+
+    // Get entire crossword wrapper
+    var wrapper = document.getElementById("crosswordWrapper");
+    var popup = document.getElementById("popup");
+    var popupmsg = document.getElementById("popupmsg");
+    var closebtn = document.getElementById("closebtn");
+
+    var gameover = false;
+    if (localStorage.getItem("gameover" + PUZZLE_NUM)) {
+        gameover = JSON.parse(localStorage.getItem("gameover" + PUZZLE_NUM));
+    } else {
+        localStorage.setItem('gameover' + PUZZLE_NUM,JSON.stringify(gameover));
+    }
+
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    if (localStorage.getItem("time" + PUZZLE_NUM)) {
+        totalSeconds = JSON.parse(localStorage.getItem("time" + PUZZLE_NUM));
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
+
+    var idleSeconds = 0;
+
+    var noClick = false;
+    if (!gameover) {
+        var timer = setInterval(setTime, 1000);
+        var idleTimer = setInterval(incrementIdle, 1000);
+        openPopup(3);
+    }
+
+    // initialize variables to be used throughout
+    blanks = [];
+    highlighted = [];
+
+    initializeHighlightedSpace();
+
+    //console.log(answers);
+
+    //
+    // Draw the darker gray "highlighted" answer boxes (must be done custom by hand)
+    //
+    ctx.beginPath();
+
+    ctx.rect(10*BOX_SIZE,1*BOX_SIZE,5*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(0,2*BOX_SIZE,9*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(8*BOX_SIZE,4*BOX_SIZE,7*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(0,5*BOX_SIZE,4*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(3*BOX_SIZE,7*BOX_SIZE,9*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(11*BOX_SIZE,9*BOX_SIZE,4*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(0,10*BOX_SIZE,7*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(6*BOX_SIZE,12*BOX_SIZE,9*BOX_SIZE,1*BOX_SIZE);
+    ctx.rect(0,13*BOX_SIZE,5*BOX_SIZE,1*BOX_SIZE);
+
+    ctx.fillStyle = "#D3D3D3";
+    ctx.fill();
+
+    ctx.closePath();
+
+    //
+    // Draw the basic grid for the puzzle
+    // draw the black spaces in the puzzle
+    //
+    initializeGridPattern();
+
+    //
+    // Draw the numbers in the corners (automated for all puzzles)
+    //
+    // Also store the space where each number is
+    //
+    var numbers = new Array(ARR_SIZE);
+
+    initializeClueNumbers();
+
+    //console.log(numbers);
+
+    //
+    // initialize the array of blanks (black squares) and highlighted (darker gray words)
+    // this should be the same for all puzzles as long as the same colors are used
+    // i.e. #000000 --> (0,0,0,255) and #D3D3D3 --> (211,211,211,255)
+    //
+    initializeBlanksArray();
+
+    // check to make sure blanks has right values
+    /*for (i = 0; i < blanks.length; i++) {
+      console.log(blanks[i][0], blanks[i][1]);
+    }*/
+
+
+    //
+    // DEAL WITH THE CLUE-BOX INTERACTIONS HERE
+    //
+
+    // get clue lists as javascript variables
+    var acrossList = document.getElementById("across").getElementsByTagName("li");
+    var downList = document.getElementById("down").getElementsByTagName("li");
+
+    var acrossClues = document.getElementById("across").getElementsByClassName("clueScroll")[0];
+    var downClues = document.getElementById("down").getElementsByClassName("clueScroll")[0];
+
+
+    var pcIndex = 0; // index in prev clue list
+    var pcList = acrossList;
+    var pcListInd = 0;
+    //clueClicked(pcList[pcIndex],0);
+
+    var extraKeyDown = false;
+    var shiftKeyDown = false;
+
+    // 
+    //  ON CLICK OF BOX, SET SELECTED BOX / CLUE
+    //
+    drawcanvas.addEventListener('click', function(event) {
+        var x = Math.ceil((event.pageX - canvas.offsetLeft)/BOX_SIZE);
+        var y = Math.ceil((event.pageY - canvas.offsetTop)/BOX_SIZE);
+        if (contains(blanks,[x,y])) {
+            return;
+        }
+        if (curx == x && cury == y) {
+            dir = !dir;
+        } else {
+            curx = x;
+            cury = y;
+        }
+        setSelected(curx,cury,dir);
+    });
+
+    initializeFixedBoxes();
+
+    //console.log(fixedBoxes);
+
+    initializeInputBoxes();
+
+    //console.log(inputBoxes);
+    
+    applyLocalStorage();
+
+    setSelected(curx,cury,dir);
+
+    </script>
+
+    <footer>
+        <a href="http://facebook.com/nathanmajumder"><img src="img/FB_logo.png" alt="Facebook logo"></a>
+        <a href="https://github.com/nmajumder"><img src="img/GH_logo.png" alt="Github logo"></a>
+        <a href="https://www.linkedin.com/pub/nathan-majumder/a6/29/b34?domainCountryName=&csrfToken=ajax%3A6249601243831115177"><img src="img/LI_logo.png" alt="LinkedIn logo"></a>
+        <p id="copyright"></p>
+    </footer>
+    <script type='text/javascript' language='javascript' src='footer.js'></script>
+    </div>
+  </body>
+</html>
